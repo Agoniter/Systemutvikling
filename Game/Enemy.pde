@@ -3,9 +3,13 @@
 */
 class Enemy{
   float health, size;
+  PVector pos;
   
 
-
+  public Enemy(PVector startPos){
+    this.pos = startPos;  
+  }
+  
 
 
 
