@@ -1,3 +1,5 @@
-class Weapon(){
+class Weapon{
+float fireRate;
+  
   
 }

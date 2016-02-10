@@ -13,4 +13,11 @@ class Player{
   public void setPlayerY(float newY){
     playPos.y = newY;
   }
+  
+  
+  
+  
+  void drawPlayer(){
+    rect(playPos.x, playPos.y, 20.0, 20.0);
+  }
 }
