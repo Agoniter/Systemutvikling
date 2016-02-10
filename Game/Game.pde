@@ -11,23 +11,46 @@ void setup(){
 }
 
 void draw(){
- 
+  clear();
   player.drawPlayer();
-  
+  player.move(keys);
+ 
 }
 
+  
+void keyPressed(){
+     if(key == 'w' || key == 'W'){
+      keys[0] = true;
+     }
+     
+     if(key == 's' || key == 'S'){
+      keys[1] = true;
+     }
+     
+     if(key == 'd' || key == 'D'){
+      keys[2] = true;
+     }
+     
+     if(key == 'a' || key == 'A'){
+      keys[3] = true;
+     }
+    
+}
 
-
-void keyHandler(){
-  if(keys[0]){
-   yPos = constrain(yPos - stepSize, 0, height-20);  
-  }
-  if(keys[1]){
-   yPos = constrain(yPos + stepSize, 0, height-20); 
-  }
-  if(keys[2]){
-   xPos = constrain(xPos + stepSize, 0, width-20); 
-  }
-  if(keys[3]){
-   xPos = constrain(xPos - stepSize, 0, width-20); 
-  }
+void keyReleased(){
+     if(key == 'w' || key == 'W'){
+      keys[0] = false;
+     }
+     
+     if(key == 's' || key == 'S'){
+      keys[1] = false;
+     }
+     
+     if(key == 'd' || key == 'D'){
+      keys[2] = false;
+     }
+     
+     if(key == 'a' || key == 'A'){
+      keys[3] = false;
+     }
+}
