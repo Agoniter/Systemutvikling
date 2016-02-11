@@ -12,7 +12,7 @@ class Enemy {
     this.oldPosX = pos.x;
     this.oldPosY = pos.y;
     this.rotation = atan2(oldPosY - base.getPosY(), oldPosX - base.getPosX()) / PI * 180;
-    this.speed = -5;
+    this.speed = -2.5;
     size = 50.0;
   }
   void drawEnemy() {
@@ -22,6 +22,7 @@ class Enemy {
     
     if(collisionDetect( pos, size, base.getLocation(), base.getSize()) ){
       die();
+      base.setHealth();
     }else{
       pos.x = pos.x + cos(rotation/180*PI)*speed;
       pos.y = pos.y + sin(rotation/180*PI)*speed;
