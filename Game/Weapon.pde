@@ -1,5 +1,0 @@
-class Weapon{
-float fireRate;
-  
-  
-}
