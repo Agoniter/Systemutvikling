@@ -1,8 +1,10 @@
 Player player;
+Base base;
 boolean keys[] = new boolean[4];
 
 void setup(){
  player = new Player();
+ base = new Base(new PVector(100.0, 100.0));
  size(500,500);
   keys[0] = false;
   keys[1] = false;
@@ -12,6 +14,7 @@ void setup(){
 
 void draw(){
   clear();
+  background(100, 100);
   player.drawPlayer();
   player.move(keys);
  

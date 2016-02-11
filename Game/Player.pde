@@ -1,6 +1,6 @@
 class Player{
-  float xPos, yPos, stepSize;
-  PVector playPos;
+  float stepSize;
+  PVector playPos, velocity;
   public Player(){
     this.playPos = new PVector(250, 250);
     this.stepSize = 2;
