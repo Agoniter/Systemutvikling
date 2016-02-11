@@ -7,7 +7,7 @@ class Base {
     this.pos = position;
     this.size = 50.0;
     imageMode(CENTER);
-    int health = 10;
+    int health = 9;
   }
   public void drawBase() {
     getHealth();
@@ -59,6 +59,6 @@ class Base {
     return this.health;
    }
    public void setHealth(){
-     this.health = health - 1;
+     this.health = this.health - 1;
    }
 }
