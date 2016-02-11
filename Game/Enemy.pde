@@ -20,8 +20,8 @@ class Enemy {
   }
   void move() {
     
-    if(collisionDetect( enemy.getLocation(), enemy.getSize(), base.getLocation(), base.getSize()) ){
-      enemy.die();
+    if(collisionDetect( pos, size, base.getLocation(), base.getSize()) ){
+      die();
     }else{
       pos.x = pos.x + cos(rotation/180*PI)*speed;
       pos.y = pos.y + sin(rotation/180*PI)*speed;
