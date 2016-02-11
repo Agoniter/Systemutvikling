@@ -40,7 +40,7 @@ void draw(){
     lastFire = timer;
     }
   }
- 
+
  
  timer++;
 }

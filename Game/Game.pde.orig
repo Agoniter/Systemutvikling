@@ -1,12 +1,7 @@
 import java.util.Iterator;
 
 Player player;
-<<<<<<< HEAD
 Base base; //Drop it
-Enemy enemy;
-=======
-Base base;
->>>>>>> aeeb9e9db7d09b6ac09c6cb498d9e63885b58a4c
 EnemyHandler enemyHandler;
 float timer, fireRate, lastFire;
 boolean keys[] = new boolean[4];
@@ -15,28 +10,22 @@ static int enemyCount;
 
 void setup(){
   player = new Player();
-<<<<<<< HEAD
   base = new Base(new PVector(60, height/2));
-  enemy = new Enemy( this.base);
-=======
-  base = new Base(new PVector(0, height/2));
->>>>>>> aeeb9e9db7d09b6ac09c6cb498d9e63885b58a4c
   enemyHandler = new EnemyHandler();
   size(1280,960);
   keys[0] = false;
   keys[1] = false;
   keys[2] = false;
   keys[3] = false;
-  imageMode(CENTER);
   timer = 0;
   fireRate = 30;
   lastFire = 0;
   cursor(CROSS);
 <<<<<<< HEAD
-  enemyHandler.addEnemies(1, this.base);
+  enemyHandler.addEnemies(5, this.base);
 =======
-  enemyHandler.addEnemies(20, this.base);
->>>>>>> aeeb9e9db7d09b6ac09c6cb498d9e63885b58a4c
+  enemyHandler.addEnemies(2, this.base);
+>>>>>>> 0fec661f51a6217fbb61ed30c8ae88c82abaf34a
 }
 
 void draw(){
@@ -49,6 +38,7 @@ void draw(){
   player.drawProjectiles();
   enemyHandler.drawEnemies();
   bulletHitCheck();
+ 
   if(timer - lastFire >= fireRate){
     if(player.shoot(this.player)){
     lastFire = timer;

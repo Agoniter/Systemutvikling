@@ -2,10 +2,12 @@ class Player {
   float stepSize;
   PImage sprite;
   PVector playPos, velocity;
+  float timer;
   ArrayList<Projectile> projectiles;
   public Player() {
+    timer = 0;
     sprite = loadImage("Sprites/Player_AK.png");
-    this.playPos = new PVector(250, 250);
+    this.playPos = new PVector(0,0);
     this.stepSize = 2;
     projectiles = new ArrayList<Projectile>();
   }
@@ -21,11 +23,22 @@ class Player {
 
   void drawPlayer() {
     imageMode(CENTER);
+    rectMode(CENTER);
     rect(playPos.x, playPos.y, 20.0, 20.0);
+    text("Player X: " + playPos.x + "  Player y: "  + playPos.y, 20, 60);
+    text("Mouse x: " + mouseX + "  Mouse y: " + mouseY, 20, 20);
+    
+
+    
+    float rot = getAngle(playPos, new PVector(mouseX,mouseY));
+    text("Angle: " + degrees(rot), 20, 40);
+
     pushMatrix();
-    translate(width/2, height/2);
-    rotate(0.3);
-    image(sprite, sprite.width/2 - playPos.x, sprite.height/2 - playPos.y);
+    
+    translate(playPos.x, playPos.y);
+    rotate(rot);
+   // translate(width/2, height/2);
+    image(sprite, 20, 0);
     popMatrix();
 
     
@@ -66,4 +79,21 @@ class Player {
   ArrayList<Projectile> getProjectiles() {
     return projectiles;
   }
+  
+  
+  float getAngle(PVector v1, PVector v2){
+   
+    float dy = v2.y - v1.y;
+    float dx = v2.x - v1.x;
+    
+    return atan2(dy,dx);
+  }
 }
+
+    /*
+    deltaY = P2_y - P1_y
+deltaX = P2_x - P1_x
+angleInDegrees = atan2(deltaY, deltaX) * 180 / PI
+    
+    
+    */
