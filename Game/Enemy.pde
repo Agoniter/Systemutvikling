@@ -12,7 +12,7 @@ class Enemy {
     this.oldPosX = pos.x;
     this.oldPosY = pos.y;
     this.rotation = atan2(oldPosY - base.getPosY(), oldPosX - base.getPosX()) / PI * 180;
-    this.speed = -5;
+    this.speed = -2.5;
     size = 50.0;
   }
   void drawEnemy() {

@@ -1,60 +1,59 @@
-class Player{
+class Player {
   float stepSize;
   PVector playPos, velocity;
   ArrayList<Projectile> projectiles;
-  public Player(){
+  public Player() {
     this.playPos = new PVector(250, 250);
     this.stepSize = 2;
     projectiles = new ArrayList<Projectile>();
   }
-  public PVector getPlayPos(){
+  public PVector getPlayPos() {
     return this.playPos;
   }
-  public void setPlayerX(float newX){
+  public void setPlayerX(float newX) {
     playPos.x = newX;
   }
-  public void setPlayerY(float newY){
+  public void setPlayerY(float newY) {
     playPos.y = newY;
   }
-  
-  void drawPlayer(){
+
+  void drawPlayer() {
     rect(playPos.x, playPos.y, 20.0, 20.0);
   }
-  
-  void move(boolean keys[]){
-  if(keys[0]){
-   playPos.y = constrain(playPos.y - stepSize, 0, height-20);  
+
+  void move(boolean keys[]) {
+    if (keys[0]) {
+      playPos.y = constrain(playPos.y - stepSize, 0, height-20);
+    }
+    if (keys[1]) {
+      playPos.y = constrain(playPos.y + stepSize, 0, height-20);
+    }
+    if (keys[2]) {
+      playPos.x = constrain(playPos.x + stepSize, 0, width-20);
+    }
+    if (keys[3]) {
+      playPos.x = constrain(playPos.x - stepSize, 0, width-20);
+    }
   }
-  if(keys[1]){
-   playPos.y = constrain(playPos.y + stepSize, 0, height-20); 
+  boolean shoot(Player player) {
+    if (mousePressed && (mouseButton == LEFT)) {
+      projectiles.add( new Projectile(this));
+      return true;
+    } else if (mousePressed && (mouseButton == RIGHT)) {
+      //Special attacks?
+      return false;
+    }
+    return false;
   }
-  if(keys[2]){
-   playPos.x = constrain(playPos.x + stepSize, 0, width-20); 
+
+  void drawProjectiles() {
+    for (int i  = projectiles.size()-1; i >= 0; i--) {
+      Projectile projectile = projectiles.get(i);
+      projectile.update();
+    }
   }
-  if(keys[3]){
-   playPos.x = constrain(playPos.x - stepSize, 0, width-20); 
+
+  ArrayList<Projectile> getProjectiles() {
+    return projectiles;
   }
-  }
- boolean shoot(Player player){
-   if(mousePressed && (mouseButton == LEFT)){
-     projectiles.add( new Projectile(this));
-     return true;
-   }else if(mousePressed && (mouseButton == RIGHT)){
-       //Special attacks?
-       return false;
-   }
-   return false;
- }
- 
- void drawProjectiles(){
-         for (int i  = projectiles.size()-1; i >= 0; i--) {
-    //you need a seperate var to get the object from the bullets arraylist then use that variable to call the functions
-    Projectile projectile = projectiles.get(i);
-    projectile.update();
-  }
- }
- 
- ArrayList<Projectile> getProjectiles(){
-  return projectiles; 
- }
 }

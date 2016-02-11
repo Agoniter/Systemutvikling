@@ -67,14 +67,14 @@ void bulletHitCheck(){
   Iterator<Projectile> itP = projectiles.iterator();
   Iterator<Enemy> itE = enemies.iterator();
  
-  while(itP.hasNext()){
-    Projectile bullet = itP.next();
-    while(itE.hasNext()){
-      Enemy enemy = itE.next();
+  while(itE.hasNext()){
+    Enemy enemy = itE.next();
+    while(itP.hasNext()){
+      Projectile bullet = itP.next();
        if(collisionDetect(bullet.getLocation(), bullet.getSize(), enemy.getLocation(), enemy.getSize())){
         enemy.die();
         itE.remove();
-        //itP.remove();
+        itP.remove();
       }
     }
   }
