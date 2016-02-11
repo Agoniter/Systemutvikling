@@ -1,9 +1,11 @@
 class Player{
   float stepSize;
   PVector playPos, velocity;
+  ArrayList<Projectile> projectiles;
   public Player(){
     this.playPos = new PVector(250, 250);
     this.stepSize = 2;
+    projectiles = new ArrayList<Projectile>();
   }
   public PVector getPlayPos(){
     return this.playPos;
@@ -33,11 +35,22 @@ class Player{
    playPos.x = constrain(playPos.x - stepSize, 0, width-20); 
   }
   }
- void shoot(Player player){
+ boolean shoot(Player player){
    if(mousePressed && (mouseButton == LEFT)){
      projectiles.add( new Projectile(this));
+     return true;
    }else if(mousePressed && (mouseButton == RIGHT)){
        //Special attacks?
+       return false;
    }
+   return false;
+ }
+ 
+ void drawProjectiles(){
+         for (int i  = projectiles.size()-1; i >= 0; i--) {
+    //you need a seperate var to get the object from the bullets arraylist then use that variable to call the functions
+    Projectile projectile = projectiles.get(i);
+    projectile.update();
+  }
  }
 }

@@ -1,7 +1,8 @@
 Player player;
 Base base;
+float timer, fireRate, lastFire;
 boolean keys[] = new boolean[4];
-ArrayList<Projectile> projectiles;
+
 void setup(){
  player = new Player();
  base = new Base(new PVector(100.0, 100.0));
@@ -10,21 +11,28 @@ void setup(){
   keys[1] = false;
   keys[2] = false;
   keys[3] = false;
-  projectiles = new ArrayList<Projectile>();
+  timer = 0;
+  fireRate = 30;
+  lastFire = 0;
+  cursor(CROSS);
 }
 
 void draw(){
   clear();
   background(100, 100);
+  fill(255,255,255);
   player.drawPlayer();
   player.move(keys);
-  player.shoot(this.player);
-  for (int i  = projectiles.size()-1; i >= 0; i--) {
-    //you need a seperate var to get the object from the bullets arraylist then use that variable to call the functions
-    Projectile projectile = projectiles.get(i);
-    projectile.update();
+  player.drawProjectiles();
+  
+  if(timer - lastFire >= fireRate){
+    if(player.shoot(this.player)){
+    lastFire = timer;
+    }
   }
  
+ 
+ timer++;
 }
 
   

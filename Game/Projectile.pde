@@ -17,8 +17,8 @@ class Projectile {
     //move the bullet
     location.x = location.x + cos(rotation/180*PI)*speed;
     location.y = location.y + sin(rotation/180*PI)*speed;
+    fill(random(255),random(255),random(255));
     ellipse(location.x, location.y, 10, 10);
- 
     //removes the bullet from the arrayList if it is off the room
     if (location.x > 0 && location.x < width && location.y > 0 && location.x < height) {
     }
@@ -26,11 +26,6 @@ class Projectile {
       //projectiles.remove(i);
     }
   }
-  void drawProjectile(){
-   for (int i  = projectiles.size()-1; i >= 0; i--) {
-    //you need a seperate var to get the object from the bullets arraylist then use that variable to call the functions
-    Projectile projectile = projectiles.get(i);
-    projectile.update();
-  }
-  }
+ 
+ 
 }
