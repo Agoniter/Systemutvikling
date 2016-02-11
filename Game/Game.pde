@@ -1,7 +1,7 @@
 Player player;
 Base base;
 boolean keys[] = new boolean[4];
-
+ArrayList<Projectile> projectiles;
 void setup(){
  player = new Player();
  base = new Base(new PVector(100.0, 100.0));
@@ -10,6 +10,7 @@ void setup(){
   keys[1] = false;
   keys[2] = false;
   keys[3] = false;
+  projectiles = new ArrayList<Projectile>();
 }
 
 void draw(){
@@ -17,6 +18,12 @@ void draw(){
   background(100, 100);
   player.drawPlayer();
   player.move(keys);
+  player.shoot(this.player);
+  for (int i  = projectiles.size()-1; i >= 0; i--) {
+    //you need a seperate var to get the object from the bullets arraylist then use that variable to call the functions
+    Projectile projectile = projectiles.get(i);
+    projectile.update();
+  }
  
 }
 

@@ -33,4 +33,11 @@ class Player{
    playPos.x = constrain(playPos.x - stepSize, 0, width-20); 
   }
   }
+ void shoot(Player player){
+   if(mousePressed && (mouseButton == LEFT)){
+     projectiles.add( new Projectile(this));
+   }else if(mousePressed && (mouseButton == RIGHT)){
+       //Special attacks?
+   }
+ }
 }
