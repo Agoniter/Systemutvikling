@@ -12,16 +12,22 @@ class Enemy {
     this.oldPosX = pos.x;
     this.oldPosY = pos.y;
     this.rotation = atan2(oldPosY - base.getPosY(), oldPosX - base.getPosX()) / PI * 180;
-    this.speed = -2.5;
+    this.speed = -5;
     size = 50.0;
   }
   void drawEnemy() {
     ellipse(pos.x, pos.y, size, size); //placeholderfigur inntil vidare
   }
   void move() {
-    pos.x = pos.x + cos(rotation/180*PI)*speed;
-    pos.y = pos.y + sin(rotation/180*PI)*speed;
-    //float distance = PVector.dist(this.pos, base.getPos());
+    
+    if(collisionDetect( enemy.getLocation(), enemy.getSize(), base.getLocation(), base.getSize()) ){
+      enemy.die();
+    }else{
+      pos.x = pos.x + cos(rotation/180*PI)*speed;
+      pos.y = pos.y + sin(rotation/180*PI)*speed;
+    }
+      
+    
   }
   
   PVector getLocation(){

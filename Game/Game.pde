@@ -1,7 +1,7 @@
 import java.util.Iterator;
 
 Player player;
-Base base;
+Base base; //Drop it
 Enemy enemy;
 EnemyHandler enemyHandler;
 float timer, fireRate, lastFire;
@@ -11,7 +11,7 @@ static int enemyCount;
 
 void setup(){
   player = new Player();
-  base = new Base(new PVector(0, height/2));
+  base = new Base(new PVector(60, height/2));
   enemy = new Enemy( this.base);
   enemyHandler = new EnemyHandler();
   size(1280,960);
@@ -19,11 +19,12 @@ void setup(){
   keys[1] = false;
   keys[2] = false;
   keys[3] = false;
+  imageMode(CENTER);
   timer = 0;
   fireRate = 30;
   lastFire = 0;
   cursor(CROSS);
-  enemyHandler.addEnemies(3, this.base);
+  enemyHandler.addEnemies(1, this.base);
 }
 
 void draw(){
@@ -60,7 +61,7 @@ boolean collisionDetect(PVector location1, float size1, PVector location2, float
 }
 
 
-void bulletHitCheck(){
+public void bulletHitCheck(){
   ArrayList<Projectile> projectiles = player.getProjectiles();
   ArrayList<Enemy> enemies = enemyHandler.getEnemies();
   
