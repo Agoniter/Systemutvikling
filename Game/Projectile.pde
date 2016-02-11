@@ -35,5 +35,8 @@ class Projectile {
    return size;
   }
  
+  void destroy(){
+   size = 0; 
+  }
  
 }

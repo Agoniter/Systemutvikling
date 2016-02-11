@@ -57,10 +57,15 @@ boolean collisionDetect(PVector location1, float size1, PVector location2, float
 
 void bulletHitCheck(){
   ArrayList<Projectile> projectiles = player.getProjectiles();
+  ArrayList<Enemy> enemies = enemyHandler.getEnemies();
   for(Projectile bullet : projectiles){
-    if(collisionDetect(bullet.getLocation(), bullet.getSize(), enemy.getLocation(), enemy.getSize())){
+    for(Enemy enemy : enemies){
+       if(collisionDetect(bullet.getLocation(), bullet.getSize(), enemy.getLocation(), enemy.getSize())){
         enemy.die();
+        bullet.destroy();
+       }
     }
+
   }
 }
   

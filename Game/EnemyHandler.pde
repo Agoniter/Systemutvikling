@@ -18,4 +18,8 @@ ArrayList<Enemy> enemies;
   
   }
    
+   
+  ArrayList<Enemy> getEnemies(){
+   return enemies; 
+  }
 }
