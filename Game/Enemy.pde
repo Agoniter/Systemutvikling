@@ -2,10 +2,12 @@
 / Parentklasse til fiende. Alle fiender vil extende denne klassen
  */
 class Enemy {
-  float health, size, rotation, oldPosX, oldPosY, speed;
-  PVector pos;
-
+  private float health, size, rotation, oldPosX, oldPosY, speed;
+  private PVector pos;
+  private int id;
   public Enemy( Base base) {
+    enemyCount++;
+    id = enemyCount;
     this.pos = new PVector(1280.0, random(960));
     this.oldPosX = pos.x;
     this.oldPosY = pos.y;
@@ -23,7 +25,7 @@ class Enemy {
   }
   
   PVector getLocation(){
-   return pos; 
+   return pos;
   }
   
   float getSize(){
@@ -32,5 +34,9 @@ class Enemy {
   
   void die(){
    size = 0.0; 
+  }
+  
+  int getID(){
+   return id; 
   }
 }

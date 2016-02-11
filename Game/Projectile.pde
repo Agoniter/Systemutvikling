@@ -1,9 +1,13 @@
 class Projectile {
   //standard PVector used for the location of the bullet
-  PVector location;
+  private PVector location;
   //vars used to check the angle between location and the mouse
-  float oldPosX, oldPosY, rotation, speed, size;
-  Projectile(Player player) {
+  private float oldPosX, oldPosY, rotation, speed, size;
+  private int id;
+  
+  public Projectile(Player player) {
+    projectileCount++;
+    id = projectileCount;
     size = 10.0;
     location= new PVector(player.playPos.x + 10,player.playPos.y + 10 );
     //this checks the angle
@@ -36,7 +40,11 @@ class Projectile {
   }
  
   void destroy(){
-   size = 0; 
+   size = 0;
+  }
+  
+  int getID(){
+   return id; 
   }
  
 }

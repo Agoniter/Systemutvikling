@@ -1,9 +1,13 @@
+import java.util.Iterator;
+
 Player player;
 Base base;
 Enemy enemy;
 EnemyHandler enemyHandler;
 float timer, fireRate, lastFire;
 boolean keys[] = new boolean[4];
+static int projectileCount;
+static int enemyCount;
 
 void setup(){
   player = new Player();
@@ -19,7 +23,7 @@ void setup(){
   fireRate = 30;
   lastFire = 0;
   cursor(CROSS);
-  enemyHandler.addEnemies(1, this.base);
+  enemyHandler.addEnemies(3, this.base);
 }
 
 void draw(){
@@ -55,18 +59,40 @@ boolean collisionDetect(PVector location1, float size1, PVector location2, float
   return false;
 }
 
+
 void bulletHitCheck(){
   ArrayList<Projectile> projectiles = player.getProjectiles();
   ArrayList<Enemy> enemies = enemyHandler.getEnemies();
-  for(Projectile bullet : projectiles){
+  
+  Iterator<Projectile> itP = projectiles.iterator();
+  Iterator<Enemy> itE = enemies.iterator();
+ 
+  while(itP.hasNext()){
+    Projectile bullet = itP.next();
+    while(itE.hasNext()){
+      Enemy enemy = itE.next();
+       if(collisionDetect(bullet.getLocation(), bullet.getSize(), enemy.getLocation(), enemy.getSize())){
+        enemy.die();
+        itE.remove();
+        //itP.remove();
+      }
+    }
+  }
+  
+  
+  /*for(Projectile bullet : projectiles){
     for(Enemy enemy : enemies){
        if(collisionDetect(bullet.getLocation(), bullet.getSize(), enemy.getLocation(), enemy.getSize())){
         enemy.die();
-        bullet.destroy();
+        Iterator<Projectile> it = projectiles.iterator();
+        while(it.hasNext()){
+          if(it.next().getID() == bullet.getID()){
+            it.remove();
+          }
        }
     }
-
-  }
+    }
+  }*/
 }
   
 void keyPressed(){
