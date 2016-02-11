@@ -19,7 +19,6 @@ void setup(){
   fireRate = 30;
   lastFire = 0;
   cursor(CROSS);
-  enemyHandler.addEnemies(1, this.base);
 }
 
 void draw(){
@@ -30,8 +29,10 @@ void draw(){
   base.drawBase();
   player.move(keys);
   player.drawProjectiles();
-  enemyHandler.drawEnemies();
-  bulletHitCheck();
+  enemyHandler.addEnemies(1, this.base);
+    enemyHandler.drawEnemies();
+  //enemy.drawEnemy();
+  //enemy.move();
   if(timer - lastFire >= fireRate){
     if(player.shoot(this.player)){
     lastFire = timer;
@@ -41,6 +42,10 @@ void draw(){
  
  timer++;
 }
+
+
+
+
 
 boolean collisionDetect(PVector location1, float size1, PVector location2, float size2){
   
