@@ -27,6 +27,7 @@ void draw(){
   base.drawBase();
   player.move(keys);
   player.drawProjectiles();
+  bulletHitCheck();
   enemy.drawEnemy();
   enemy.move();
   if(timer - lastFire >= fireRate){
@@ -39,6 +40,31 @@ void draw(){
  timer++;
 }
 
+
+
+
+
+boolean collisionDetect(PVector location1, float size1, PVector location2, float size2){
+  
+  float distX, distY, distance;
+  distX = location1.x - location2.x;
+  distY = location1.y - location2.y;
+  distance = sqrt(pow(distX,2) + pow(distY,2));
+  
+  if(distance < size1 + size2){
+   return true; 
+  } 
+  return false;
+}
+
+void bulletHitCheck(){
+  ArrayList<Projectile> projectiles = player.getProjectiles();
+  for(Projectile bullet : projectiles){
+    if(collisionDetect(bullet.getLocation(), bullet.getSize(), enemy.getLocation(), enemy.getSize())){
+        enemy.die();
+    }
+  }
+}
   
 void keyPressed(){
      if(key == 'w' || key == 'W'){
