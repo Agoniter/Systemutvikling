@@ -33,7 +33,7 @@ void draw(){
   player.move(keys);
   player.drawProjectiles();
   enemyHandler.drawEnemies();
-  bulletHitCheck();
+  bulletHitCheck(); //<>//
  
   if(timer - lastFire >= fireRate){
     if(player.shoot(this.player)){
