@@ -1,12 +1,14 @@
 Player player;
 Base base;
+Enemy enemy;
 float timer, fireRate, lastFire;
 boolean keys[] = new boolean[4];
 
 void setup(){
- player = new Player();
- base = new Base(new PVector(100.0, 100.0));
- size(500,500);
+  player = new Player();
+  base = new Base(new PVector(0, height/2));
+  enemy = new Enemy( this.base);
+  size(1280,960);
   keys[0] = false;
   keys[1] = false;
   keys[2] = false;
@@ -22,9 +24,11 @@ void draw(){
   background(100, 100);
   fill(255,255,255);
   player.drawPlayer();
+  base.drawBase();
   player.move(keys);
   player.drawProjectiles();
-  
+  enemy.drawEnemy();
+  enemy.move();
   if(timer - lastFire >= fireRate){
     if(player.shoot(this.player)){
     lastFire = timer;
