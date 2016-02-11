@@ -22,7 +22,7 @@ void setup(){
   fireRate = 30;
   lastFire = 0;
   cursor(CROSS);
-  enemyHandler.addEnemies(20, this.base);
+  enemyHandler.addEnemies(5, this.base);
 }
 
 void draw(){

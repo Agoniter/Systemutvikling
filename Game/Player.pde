@@ -1,8 +1,10 @@
 class Player {
   float stepSize;
+  PImage sprite;
   PVector playPos, velocity;
   ArrayList<Projectile> projectiles;
   public Player() {
+    sprite = loadImage("Sprites/Player_AK.png");
     this.playPos = new PVector(250, 250);
     this.stepSize = 2;
     projectiles = new ArrayList<Projectile>();
@@ -18,7 +20,15 @@ class Player {
   }
 
   void drawPlayer() {
+    imageMode(CENTER);
     rect(playPos.x, playPos.y, 20.0, 20.0);
+    pushMatrix();
+    translate(width/2, height/2);
+    rotate(0.3);
+    image(sprite, sprite.width/2 - playPos.x, sprite.height/2 - playPos.y);
+    popMatrix();
+
+    
   }
 
   void move(boolean keys[]) {
