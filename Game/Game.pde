@@ -17,12 +17,11 @@ void setup(){
   keys[1] = false;
   keys[2] = false;
   keys[3] = false;
-  imageMode(CENTER);
   timer = 0;
   fireRate = 30;
   lastFire = 0;
   cursor(CROSS);
-  enemyHandler.addEnemies(20, this.base);
+  enemyHandler.addEnemies(2, this.base);
 }
 
 void draw(){
@@ -35,6 +34,7 @@ void draw(){
   player.drawProjectiles();
   enemyHandler.drawEnemies();
   bulletHitCheck();
+ 
   if(timer - lastFire >= fireRate){
     if(player.shoot(this.player)){
     lastFire = timer;
