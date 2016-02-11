@@ -5,7 +5,7 @@ class Base {
 
   public Base(PVector position) {
     this.pos = position;
-    sprite = loadImage("base.jpg");
+    sprite = loadImage("Sprites/Grey_Matters_Core_Full_Health_Bigger.png");
   }
   public void drawBase() {
     image(sprite, pos.x, pos.y);

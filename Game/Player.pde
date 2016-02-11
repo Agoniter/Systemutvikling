@@ -53,4 +53,8 @@ class Player{
     projectile.update();
   }
  }
+ 
+ ArrayList<Projectile> getProjectiles(){
+  return projectiles; 
+ }
 }
