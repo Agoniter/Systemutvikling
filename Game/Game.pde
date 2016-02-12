@@ -10,8 +10,8 @@ static int enemyCount;
 
 void setup(){
   player = new Player();
-  base = new Base(new PVector(60, height/2));
   enemyHandler = new EnemyHandler();
+  base = new Base(new PVector(60, height/2));
   size(1280,960);
   keys[0] = false;
   keys[1] = false;
@@ -33,7 +33,7 @@ void draw(){
   player.move(keys);
   player.drawProjectiles();
   enemyHandler.drawEnemies();
-  bulletHitCheck(); //<>//
+  bulletHitCheck();
  
   if(timer - lastFire >= fireRate){
     if(player.shoot(this.player)){
@@ -45,7 +45,7 @@ void draw(){
  timer++;
 }
 
-boolean collisionDetect(PVector location1, float size1, PVector location2, float size2){
+public boolean collisionDetect(PVector location1, float size1, PVector location2, float size2){
   
   float distX, distY, distance;
   distX = location1.x - location2.x;
@@ -71,7 +71,7 @@ public void bulletHitCheck(){
     for(itP = projectiles.iterator();itP.hasNext();){
        Projectile bullet = itP.next();
        if(collisionDetect(bullet.getLocation(), bullet.getSize(), enemy.getLocation(), enemy.getSize())){
-        enemy.die();
+       // enemy.die();
         itE.remove();
         itP.remove();
       }

@@ -1,11 +1,16 @@
 /*
 / Parentklasse til fiende. Alle fiender vil extende denne klassen
  */
+ 
 class Enemy {
   private float health, size, rotation, oldPosX, oldPosY, speed;
+  EnemyHandler eh;
   private PVector pos;
   private int id;
-  public Enemy( Base base) {
+  Base base;
+  public Enemy( Base base, EnemyHandler eh) {
+    this.eh = eh;
+    this.base = base;
     enemyCount++;
     id = enemyCount;
     this.pos = new PVector(1280.0, random(960));
@@ -21,7 +26,7 @@ class Enemy {
   void move() {
     
     if(collisionDetect( pos, size, base.getLocation(), base.getSize()) ){
-      base.setHealth();
+      base.takeDamage(1);
       die();
     }else{
       pos.x = pos.x + cos(rotation/180*PI)*speed;
@@ -40,7 +45,9 @@ class Enemy {
   }
   
   void die(){
-   size = 0.0; 
+   ArrayList enemies = eh.getEnemies();
+   enemies.remove(this);
+   
   }
   
   int getID(){

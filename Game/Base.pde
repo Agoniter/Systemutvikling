@@ -1,5 +1,5 @@
 class Base {
-  PImage sprite;
+  PImage[] sprites;
   PVector pos;
   int health;
   float size;
@@ -7,46 +7,52 @@ class Base {
     this.pos = position;
     this.size = 50.0;
     imageMode(CENTER);
-    int health = 9;
+    health = 10;
+    sprites = new PImage[10];
+    
+    for(int i = 1; i <= 9; i++){
+     sprites[i-1] = loadImage("Sprites/Grey_Matters_Core_" + i + "_Health.png");
+    }
+    sprites[9] = loadImage("Sprites/Grey_Matters_Core_Full_Health_Bigger.png");
   }
   public void drawBase() {
-    getHealth();
+    text("Base health: " + health, 20, 100);
      switch(health){
-    case 1: sprite = loadImage("Sprites/Grey_Matters_Core_1_Health.png");
-            image(sprite, pos.x, pos.y);
+    case 1: 
+            image(sprites[0], pos.x, pos.y);
             break;
-    case 2: sprite = loadImage("Sprites/Grey_Matters_Core_2_Health.png");
-            image(sprite, pos.x, pos.y);
+    case 2:
+            image(sprites[1], pos.x, pos.y);
             break;
-    case 3: sprite = loadImage("Sprites/Grey_Matters_Core_3_Health.png");
-            image(sprite, pos.x, pos.y);
+    case 3: 
+            image(sprites[2], pos.x, pos.y);
             break;
-    case 4: sprite = loadImage("Sprites/Grey_Matters_Core_4_Health.png");
-            image(sprite, pos.x, pos.y);
+    case 4: 
+            image(sprites[3], pos.x, pos.y);
             break;
-    case 5: sprite = loadImage("Sprites/Grey_Matters_Core_5_Health.png");
-            image(sprite, pos.x, pos.y);
+    case 5: 
+            image(sprites[4], pos.x, pos.y);
             break;
-    case 6: sprite = loadImage("Sprites/Grey_Matters_Core_6_Health.png");
-            image(sprite, pos.x, pos.y);
+    case 6: 
+            image(sprites[5], pos.x, pos.y);
             break;
-    case 7: sprite = loadImage("Sprites/Grey_Matters_Core_7_Health.png");
-            image(sprite, pos.x, pos.y);
+    case 7: 
+            image(sprites[6], pos.x, pos.y);
             break;
-    case 8: sprite = loadImage("Sprites/Grey_Matters_Core_8_Health.png");
-            image(sprite, pos.x, pos.y);
+    case 8: 
+            image(sprites[7], pos.x, pos.y);
             break;        
-    case 9: sprite = loadImage("Sprites/Grey_Matters_Core_9_Health.png");
-            image(sprite, pos.x, pos.y);
+    case 9: 
+            image(sprites[8], pos.x, pos.y);
             break;
-    default: sprite = loadImage("Sprites/Grey_Matters_Core_Full_Health_Bigger.png");
-             image(sprite, pos.x, pos.y);
+    default: 
+             image(sprites[9], pos.x, pos.y);
     }
   }
-  public float getPosX() {  
+  public float getPosX(){  
     return this.pos.x;
   }
-  public float getPosY() {  
+  public float getPosY(){  
     return this.pos.y;
   }
   public PVector getLocation(){
@@ -58,7 +64,7 @@ class Base {
   int getHealth(){
     return this.health;
    }
-   public void setHealth(){
-     this.health = this.health - 1;
+   public void takeDamage(int dmg){
+     this.health = this.health - dmg; //<>//
    }
 }

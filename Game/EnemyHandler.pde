@@ -6,7 +6,7 @@ class EnemyHandler {
   }
   public void addEnemies(int enemyNum, Base base) {
     for (int i = 0; i < enemyNum; i++) {
-      enemies.add(new Enemy(base));
+      enemies.add(new Enemy(base, this));
     }
   }
   public void drawEnemies() {
