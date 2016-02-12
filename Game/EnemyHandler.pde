@@ -9,11 +9,13 @@ class EnemyHandler {
       enemies.add(new Enemy(base, this));
     }
   }
-  public void drawEnemies() {
+  public void drawEnemies(int enemiesOnMap) {
     for (int i = enemies.size()-1; i>=0; i--) {
+      if(i <= enemiesOnMap){
       Enemy enemy = enemies.get(i);
       enemy.drawEnemy();
       enemy.move();
+      }
     }
   }
 

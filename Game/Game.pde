@@ -36,7 +36,7 @@ void draw(){
   base.drawBase();
   player.move(keys);
   player.drawProjectiles();
-  enemyHandler.drawEnemies();
+  enemyHandler.drawEnemies(1);
   bulletHitCheck();
   particleHandler();
  
