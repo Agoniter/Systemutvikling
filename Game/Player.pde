@@ -7,7 +7,7 @@ class Player {
   public Player() {
     timer = 0;
     sprite = loadImage("Sprites/Player_AK.png");
-    this.playPos = new PVector(0,0);
+    this.playPos = new PVector(500,500);
     this.stepSize = 2;
     projectiles = new ArrayList<Projectile>();
   }
@@ -24,7 +24,7 @@ class Player {
   void drawPlayer() {
     imageMode(CENTER);
     rectMode(CENTER);
-    rect(playPos.x, playPos.y, 20.0, 20.0);
+   // rect(playPos.x, playPos.y, 20.0, 20.0);
     text("Player X: " + playPos.x + "  Player y: "  + playPos.y, 20, 60);
     text("Mouse x: " + mouseX + "  Mouse y: " + mouseY, 20, 20);
     
@@ -46,16 +46,16 @@ class Player {
 
   void move(boolean keys[]) {
     if (keys[0]) {
-      playPos.y = constrain(playPos.y - stepSize, 0, height-20);
+      playPos.y = constrain(playPos.y - stepSize, 20, height-20);
     }
     if (keys[1]) {
-      playPos.y = constrain(playPos.y + stepSize, 0, height-20);
+      playPos.y = constrain(playPos.y + stepSize, 20, height-20);
     }
     if (keys[2]) {
-      playPos.x = constrain(playPos.x + stepSize, 0, width-20);
+      playPos.x = constrain(playPos.x + stepSize, 20, width-20);
     }
     if (keys[3]) {
-      playPos.x = constrain(playPos.x - stepSize, 0, width-20);
+      playPos.x = constrain(playPos.x - stepSize, 20, width-20);
     }
   }
   boolean shoot(Player player) {

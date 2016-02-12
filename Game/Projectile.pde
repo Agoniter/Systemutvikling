@@ -9,10 +9,12 @@ class Projectile {
     projectileCount++;
     id = projectileCount;
     size = 10.0;
-    location= new PVector(player.playPos.x ,player.playPos.y);
     //this checks the angle
     oldPosX = mouseX;
     oldPosY = mouseY;
+    PVector offset = new PVector(oldPosX - player.playPos.x, oldPosY - player.playPos.y);
+    offset = PVector.mult(offset, 0.1);
+    location= new PVector(player.playPos.x + offset.x ,player.playPos.y + offset.y);
     rotation = atan2(oldPosY - location.y, oldPosX - location.x) / PI * 180;
     speed = 10;
     

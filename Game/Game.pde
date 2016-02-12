@@ -115,3 +115,8 @@ void keyReleased(){
       keys[3] = false;
      }
 }
+
+/*
+static public void main(String args[]) {
+    PApplet.main("Game");
+}*/
