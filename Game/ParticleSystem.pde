@@ -7,9 +7,11 @@ class ParticleSystem{
   float timeSinceLast;
   float lifeTime;
   boolean dead;
+  float speedFactor;
   
-  public ParticleSystem(PVector pos, float rate, float radius, float duration){
+  public ParticleSystem(PVector pos, float rate, float radius, float duration, float speedMultiplier){
     position = pos;
+    speedFactor = speedMultiplier;
     lifeTime = duration * 60;
     this.rate = rate;
     this.radius = radius;
@@ -20,7 +22,7 @@ class ParticleSystem{
   void render(){
    //rect(position.x, position.y, 3, 3);
    if(timer - timeSinceLast >= rate){
-     particles.add(new Particle(this, new PVector(random(-radius/2, radius/2), random(-radius/2, radius/2)), new PVector(random(-2,2), random(-2,2)), new PVector(255.0, 0.0, 255.0), 120.0f, 5.0f));
+     particles.add(new Particle(this, new PVector(random(-radius/2, radius/2), random(-radius/2, radius/2)), new PVector(random(-2,2), random(-2,2)).mult(speedFactor) , new PVector(255.0, 0.0, 255.0), 120.0f, 5.0f));
      timeSinceLast = timer;
    }
    removeDeadParticles();
