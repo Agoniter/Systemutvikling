@@ -1,6 +1,7 @@
 import java.util.Iterator;
 
 Player player;
+ParticleSystem ps;
 Base base; //Drop it
 EnemyHandler enemyHandler;
 float timer, fireRate, lastFire;
@@ -22,6 +23,7 @@ void setup(){
   lastFire = 0;
   cursor(CROSS);
   enemyHandler.addEnemies(5, this.base);
+  ps = new ParticleSystem(new PVector(500, 500), 1.0, 100);
 }
 
 void draw(){
@@ -30,6 +32,7 @@ void draw(){
   fill(255,255,255);
   player.drawPlayer();
   base.drawBase();
+  ps.render();
   player.move(keys);
   player.drawProjectiles();
   enemyHandler.drawEnemies();

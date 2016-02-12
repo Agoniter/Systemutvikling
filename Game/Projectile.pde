@@ -48,5 +48,4 @@ class Projectile {
   int getID(){
    return id; 
   }
- 
 }
