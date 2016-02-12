@@ -1,13 +1,13 @@
 import java.util.Iterator;
 
 Player player;
-ParticleSystem ps;
 Base base; //Drop it
 EnemyHandler enemyHandler;
 float timer, fireRate, lastFire;
 boolean keys[] = new boolean[4];
 static int projectileCount;
 static int enemyCount;
+ArrayList<ParticleSystem> ps;
 
 void setup(){
   player = new Player();
@@ -23,20 +23,22 @@ void setup(){
   lastFire = 0;
   cursor(CROSS);
   enemyHandler.addEnemies(5, this.base);
-  ps = new ParticleSystem(new PVector(500, 500), 1.0, 100);
+  ps = new ArrayList<ParticleSystem>();
+  ps.add(new ParticleSystem(new PVector(width/2, height/2), 5.0, 50.0, 10.0));
 }
 
 void draw(){
   clear();
   background(100, 100);
+  
   fill(255,255,255);
   player.drawPlayer();
   base.drawBase();
-  ps.render();
   player.move(keys);
   player.drawProjectiles();
   enemyHandler.drawEnemies();
   bulletHitCheck();
+  particleHandler();
  
   if(timer - lastFire >= fireRate){
     if(player.shoot(this.player)){
@@ -80,6 +82,22 @@ public void bulletHitCheck(){
       }
     }
   }
+}
+
+
+void particleHandler(){
+  Iterator<ParticleSystem> it;
+  
+  for(it = ps.iterator();it.hasNext();){
+    ParticleSystem p = it.next();
+    if(p.isDead()){
+     it.remove(); 
+    }
+  }
+   for(ParticleSystem p : ps){
+      p.render(); 
+   }
+
 }
   
 void keyPressed(){

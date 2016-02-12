@@ -23,7 +23,10 @@ class Particle{
   
   
    void update() {
+     
+    fill(rgb.x, rgb.y, rgb.z);
     ellipse(position.x + velocity.x, position.y + velocity.y, size, size);
+    fill(255, 255, 255);
     position = PVector.add(position, velocity);
     
     

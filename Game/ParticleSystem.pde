@@ -5,12 +5,16 @@ class ParticleSystem{
   float radius;
   float timer;
   float timeSinceLast;
+  float lifeTime;
+  boolean dead;
   
-  public ParticleSystem(PVector pos, float rate, float radius){
+  public ParticleSystem(PVector pos, float rate, float radius, float duration){
     position = pos;
+    lifeTime = duration * 60;
     this.rate = rate;
     this.radius = radius;
     particles = new ArrayList<Particle>();
+    dead = false;
   }
   
   void render(){
@@ -22,6 +26,11 @@ class ParticleSystem{
    removeDeadParticles();
    for(Particle p : particles){
     p.update();
+   }
+   
+   if(timer > lifeTime){
+    particles = null;
+    dead = true;
    }
    
     timer++;
@@ -37,6 +46,10 @@ class ParticleSystem{
   
   PVector getPosition(){
    return position; 
+  }
+  
+  boolean isDead(){
+   return dead; 
   }
   
   void removeDeadParticles(){
