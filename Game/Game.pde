@@ -24,7 +24,7 @@ void setup(){
   cursor(CROSS);
   enemyHandler.addEnemies(10, this.base);
   ps = new ArrayList<ParticleSystem>();
-  ps.add(new ParticleSystem(new PVector(width/2, height/2), 5.0, 50.0, 10.0, 1, new PVector(0, 0, 255)));
+  ps.add(new ParticleSystem(new PVector(width/2, height/2), 5.0, 10.0, 1, new PVector(0, 0, 255), 1.0));
 }
 
 void draw(){
@@ -77,7 +77,7 @@ public void bulletHitCheck(){
        Projectile bullet = itP.next();
        if(collisionDetect(bullet.getLocation(), bullet.getSize(), enemy.getLocation(), enemy.getSize())){
        // enemy.die();
-        ps.add(new ParticleSystem(new PVector(enemy.getLocation().x, enemy.getLocation().y), 1.0, 40.0, 0.2, 2, new PVector(255, 0, 255)));
+        ps.add(new ParticleSystem(new PVector(enemy.getLocation().x, enemy.getLocation().y), 1.0, 0.2, 2, new PVector(255, 0, 255), 1.0));
         itE.remove();
         itP.remove();
       }
