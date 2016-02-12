@@ -9,7 +9,7 @@ class Projectile {
     projectileCount++;
     id = projectileCount;
     size = 10.0;
-    location= new PVector(player.playPos.x + 10,player.playPos.y + 10 );
+    location= new PVector(player.playPos.x ,player.playPos.y);
     //this checks the angle
     oldPosX = mouseX;
     oldPosY = mouseY;
