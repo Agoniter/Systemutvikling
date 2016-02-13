@@ -1,3 +1,7 @@
+/**
+Represents one particle
+**/
+
 class Particle{
   PVector position;
   PVector velocity;
@@ -9,7 +13,13 @@ class Particle{
   boolean dead;
   float timer;
   float opacity;
-  
+ 
+  /**
+  Constructor for Particle class
+  Creates a particle belonging to a certain particle system,
+  the particle has its own Position (relative to the system),
+  velocity, color, lifetime and size.
+  **/
   public Particle(ParticleSystem sys, PVector pos, PVector velocity, PVector rgb, float lifeTime, float size){
     system = sys;
     this.velocity = velocity;
@@ -24,6 +34,11 @@ class Particle{
   }
   
   
+  /**
+  Particle Logic
+  Updates position, color, and flags particle as dead if
+  lifetime has been exceeded.
+  **/
    void update() {
     noStroke();
     fill(rgb.x, rgb.y, rgb.z, opacity);
@@ -39,7 +54,9 @@ class Particle{
     opacity = lerp(opacity, 0, opacity/(lifeTime*60));
   }
   
-  
+  /**
+  Getter for dead value
+  **/
   boolean isDead(){
    return dead; 
   }
