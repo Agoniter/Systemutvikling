@@ -1,3 +1,4 @@
+
 class Base {
   PImage[] sprites;
   PVector pos;

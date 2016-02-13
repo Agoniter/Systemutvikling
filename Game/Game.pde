@@ -22,7 +22,7 @@ void setup(){
   fireRate = 30;
   lastFire = 0;
   cursor(CROSS);
-  enemyHandler.addEnemies(10, this.base);
+  //enemyHandler.addEnemies(10, this.base);
   ps = new ArrayList<ParticleSystem>();
   ps.add(new ParticleSystem(new PVector(width/2, height/2), 1.0, 10.0, 1, new PVector(0, 0, 255), 1.0));
 }
@@ -36,7 +36,7 @@ void draw(){
   base.drawBase();
   player.move(keys);
   player.drawProjectiles();
-  enemyHandler.drawEnemies(1);
+  enemyHandler.drawEnemies(3); //<>//
   bulletHitCheck();
   particleHandler();
  
@@ -67,7 +67,7 @@ public boolean collisionDetect(PVector location1, float size1, PVector location2
 public void bulletHitCheck(){
   ArrayList<Projectile> projectiles = player.getProjectiles();
   ArrayList<Enemy> enemies = enemyHandler.getEnemies();
- //<>//
+ //<>// //<>//
   Iterator<Projectile> itP = projectiles.iterator();
   Iterator<Enemy> itE = enemies.iterator();
   
@@ -79,7 +79,7 @@ public void bulletHitCheck(){
        // enemy.die();
         ps.add(new ParticleSystem(new PVector(enemy.getLocation().x, enemy.getLocation().y), 1.0, 0.2, 2, new PVector(random(255), random(255), random(255)), 1.0));
         itE.remove();
-        itP.remove();
+        enemy.setDeath();
       }
     }
   }
