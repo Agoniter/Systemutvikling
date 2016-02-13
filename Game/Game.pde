@@ -78,7 +78,7 @@ public void bulletHitCheck(){
        if(collisionDetect(bullet.getLocation(), bullet.getSize(), enemy.getLocation(), enemy.getSize())){
        // enemy.die();
         ps.add(new ParticleSystem(new PVector(enemy.getLocation().x, enemy.getLocation().y), 1.0, 0.2, 2, new PVector(random(255), random(255), random(255)), 1.0));
-        itE.remove();
+        itP.remove();
         enemy.setDeath();
       }
     }
