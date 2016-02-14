@@ -3,6 +3,7 @@
  */
  
 class Enemy {
+  
   private float health, size, rotation, oldPosX, oldPosY, speed;
   PImage sprite;
   EnemyHandler eh;

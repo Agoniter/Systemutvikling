@@ -3,7 +3,7 @@ class EnemyHandler {
   float timer, spawnRate, timeSinceLast;
   public EnemyHandler() {
     enemies = new ArrayList<Enemy>();
-    this.spawnRate = 100.0; //hardkoda verdi menst eg testa
+    this.spawnRate = 200.0; //hardkoda verdi menst eg testa
     this.timer = 0;
   }
   public void addEnemies(int enemyNum, Base base) {
