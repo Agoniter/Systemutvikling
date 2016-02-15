@@ -7,8 +7,6 @@ Player player;
 EnemyHandler enemyHandler;
 float timer, fireRate, lastFire;
 boolean keys[] = new boolean[4]; //array used by keyPressed(), keyReleased() and player.move()
-static int projectileCount;
-static int enemyCount;
 ArrayList<ParticleSystem> ps;
 
 AudioPlayer audio;

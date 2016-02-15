@@ -4,7 +4,6 @@ class Projectile {
   private PVector rgb;
   //vars used to check the angle between location and the mouse
   private float oldPosX, oldPosY, rotation, speed, size;
-  private int id;
   PVector[] colors;
   
   public Projectile(Player player) {
@@ -37,9 +36,6 @@ class Projectile {
     colors[22].set(255.0, 0.0, 128.0);
     colors[23].set(255.0, 0.0, 64.0);
     
-    
-    projectileCount++;
-    id = projectileCount;
     size = 10.0;
     //this checks the angle
     oldPosX = mouseX;
@@ -77,9 +73,5 @@ class Projectile {
  
   void destroy(){
    size = 0;
-  }
-  
-  int getID(){
-   return id; 
   }
 }

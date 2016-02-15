@@ -8,15 +8,12 @@ class Enemy {
   PImage sprite;
   EnemyHandler eh;
   private PVector pos;
-  private int id;
   boolean isDead;
   Base base;
   public Enemy( Base base, EnemyHandler eh) {
     this.eh = eh;
     this.base = base;
     sprite = loadImage("Sprites/spookysprite.png");
-    enemyCount++;
-    id = enemyCount;
     this.pos = new PVector(1280.0, random(960));
     this.oldPosX = pos.x;
     this.oldPosY = pos.y;
@@ -62,10 +59,7 @@ class Enemy {
   boolean isDead() {
     return isDead;
   }
-  //Getter for the ID of the enemy
-  int getID() {
-    return id;
-  }
+  
   // Sets the isDead boolean flag to true
   void setDeath() {
     isDead = true;
