@@ -2,11 +2,13 @@ class Projectile {
   //standard PVector used for the location of the bullet
   private PVector location;
   private PVector rgb;
+  boolean isDead;
   //vars used to check the angle between location and the mouse
   private float oldPosX, oldPosY, rotation, speed, size;
   PVector[] colors;
   
   public Projectile(Player player) {
+    this.isDead = false;
     colors = new PVector[25];
     for(int i = 0; i < 25; i++){
       colors[i] = new PVector();
@@ -23,7 +25,7 @@ class Projectile {
     colors[9].set(0.0, 255.0, 64.0);
     colors[10].set(0.0, 255.0, 128.0);
     colors[11].set(0.0, 255.0, 191.0);
-    colors[12].set(0.0, 255.0, 255.0);
+    colors[12].set(0.0, 255.0, 255.0); //<>//
     colors[13].set(0.0, 191.0, 255.0);
     colors[14].set(0.0, 128.0, 255.0);
     colors[15].set(0.0, 64.0, 255.0);
@@ -56,10 +58,9 @@ class Projectile {
     ellipse(location.x, location.y, size, size);
     fill(255, 255, 255);
     //removes the bullet from the arrayList if it is off the room
-    if (location.x > 0 && location.x < width && location.y > 0 && location.x < height) {
-    }
-    else {
-      //projectiles.remove(i);
+    if(location.x > 0 && location.x< width && location.y > 0 && location.y < height ){
+    }else{
+     setDeath();
     }
   }
   
@@ -73,5 +74,11 @@ class Projectile {
  
   void destroy(){
    size = 0;
+  }
+  void setDeath(){
+    isDead = true;
+  }
+  boolean isDead(){
+    return isDead;
   }
 }
