@@ -1,13 +1,18 @@
+import ddf.minim.*; //<>// //<>// //<>// //<>// //<>//
 import java.util.Iterator;
+import processing.sound.*;
 
 Player player;
-Base base; //Drop it
+/* I'm all about that*/Base /* 'bout that */  base; //no treble
 EnemyHandler enemyHandler;
 float timer, fireRate, lastFire;
 boolean keys[] = new boolean[4]; //array used by keyPressed(), keyReleased() and player.move()
 static int projectileCount;
 static int enemyCount;
 ArrayList<ParticleSystem> ps;
+
+AudioPlayer audio;
+Minim minim;
 
 void setup(){
   player = new Player();
@@ -19,12 +24,14 @@ void setup(){
   keys[2] = false;
   keys[3] = false;
   timer = 0;
-  fireRate = 5;
+  fireRate = 1;
   lastFire = 0;
   cursor(CROSS);
   //enemyHandler.addEnemies(10, this.base);
   ps = new ArrayList<ParticleSystem>();
-  //ps.add(new ParticleSystem(new PVector(width/2, height/2), 1.0, 10.0, 1, new PVector(0, 0, 255), 1.0));
+  minim = new Minim(this);
+  audio = minim.loadFile("Sound/track1.mp3");
+  audio.loop();
 }
 
 void draw(){
@@ -36,7 +43,7 @@ void draw(){
   base.drawBase();
   player.move(keys);
   player.drawProjectiles();
-  enemyHandler.drawEnemies(5); //<>//
+  enemyHandler.drawEnemies(5);
   bulletHitCheck();
   particleHandler();
   //checks to see if the player can shoot a new projectile. The firerate decides how often the player can shoot.
@@ -67,7 +74,7 @@ public boolean collisionDetect(PVector location1, float size1, PVector location2
   }
   return false;
 }
- //<>//
+
 /**
 Loops through the arraylists containing projectiles and enemies 
 and checks if any of the enemies have been hit by a bullet.
@@ -79,7 +86,7 @@ effect to the dead enemies
 public void bulletHitCheck(){
   ArrayList<Projectile> projectiles = player.getProjectiles();
   ArrayList<Enemy> enemies = enemyHandler.getEnemies();
- //<>// //<>//
+ //<>//
   Iterator<Projectile> itP = projectiles.iterator();
   Iterator<Enemy> itE = enemies.iterator();
   

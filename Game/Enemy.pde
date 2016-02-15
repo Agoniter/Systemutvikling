@@ -38,7 +38,7 @@ class Enemy {
   **/
   void move() {
     if (collisionDetect( pos, size, base.getLocation(), base.getSize()) ) {
-      base.takeDamage(1);
+      base.takeDamage(1); //<>//
       setDeath();
     } else {
       pos.x = pos.x + cos(rotation/180*PI)*speed;
