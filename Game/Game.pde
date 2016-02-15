@@ -22,7 +22,7 @@ void setup(){
   keys[2] = false;
   keys[3] = false;
   timer = 0;
-  fireRate = 1;
+  fireRate = 30;
   lastFire = 0;
   cursor(CROSS);
   //enemyHandler.addEnemies(10, this.base);
