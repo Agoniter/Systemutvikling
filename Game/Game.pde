@@ -1,4 +1,6 @@
-import ddf.minim.*; //<>// //<>// //<>// //<>// //<>//
+import processing.sound.*; //<>// //<>//
+
+import ddf.minim.*; //<>// //<>// //<>// //<>//
 import java.util.Iterator;
 import processing.sound.*;
 
@@ -98,7 +100,7 @@ effect to the dead enemies
 public void bulletHitCheck(){
   ArrayList<Projectile> projectiles = player.getProjectiles();
   ArrayList<Enemy> enemies = enemyHandler.getEnemies();
- //<>//
+
   Iterator<Projectile> itP = projectiles.iterator();
   Iterator<Enemy> itE = enemies.iterator();
   

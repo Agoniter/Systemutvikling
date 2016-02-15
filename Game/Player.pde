@@ -73,7 +73,9 @@ class Player {
     for (int i  = projectiles.size()-1; i >= 0; i--) {
       Projectile projectile = projectiles.get(i);
       projectile.update();
+      text(projectiles.size(),playPos.x,playPos.y);
     }
+    removeProjectile();
   }
 
   ArrayList<Projectile> getProjectiles() {
@@ -88,6 +90,15 @@ class Player {
     
     return atan2(dy,dx);
   }
+  void removeProjectile(){
+  Iterator <Projectile> it;
+  for (it = projectiles.iterator(); it.hasNext(); ) {
+      Projectile p = it.next();
+      if (p.isDead()) {
+        it.remove();
+      }
+  }
+ }
 }
 
     /*
