@@ -10,6 +10,8 @@ class Enemy {
   private PVector pos;
   boolean isDead;
   Base base;
+  PImage[] decals;
+  PVector[] colors;
   public Enemy( Base base, EnemyHandler eh) {
     this.eh = eh;
     this.base = base;
@@ -21,7 +23,42 @@ class Enemy {
     this.speed = -2.5; // speed is negative since the enemies move "backwards" on the X-axis
     size = 50.0;
     this.isDead = false;
+    decals = new PImage[3];
+    for(int i = 1; i <= 3; i++){
+     decals[i-1] = loadImage("Sprites/Grey_Matters_Splatt" + i + ".png");
+    }
     imageMode(CENTER);
+    
+    
+    colors = new PVector[25];
+    for(int i = 0; i < 25; i++){
+      colors[i] = new PVector();
+    }
+    colors[0].set(255.0, 0.0, 0.0);
+    colors[1].set(255.0, 64.0, 0.0);
+    colors[2].set(255.0, 128.0, 0.0);
+    colors[3].set(255.0, 191.0, 0.0);
+    colors[4].set(255.0, 255.0, 0.0);
+    colors[5].set(191.0, 255.0, 0.0);
+    colors[6].set(128.0, 255.0, 0.0);
+    colors[7].set(64.0, 255.0, 0.0);
+    colors[8].set(0.0, 255.0, 0.0);
+    colors[9].set(0.0, 255.0, 64.0);
+    colors[10].set(0.0, 255.0, 128.0);
+    colors[11].set(0.0, 255.0, 191.0);
+    colors[12].set(0.0, 255.0, 255.0);
+    colors[13].set(0.0, 191.0, 255.0);
+    colors[14].set(0.0, 128.0, 255.0);
+    colors[15].set(0.0, 64.0, 255.0);
+    colors[16].set(0.0, 0.0, 255.0);
+    colors[17].set(64.0, 0.0, 255.0);
+    colors[18].set(128.0, 0.0, 255.0);
+    colors[19].set(191.0, 0.0, 255.0);
+    colors[20].set(255.0, 0.0, 255.0);
+    colors[21].set(255.0, 0.0, 191.0);
+    colors[22].set(255.0, 0.0, 128.0);
+    colors[23].set(255.0, 0.0, 64.0);
+    
   }
   //draws the enemy
   void drawEnemy() {
@@ -52,8 +89,8 @@ class Enemy {
   }
   //This method is currently not in use
   void die() {
-    ArrayList enemies = eh.getEnemies();
-    enemies.remove(this);
+    Decal d = new Decal(decals[int(random(0, 2))], pos, colors[int(random(0,22))]);
+    addDecal(d);
   }
   //Getter for the isDead boolean flag 
   boolean isDead() {
@@ -61,7 +98,9 @@ class Enemy {
   }
   
   // Sets the isDead boolean flag to true
+  // Removes the enemy from screen next frame
   void setDeath() {
     isDead = true;
+    die();
   }
 }

@@ -8,6 +8,7 @@ EnemyHandler enemyHandler;
 float timer, fireRate, lastFire;
 boolean keys[] = new boolean[4]; //array used by keyPressed(), keyReleased() and player.move()
 ArrayList<ParticleSystem> ps;
+ArrayList<Decal> decals;
 
 AudioPlayer audio;
 Minim minim;
@@ -27,6 +28,7 @@ void setup(){
   cursor(CROSS);
   //enemyHandler.addEnemies(10, this.base);
   ps = new ArrayList<ParticleSystem>();
+  decals = new ArrayList<Decal>();
   minim = new Minim(this);
   audio = minim.loadFile("Sound/track1.mp3");
   audio.loop();
@@ -37,6 +39,7 @@ void draw(){
   background(100, 100);
   
   fill(255,255,255);
+  drawDecals();
   player.drawPlayer();
   base.drawBase();
   player.move(keys);
@@ -53,6 +56,17 @@ void draw(){
 
  
  timer++;
+}
+
+
+void drawDecals(){
+ for(Decal d : decals){
+  d.drawDecal(); 
+ }
+}
+
+void addDecal(Decal d){
+ decals.add(d); 
 }
 /**
 Collisiondetection used to check if two objects i.e enemy and base are close. 
