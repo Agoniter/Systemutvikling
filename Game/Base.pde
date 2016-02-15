@@ -10,12 +10,15 @@ class Base {
     imageMode(CENTER);
     health = 10;
     sprites = new PImage[10];
-    
+    //Adds all the different base-sprites to an array that drawBase uses.
     for(int i = 1; i <= 9; i++){
      sprites[i-1] = loadImage("Sprites/Grey_Matters_Core_" + i + "_Health.png");
     }
     sprites[9] = loadImage("Sprites/Grey_Matters_Core_Full_Health_Bigger.png");
   }
+  /**
+  draws the base in different states, depending on the health of the base.
+  **/
   public void drawBase() {
     text("Base health: " + health, 20, 100);
      switch(health){
@@ -50,21 +53,31 @@ class Base {
              image(sprites[9], pos.x, pos.y);
     }
   }
+  //Getter for the X position of the base
   public float getPosX(){  
     return this.pos.x;
   }
+  //Getter for the Y position of the base
   public float getPosY(){  
     return this.pos.y;
   }
+  //Getter for the  position of the base
   public PVector getLocation(){
     return this.pos;
   }
+  //Getter for the size of the base
   public float getSize(){
     return size;
   }
+   //Getter for the  health of the base
   int getHealth(){
     return this.health;
    }
+   /**
+   Method used for damaging the base.
+   This method is called when the enemy
+   crashes into the base.
+   **/
    public void takeDamage(int dmg){
      this.health = this.health - dmg; //<>//
    }
