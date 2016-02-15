@@ -51,7 +51,7 @@ class Particle{
      dead = true; 
     }
     timer++;
-    opacity = lerp(opacity, 0, opacity/(lifeTime*60));
+    opacity = lerp(opacity, 0, opacity/(lifeTime*20));
   }
   
   /**

@@ -19,7 +19,7 @@ void setup(){
   keys[2] = false;
   keys[3] = false;
   timer = 0;
-  fireRate = 30;
+  fireRate = 5;
   lastFire = 0;
   cursor(CROSS);
   //enemyHandler.addEnemies(10, this.base);
@@ -36,7 +36,7 @@ void draw(){
   base.drawBase();
   player.move(keys);
   player.drawProjectiles();
-  enemyHandler.drawEnemies(1); //<>//
+  enemyHandler.drawEnemies(5); //<>//
   bulletHitCheck();
   particleHandler();
   //checks to see if the player can shoot a new projectile. The firerate decides how often the player can shoot.
@@ -67,7 +67,7 @@ public boolean collisionDetect(PVector location1, float size1, PVector location2
   }
   return false;
 }
-
+ //<>//
 /**
 Loops through the arraylists containing projectiles and enemies 
 and checks if any of the enemies have been hit by a bullet.
@@ -89,7 +89,7 @@ public void bulletHitCheck(){
        Projectile bullet = itP.next();
        if(collisionDetect(bullet.getLocation(), bullet.getSize(), enemy.getLocation(), enemy.getSize())){
        // enemy.die();
-        ps.add(new ParticleSystem(new PVector(enemy.getLocation().x, enemy.getLocation().y), 1.0, 0.2, 2, new PVector(random(255), random(255), random(255)), 1.0));
+        ps.add(new ParticleSystem(enemy.getLocation(), 1.0, 0.2, 2, null, 1.0));
         itP.remove();
         enemy.setDeath();
       }
