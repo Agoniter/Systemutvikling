@@ -1,6 +1,6 @@
-import processing.sound.*; //<>// //<>// //<>//
+import processing.sound.*; //<>// //<>// //<>// //<>// //<>// //<>//
 import interfascia.*;
-import ddf.minim.*; //<>// //<>// //<>//
+import ddf.minim.*; //<>// //<>//
 import java.util.Iterator;
 import processing.sound.*;
 GUIController control;
@@ -9,6 +9,8 @@ Player player;
 /* I'm all about that*/Base /* 'bout that */  base; //no treble
 EnemyHandler enemyHandler;
 float timer, fireRate, lastFire;
+int gameState;
+int keyPress;
 boolean keys[] = new boolean[5]; //array used by keyPressed(), keyReleased() and player.move()
 ArrayList<ParticleSystem> ps;
 ArrayList<Decal> decals;
@@ -31,6 +33,8 @@ void setup() {
   timer = 0;
   fireRate = 30;
   lastFire = 0;
+  gameState = 0;
+  keyPress = 0;
   cursor(CROSS);
   //enemyHandler.addEnemies(10, this.base);
   ps = new ArrayList<ParticleSystem>();
@@ -43,8 +47,9 @@ void setup() {
 void draw() {
   clear();
   background(100, 100);
-
   fill(255, 255, 255);
+  switch(gameState){
+  case 0:
   drawDecals();
   player.drawPlayer();
   base.drawBase();
@@ -53,14 +58,19 @@ void draw() {
   enemyHandler.drawEnemies(5);
   bulletHitCheck();
   particleHandler();
+  checkP();
   //checks to see if the player can shoot a new projectile. The firerate decides how often the player can shoot.
   if (timer - lastFire >= fireRate) {
     if (player.shoot(this.player)) {
       lastFire = timer;
     }
   }
-
-
+  break;
+  case 1:
+  checkP();
+  break;
+  }
+ 
   timer++;
 }
 
@@ -158,7 +168,7 @@ void keyPressed() {
   if (key == 'a' || key == 'A') {
     keys[3] = true;
   }
-  if(key == 'p' || key == 'P'){
+  if (key == 'p' || key == 'P') {
     keys[4] = true;
   }
 }
@@ -181,7 +191,21 @@ void keyReleased() {
   if (key == 'a' || key == 'A') {
     keys[3] = false;
   }
-}
+  if (key == 'p' || key == 'P') {
+    keys[4] = false;
+  }
+}  
+
+void checkP() {
+  if (keys[4] && keyPress == 0) {
+    gameState = 1;
+    keyPress = keyPress + 1;
+  }else if( keys[4] && keyPress == 1){
+    gameState = 0;
+    keyPress = 0;
+  }
+}  
+
 
 /*
 static public void main(String args[]) {
