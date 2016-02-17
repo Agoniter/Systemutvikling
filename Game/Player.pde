@@ -73,7 +73,6 @@ class Player {
     for (int i  = projectiles.size()-1; i >= 0; i--) {
       Projectile projectile = projectiles.get(i);
       projectile.update();
-      text(projectiles.size(),playPos.x,playPos.y);
     }
     removeProjectile();
   }
@@ -100,11 +99,3 @@ class Player {
   }
  }
 }
-
-    /*
-    deltaY = P2_y - P1_y
-deltaX = P2_x - P1_x
-angleInDegrees = atan2(deltaY, deltaX) * 180 / PI
-    
-    
-    */
