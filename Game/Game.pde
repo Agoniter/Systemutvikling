@@ -48,17 +48,17 @@ void draw() {
   clear();
   background(100, 100);
   fill(255, 255, 255);
+  keyTyped();
   switch(gameState){
   case 0:
   drawDecals();
   player.drawPlayer();
   base.drawBase();
+  enemyHandler.drawEnemies(5);
   player.move(keys);
   player.drawProjectiles();
-  enemyHandler.drawEnemies(5);
   bulletHitCheck();
   particleHandler();
-  checkP();
   //checks to see if the player can shoot a new projectile. The firerate decides how often the player can shoot.
   if (timer - lastFire >= fireRate) {
     if (player.shoot(this.player)) {
@@ -67,7 +67,7 @@ void draw() {
   }
   break;
   case 1:
-  checkP();
+  text("Game is paused", width/2, height/2);
   break;
   }
  
@@ -192,19 +192,21 @@ void keyReleased() {
     keys[3] = false;
   }
   if (key == 'p' || key == 'P') {
-    keys[4] = false;
-  }
-}  
-
-void checkP() {
-  if (keys[4] && keyPress == 0) {
+    if ( keyPress == 0) {
     gameState = 1;
-    keyPress = keyPress + 1;
-  }else if( keys[4] && keyPress == 1){
+    keyPress = 1;
+  }else if(keyPress == 1){
     gameState = 0;
     keyPress = 0;
   }
+  }
 }  
+void keyTyped(){
+  if (key == 'p' || key == 'P') {
+
+  }
+}
+
 
 
 /*
