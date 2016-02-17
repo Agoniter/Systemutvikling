@@ -11,7 +11,7 @@ class EnemyHandler {
       enemies.add(new Enemy(base, this));
     }
   }
-  public void drawEnemies(int enemyWave) {
+  public void spawnEnemies(int enemyWave) {
 
     if (timer - timeSinceLast >= spawnRate) {
       addEnemies(enemyWave, base);
@@ -19,7 +19,6 @@ class EnemyHandler {
     }
     removeDeadEnemy();
     for (Enemy e : enemies) {
-      e.drawEnemy();
       e.move();
     }
     timer++;
@@ -27,6 +26,11 @@ class EnemyHandler {
 
   ArrayList<Enemy> getEnemies() {
     return enemies;
+  }
+  void drawEnemies() {
+    for (Enemy e : enemies) {
+      e.drawEnemy();
+    }
   }
   void removeDeadEnemy() {
     Iterator<Enemy> it;

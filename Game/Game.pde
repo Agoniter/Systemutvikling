@@ -1,6 +1,6 @@
-import processing.sound.*; //<>// //<>// //<>// //<>// //<>// //<>//
+import processing.sound.*; //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 import interfascia.*;
-import ddf.minim.*; //<>// //<>//
+import ddf.minim.*; //<>//
 import java.util.Iterator;
 import processing.sound.*;
 GUIController control;
@@ -48,29 +48,29 @@ void draw() {
   clear();
   background(100, 100);
   fill(255, 255, 255);
-  keyTyped();
-  switch(gameState){
-  case 0:
+  base.drawBase();
+  enemyHandler.drawEnemies();
+  player.drawProjectiles();
   drawDecals();
   player.drawPlayer();
-  base.drawBase();
-  enemyHandler.drawEnemies(5);
-  player.move(keys);
-  player.drawProjectiles();
-  bulletHitCheck();
-  particleHandler();
-  //checks to see if the player can shoot a new projectile. The firerate decides how often the player can shoot.
-  if (timer - lastFire >= fireRate) {
-    if (player.shoot(this.player)) {
-      lastFire = timer;
+  switch(gameState) {
+  case 0:
+    enemyHandler.spawnEnemies(5);
+    player.move(keys);
+    bulletHitCheck();
+    particleHandler();
+    //checks to see if the player can shoot a new projectile. The firerate decides how often the player can shoot.
+    if (timer - lastFire >= fireRate) {
+      if (player.shoot(this.player)) {
+        lastFire = timer;
+      }
     }
-  }
-  break;
+    break;
   case 1:
-  text("Game is paused", width/2, height/2);
-  break;
+    text("Game is paused", width/2, height/2);
+    break;
   }
- 
+
   timer++;
 }
 
@@ -193,22 +193,14 @@ void keyReleased() {
   }
   if (key == 'p' || key == 'P') {
     if ( keyPress == 0) {
-    gameState = 1;
-    keyPress = 1;
-  }else if(keyPress == 1){
-    gameState = 0;
-    keyPress = 0;
-  }
+      gameState = 1;
+      keyPress = 1;
+    } else if (keyPress == 1) {
+      gameState = 0;
+      keyPress = 0;
+    }
   }
 }  
-void keyTyped(){
-  if (key == 'p' || key == 'P') {
-
-  }
-}
-
-
-
 /*
 static public void main(String args[]) {
  PApplet.main("Game");
