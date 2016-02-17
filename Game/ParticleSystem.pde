@@ -73,8 +73,6 @@ class ParticleSystem{
   Handles the logic of the particle system.
   **/
   void render(){
-   //rect(position.x, position.y, 3, 3);
-   System.out.println(rgb.x);
    //Check if it's time to spawn a new particle.
    if(timer - timeSinceLast >= rate){
      particles.add(new Particle(this, new PVector(random(-radius/2, radius/2), random(-radius/2, radius/2)), new PVector(random(-2,2), random(-2,2)).mult(speedFactor) , new PVector(rgb.x, rgb.y, rgb.z), pLife, 7.0f));

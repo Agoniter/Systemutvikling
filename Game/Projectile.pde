@@ -45,7 +45,7 @@ class Projectile {
     PVector offset = new PVector(oldPosX - player.playPos.x, oldPosY - player.playPos.y);
     offset = PVector.mult(offset, 0.1);
     location= new PVector(player.playPos.x + offset.x ,player.playPos.y + offset.y);
-    rotation = atan2(oldPosY - location.y, oldPosX - location.x) / PI * 180;
+    rotation = atan2(oldPosY - (location.y + offset.y), oldPosX - (location.x + offset.x)) / PI * 180;
     speed = 10;
     rgb = colors[int(random(0, 23))];
     
