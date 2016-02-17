@@ -20,7 +20,9 @@ Minim minim;
 
 void setup() {
   control= new GUIController(this);
-  button1 = new IFButton("", width/2, height/2);
+  button1 = new IFButton("Unpause", 1400, height/2);
+  button1.addActionListener(this);
+  control.add(button1);
   player = new Player();
   enemyHandler = new EnemyHandler();
   base = new Base(new PVector(60, height/2));
@@ -48,17 +50,19 @@ void draw() {
   clear();
   background(100, 100);
   fill(255, 255, 255);
+  drawDecals();
   base.drawBase();
   enemyHandler.drawEnemies();
   player.drawProjectiles();
-  drawDecals();
   player.drawPlayer();
   switch(gameState) {
   case 0:
+    button1.setX(1400);
     enemyHandler.spawnEnemies(5);
     player.move(keys);
     bulletHitCheck();
     particleHandler();
+    endGame();
     //checks to see if the player can shoot a new projectile. The firerate decides how often the player can shoot.
     if (timer - lastFire >= fireRate) {
       if (player.shoot(this.player)) {
@@ -67,7 +71,11 @@ void draw() {
     }
     break;
   case 1:
-    text("Game is paused", width/2, height/2);
+    button1.setX(width/2);
+    break;
+  case 2:
+    text("Game over!", width/2, height/2);
+    noLoop();
     break;
   }
 
@@ -201,6 +209,17 @@ void keyReleased() {
     }
   }
 }  
+void endGame() {
+  if (base.getHealth() <= 0) {
+    gameState = 2;
+  }
+}
+void actionPerformed (GUIEvent e) {
+  if (e.getSource() == button1) {
+    gameState = 0;
+    keyPress = 0;
+  }
+}
 /*
 static public void main(String args[]) {
  PApplet.main("Game");
