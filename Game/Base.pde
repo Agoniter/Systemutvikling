@@ -49,8 +49,12 @@ class Base {
     case 9: 
             image(sprites[8], pos.x, pos.y);
             break;
-    default: 
+    case 10: 
              image(sprites[9], pos.x, pos.y);
+             
+    default:
+   
+    
     }
   }
   //Getter for the X position of the base
@@ -75,7 +79,7 @@ class Base {
    }
    /**
    Method used for damaging the base.
-   This method is called when the enemy
+   This method is called when the enemy //<>//
    crashes into the base.
    **/
    public void takeDamage(int dmg){
