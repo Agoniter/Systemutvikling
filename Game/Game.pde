@@ -1,6 +1,6 @@
-import processing.sound.*; //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+import processing.sound.*; //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 import interfascia.*;
-import ddf.minim.*; //<>//
+import ddf.minim.*; //<>// //<>//
 import java.util.Iterator;
 import processing.sound.*;
 GUIController control;
@@ -51,6 +51,7 @@ void draw() {
   background(100, 100);
   fill(255, 255, 255);
   drawDecals();
+  text(frameRate, 20, 140);
   base.drawBase();
   enemyHandler.drawEnemies();
   player.drawProjectiles();
@@ -203,9 +204,11 @@ void keyReleased() {
     if ( keyPress == 0) {
       gameState = 1;
       keyPress = 1;
+      audio.mute();
     } else if (keyPress == 1) {
       gameState = 0;
       keyPress = 0;
+      audio.unmute();
     }
   }
 }  

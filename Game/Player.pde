@@ -36,7 +36,9 @@ class Player {
     pushMatrix();
     
     translate(playPos.x, playPos.y);
+    if(gameState == 0){
     rotate(rot);
+    }
    // translate(width/2, height/2);
     image(sprite, 20, 0);
     popMatrix();
