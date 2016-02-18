@@ -348,3 +348,9 @@ Game/application.windows64/lib/sound.jar
 Game/application.windows64/lib/tritonus_aos.jar
 Game/application.windows64/lib/tritonus_share.jar
 Game/application.windows64/source/Decal.pde
+Game/application.windows32/lib/interfascia.jar
+Game/application.windows32/lib/README.md
+Game/application.windows32/Sprites/Player_AK_move1.png
+Game/application.windows32/Sprites/Player_AK_move2.png
+Game/application.windows64/lib/interfascia.jar
+Game/application.windows64/lib/README.md
