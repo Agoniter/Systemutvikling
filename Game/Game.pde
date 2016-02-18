@@ -1,6 +1,6 @@
-import processing.sound.*; //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+import processing.sound.*; //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 import interfascia.*;
-import ddf.minim.*; //<>// //<>//
+import ddf.minim.*; //<>// //<>// //<>//
 import java.util.Iterator;
 import processing.sound.*;
 GUIController control;
@@ -211,6 +211,11 @@ void keyReleased() {
       audio.unmute();
     }
   }
+  if(key == 'r' || key == 'R'){
+      reset();
+      redraw();
+      loop();
+  }
 }  
 void endGame() {
   if (base.getHealth() <= 0) {
@@ -222,7 +227,19 @@ void actionPerformed (GUIEvent e) {
   if (e.getSource() == button1) {
     gameState = 0;
     keyPress = 0;
-  }
+  }  
+}
+void reset(){
+  timer = 0;
+  fireRate = 30;
+  lastFire = 0;
+  gameState = 0;
+  keyPress = 0;
+  ps.clear();
+  decals.clear();
+  enemyHandler.clearEnemies();
+  base.setHealth(10);
+  audio.loop();
 }
 /*
 static public void main(String args[]) {

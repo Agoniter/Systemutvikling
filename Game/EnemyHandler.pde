@@ -42,4 +42,7 @@ class EnemyHandler {
       }
     }
   }
+  void clearEnemies(){
+    enemies.clear();
+  }
 }
