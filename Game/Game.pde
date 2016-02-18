@@ -215,6 +215,7 @@ void keyReleased() {
 void endGame() {
   if (base.getHealth() <= 0) {
     gameState = 2;
+    audio.mute();
   }
 }
 void actionPerformed (GUIEvent e) {
