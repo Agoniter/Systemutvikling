@@ -4,8 +4,8 @@
 
 class Enemy {
 
-  private float health, size, rotation, oldPosX, oldPosY, speed;
-  PImage sprite;
+  private float health, size, rotation, oldPosX, oldPosY, speed, aniTimer;
+  PImage[] sprite;
   EnemyHandler eh;
   private PVector pos;
   boolean isDead;
@@ -15,20 +15,22 @@ class Enemy {
   public Enemy( Base base, EnemyHandler eh) {
     this.eh = eh;
     this.base = base;
-    sprite = loadImage("Sprites/spookysprite.png");
+    sprite = new PImage[2];
+    sprite[0] = loadImage("Sprites/Grey_Matters_Medium_enemy_Part1.png");
+    sprite[1] = loadImage("Sprites/Grey_Matters_Medium_enemy_Part2.png");
     this.pos = new PVector(1280.0, random(960));
     this.oldPosX = pos.x;
     this.oldPosY = pos.y;
     this.rotation = atan2(oldPosY - base.getPosY(), oldPosX - base.getPosX()) / PI * 180;
     this.speed = -2.5; // speed is negative since the enemies move "backwards" on the X-axis
-    size = 50.0;
+    size = 60.0;
     this.isDead = false;
     decals = new PImage[3];
     for(int i = 1; i <= 3; i++){
      decals[i-1] = loadImage("Sprites/Grey_Matters_Splatt" + i + ".png");
     }
     imageMode(CENTER);
-    
+    aniTimer = 0;
     
     colors = new PVector[25];
     for(int i = 0; i < 25; i++){
@@ -62,7 +64,19 @@ class Enemy {
   }
   //draws the enemy
   void drawEnemy() {
-    image(sprite, pos.x, pos.y, 50, 50);
+    
+    if(aniTimer < 30){
+     image(sprite[0], pos.x, pos.y); 
+    }
+    else if(aniTimer >= 30 && aniTimer <= 60){
+      image(sprite[1], pos.x, pos.y);
+    }
+    else{
+      image(sprite[1], pos.x, pos.y);
+      aniTimer = 0;
+      
+    }
+    aniTimer++;
   }
   /**
   Move method for the enemy class. This method moves the enemy towards the base

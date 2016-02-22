@@ -9,6 +9,7 @@ Player player;
 /* I'm all about that*/Base /* 'bout that */  base; //no treble
 EnemyHandler enemyHandler;
 float timer, fireRate, lastFire;
+PImage bg;
 int gameState;
 int keyPress;
 boolean keys[] = new boolean[5]; //array used by keyPressed(), keyReleased() and player.move()
@@ -26,6 +27,8 @@ void setup() {
   player = new Player();
   enemyHandler = new EnemyHandler();
   base = new Base(new PVector(60, height/2));
+  bg = new PImage();
+  bg = loadImage("Sprites/Grey_Matters_Map.png");
   size(1280, 960);
   keys[0] = false;
   keys[1] = false;
@@ -48,7 +51,7 @@ void setup() {
 
 void draw() {
   clear();
-  background(100, 100);
+  background(bg);
   fill(255, 255, 255);
   drawDecals();
   text(frameRate, 20, 140);
