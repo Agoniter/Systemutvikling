@@ -230,6 +230,7 @@ void actionPerformed (GUIEvent e) {
   if (e.getSource() == button1) {
     gameState = 0;
     keyPress = 0;
+    audio.unmute();
   }  
 }
 void reset(){
