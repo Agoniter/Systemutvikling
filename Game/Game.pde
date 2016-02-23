@@ -8,7 +8,7 @@ IFButton button1;
 Player player;
 /* I'm all about that*/Base /* 'bout that */  base; //no treble
 EnemyHandler enemyHandler;
-float timer, fireRate, lastFire;
+float timer, lastFire;
 PImage bg;
 int gameState;
 int keyPress;
@@ -36,7 +36,6 @@ void setup() {
   keys[3] = false;
   keys[4] = false;
   timer = 0;
-  fireRate = 30;
   lastFire = 0;
   gameState = 0;
   keyPress = 0;
@@ -68,7 +67,7 @@ void draw() {
     particleHandler();
     endGame();
     //checks to see if the player can shoot a new projectile. The firerate decides how often the player can shoot.
-    if (timer - lastFire >= fireRate) {
+    if (timer - lastFire >= player.getWeapon().getFireRate()) {
       if (player.shoot(this.player)) {
         lastFire = timer;
       }
@@ -219,6 +218,12 @@ void keyReleased() {
       redraw();
       loop();
   }
+  if(key == 'q' || key == 'Q'){
+    player.cycleWeaponDown();
+  }
+  if(key == 'e' || key == 'E'){
+    player.cycleWeaponUp();
+  }
 }  
 void endGame() {
   if (base.getHealth() <= 0) {
@@ -235,7 +240,6 @@ void actionPerformed (GUIEvent e) {
 }
 void reset(){
   timer = 0;
-  fireRate = 30;
   lastFire = 0;
   gameState = 0;
   keyPress = 0;

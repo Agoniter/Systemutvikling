@@ -2,14 +2,19 @@ class Player {
   float stepSize;
   PImage sprite;
   PVector playPos, velocity;
-  float timer;
+  int weaponState;
+  float timer, fireRate, fireMod;
   ArrayList<Projectile> projectiles;
+  Weapon weapon;
   public Player() {
     timer = 0;
     sprite = loadImage("Sprites/Player_AK.png");
     this.playPos = new PVector(500,500);
     this.stepSize = 2;
+    fireMod = 1.0;
+    weaponState = 1;
     projectiles = new ArrayList<Projectile>();
+    weapon = new Pistol(projectiles, this);
   }
   public PVector getPlayPos() {
     return this.playPos;
@@ -62,7 +67,7 @@ class Player {
   }
   boolean shoot(Player player) {
     if (mousePressed && (mouseButton == LEFT)) {
-      projectiles.add( new Projectile(this));
+      weaponSwitch();
       return true;
     } else if (mousePressed && (mouseButton == RIGHT)) {
       //Special attacks?
@@ -99,5 +104,31 @@ class Player {
         it.remove();
       }
   }
+ }
+ void weaponSwitch(){
+   switch(weaponState){
+     case 1:
+     weapon.shoot();
+     break;
+     //case 2:
+     //fireRate = 15;
+     //projectiles.add( new Projectile(this));
+     ////case 3:
+     ////fireRate = 60;
+     //default:
+     //fireRate = 30;
+     //projectiles.add( new Projectile(this));
+   }
+ }
+ void cycleWeaponUp(){
+   weaponState++;
+   constrain(weaponState, 1, 4);
+ }
+ void cycleWeaponDown(){
+   weaponState--;
+   constrain(weaponState, 1, 4);
+ }
+ Weapon getWeapon(){
+   return weapon;
  }
 }

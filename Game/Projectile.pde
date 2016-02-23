@@ -4,12 +4,15 @@ class Projectile {
   private PVector rgb;
   boolean isDead;
   //vars used to check the angle between location and the mouse
-  private float oldPosX, oldPosY, rotation, speed, size;
+  float speed, rotation,size;
   PVector[] colors;
   
-  public Projectile(Player player) {
+  public Projectile(Player player, float rotation, float size) {
     this.isDead = false;
     colors = new PVector[25];
+    this.rotation = rotation;
+    location = player.getPlayPos();
+    this.size = 10;
     for(int i = 0; i < 25; i++){
       colors[i] = new PVector();
     }
@@ -37,15 +40,6 @@ class Projectile {
     colors[21].set(255.0, 0.0, 191.0);
     colors[22].set(255.0, 0.0, 128.0);
     colors[23].set(255.0, 0.0, 64.0);
-    
-    size = 10.0;
-    //this checks the angle
-    oldPosX = mouseX;
-    oldPosY = mouseY;
-    PVector offset = new PVector(oldPosX - player.playPos.x, oldPosY - player.playPos.y);
-    offset = PVector.mult(offset, 0.1);
-    location= new PVector(player.playPos.x + offset.x ,player.playPos.y + offset.y);
-    rotation = atan2(oldPosY - (location.y + offset.y), oldPosX - (location.x + offset.x)) / PI * 180;
     speed = 10;
     rgb = colors[int(random(0, 23))];
     
@@ -80,5 +74,7 @@ class Projectile {
   }
   boolean isDead(){
     return isDead;
+  }
+  void shotgunProjectile(){
   }
 }
