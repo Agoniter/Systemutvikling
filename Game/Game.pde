@@ -1,6 +1,6 @@
-import processing.sound.*; //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+import processing.sound.*; //<>//
 import interfascia.*;
-import ddf.minim.*; //<>// //<>// //<>//
+import ddf.minim.*; //<>//
 import java.util.Iterator;
 import processing.sound.*;
 GUIController control;
