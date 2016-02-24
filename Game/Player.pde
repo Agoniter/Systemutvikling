@@ -106,18 +106,21 @@ class Player {
   }
  }
  void weaponSwitch(){
+   text(weaponState, 500,500);
    switch(weaponState){
      case 1:
+     weapon = new Pistol(projectiles, this);
      weapon.shoot();
      break;
-     //case 2:
-     //fireRate = 15;
-     //projectiles.add( new Projectile(this));
-     ////case 3:
+     case 2:
+     weapon = new AssaultRifle(projectiles, this);
+     weapon.shoot();
+     break;
+     //case 3:
      ////fireRate = 60;
-     //default:
-     //fireRate = 30;
-     //projectiles.add( new Projectile(this));
+     default:
+     weapon = new Pistol(projectiles, this);
+     weapon.shoot();
    }
  }
  void cycleWeaponUp(){

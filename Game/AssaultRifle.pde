@@ -1,11 +1,11 @@
-class Pistol implements Weapon{
+class AssaultRifle implements Weapon{
   ArrayList<Projectile> pList;
   Player player;
   private float oldPosX, oldPosY, rotation, size, fireRate;
   
-  Pistol(ArrayList<Projectile> pList, Player player){
+  AssaultRifle(ArrayList<Projectile> pList, Player player){
     this.pList = pList;
-    fireRate = 30;
+    fireRate = 15;
     this.player = player;
     //location = player.getPlayPos();
   }

@@ -4,16 +4,20 @@ class Projectile {
   private PVector rgb;
   boolean isDead;
   //vars used to check the angle between location and the mouse
-  float speed, rotation,size;
+  float speed, rotation, size, oldPosX,oldPosY;
   PVector[] colors;
-  
+
   public Projectile(Player player, float rotation, float size) {
     this.isDead = false;
     colors = new PVector[25];
+    oldPosX = mouseX;
+    oldPosY = mouseY;
+    PVector offset = new PVector(oldPosX - player.playPos.x, oldPosY - player.playPos.y);
+    offset = PVector.mult(offset, 0.1);
+    location = new PVector(player.playPos.x + offset.x, player.playPos.y + offset.y);
     this.rotation = rotation;
-    location = player.getPlayPos();
     this.size = 10;
-    for(int i = 0; i < 25; i++){
+    for (int i = 0; i < 25; i++) {
       colors[i] = new PVector();
     }
     colors[0].set(255.0, 0.0, 0.0);
@@ -42,7 +46,6 @@ class Projectile {
     colors[23].set(255.0, 0.0, 64.0);
     speed = 10;
     rgb = colors[int(random(0, 23))];
-    
   }
   void update() {
     //move the bullet
@@ -52,29 +55,27 @@ class Projectile {
     ellipse(location.x, location.y, size, size);
     fill(255, 255, 255);
     //removes the bullet from the arrayList if it is off the room
-    if(location.x > 0 && location.x< width && location.y > 0 && location.y < height ){
-    }else{
-     setDeath();
+    if (location.x > 0 && location.x< width && location.y > 0 && location.y < height ) {
+    } else {
+      setDeath();
     }
   }
-  
-  PVector getLocation(){
-   return location; 
+
+  PVector getLocation() {
+    return location;
   }
-  
-  float getSize(){
-   return size;
+
+  float getSize() {
+    return size;
   }
- 
-  void destroy(){
-   size = 0;
+
+  void destroy() {
+    size = 0;
   }
-  void setDeath(){
+  void setDeath() {
     isDead = true;
   }
-  boolean isDead(){
+  boolean isDead() {
     return isDead;
-  }
-  void shotgunProjectile(){
   }
 }
