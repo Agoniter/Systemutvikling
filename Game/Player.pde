@@ -5,16 +5,20 @@ class Player {
   int weaponState;
   float timer, fireRate, fireMod;
   ArrayList<Projectile> projectiles;
+  ArrayList<Weapon> weapons;
   Weapon weapon;
   public Player() {
     timer = 0;
     sprite = loadImage("Sprites/Player_AK.png");
-    this.playPos = new PVector(500,500);
+    this.playPos = new PVector(500, 500);
     this.stepSize = 2;
     fireMod = 1.0;
     weaponState = 1;
     projectiles = new ArrayList<Projectile>();
-    weapon = new Pistol(projectiles, this);
+    weapons = new ArrayList<Weapon>();
+    weapons.add(new Pistol(projectiles, this));
+    weapons.add(new AssaultRifle(projectiles, this));
+    weapons.add(new Shotgun(projectiles, this));
   }
   public PVector getPlayPos() {
     return this.playPos;
@@ -29,26 +33,24 @@ class Player {
   void drawPlayer() {
     imageMode(CENTER);
     rectMode(CENTER);
-   // rect(playPos.x, playPos.y, 20.0, 20.0);
+    // rect(playPos.x, playPos.y, 20.0, 20.0);
     text("Player X: " + playPos.x + "  Player y: "  + playPos.y, 20, 60);
     text("Mouse x: " + mouseX + "  Mouse y: " + mouseY, 20, 20);
-    
 
-    
-    float rot = getAngle(playPos, new PVector(mouseX,mouseY));
+
+
+    float rot = getAngle(playPos, new PVector(mouseX, mouseY));
     text("Angle: " + degrees(rot), 20, 40);
 
     pushMatrix();
-    
+
     translate(playPos.x, playPos.y);
-    if(gameState == 0){
-    rotate(rot);
+    if (gameState == 0) {
+      rotate(rot);
     }
-   // translate(width/2, height/2);
+    // translate(width/2, height/2);
     image(sprite, 20, 0);
     popMatrix();
-
-    
   }
 
   void move(boolean keys[]) {
@@ -87,51 +89,53 @@ class Player {
   ArrayList<Projectile> getProjectiles() {
     return projectiles;
   }
-  
-  
-  float getAngle(PVector v1, PVector v2){
-   
+
+
+  float getAngle(PVector v1, PVector v2) {
+
     float dy = v2.y - v1.y;
     float dx = v2.x - v1.x;
-    
-    return atan2(dy,dx);
+
+    return atan2(dy, dx);
   }
-  void removeProjectile(){
-  Iterator <Projectile> it;
-  for (it = projectiles.iterator(); it.hasNext(); ) {
+  void removeProjectile() {
+    Iterator <Projectile> it;
+    for (it = projectiles.iterator(); it.hasNext(); ) {
       Projectile p = it.next();
       if (p.isDead()) {
         it.remove();
       }
+    }
   }
- }
- void weaponSwitch(){
-   text(weaponState, 500,500);
-   switch(weaponState){
-     case 1:
-     weapon = new Pistol(projectiles, this);
-     weapon.shoot();
-     break;
-     case 2:
-     weapon = new AssaultRifle(projectiles, this);
-     weapon.shoot();
-     break;
-     //case 3:
-     ////fireRate = 60;
-     default:
-     weapon = new Pistol(projectiles, this);
-     weapon.shoot();
-   }
- }
- void cycleWeaponUp(){
-   weaponState++;
-   constrain(weaponState, 1, 4);
- }
- void cycleWeaponDown(){
-   weaponState--;
-   constrain(weaponState, 1, 4);
- }
- Weapon getWeapon(){
-   return weapon;
- }
+  void weaponSwitch() {
+    text(weaponState, 500, 500);
+    switch(weaponState) {
+    case 1:
+      weapon = new Pistol(projectiles, this);
+      weapon.shoot();
+      break;
+    case 2:
+      weapon = new AssaultRifle(projectiles, this);
+      weapon.shoot();
+      break;
+    case 3:
+      weapon = new Shotgun(projectiles, this);
+      weapon.shoot();
+      break;
+    default:
+      weapon = new Pistol(projectiles, this);
+      weapon.shoot();
+    }
+  }
+  void cycleWeaponUp() {
+    weaponState++;
+    constrain(weaponState, 1, 4);
+  }
+  void cycleWeaponDown() {
+    weaponState--;
+    constrain(weaponState, 1, 4);
+  }
+  Weapon getWeapon() {
+    return weapon;
+  }
 }

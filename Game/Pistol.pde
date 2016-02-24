@@ -7,7 +7,6 @@ class Pistol implements Weapon{
     this.pList = pList;
     fireRate = 30;
     this.player = player;
-    //location = player.getPlayPos();
   }
   
   void shoot(){

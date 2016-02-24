@@ -16,7 +16,7 @@ class Projectile {
     offset = PVector.mult(offset, 0.1);
     location = new PVector(player.playPos.x + offset.x, player.playPos.y + offset.y);
     this.rotation = rotation;
-    this.size = 10;
+    this.size = size;
     for (int i = 0; i < 25; i++) {
       colors[i] = new PVector();
     }
