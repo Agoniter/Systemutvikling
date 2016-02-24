@@ -1,4 +1,4 @@
-import processing.sound.*; //<>// //<>//
+import processing.sound.*; //<>// //<>// //<>// //<>//
 import interfascia.*;
 import ddf.minim.*;
 import java.util.Iterator;
@@ -64,7 +64,7 @@ void draw() {
   case 0:
     projectiles.update();
     button1.setX(1400);
-    enemyHandler.spawnEnemies(5);
+    enemyHandler.spawnEnemies(1);
     player.move(keys);
     bulletHitCheck();
     particleHandler();
@@ -141,7 +141,10 @@ public void bulletHitCheck() {
         // enemy.die();
         ps.add(new ParticleSystem(enemy.getLocation(), 1.0, 0.2, 2, null, 1.0));
         itP.remove();
+        enemy.takeDamage(1);
+        if(enemy.getHealth() <= 0){
         enemy.setDeath();
+        }
       }
     }
   }

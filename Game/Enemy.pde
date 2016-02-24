@@ -26,6 +26,7 @@ class Enemy {
     size = 60.0;
     this.isDead = false;
     decals = new PImage[3];
+    health = 3;
     for(int i = 1; i <= 3; i++){
      decals[i-1] = loadImage("Sprites/Grey_Matters_Splatt" + i + ".png");
     }
@@ -85,7 +86,7 @@ class Enemy {
   set to true by the setDeath method.
   **/
   void move() {
-    if (collisionDetect( pos, size, base.getLocation(), base.getSize()) ) {
+    if (collisionDetect( pos, size, base.getLocation(), base.getSize()) ) { //<>//
       base.takeDamage(1); //<>//
       setDeath();
     } else {
@@ -110,11 +111,16 @@ class Enemy {
   boolean isDead() {
     return isDead;
   }
-  
+  void takeDamage(int weaponDamage){
+      health = health - weaponDamage;
+  }
   // Sets the isDead boolean flag to true
   // Removes the enemy from screen next frame
   void setDeath() {
     isDead = true;
     die();
+  }
+  float getHealth(){
+    return health;
   }
 }
