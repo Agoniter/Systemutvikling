@@ -7,8 +7,7 @@ class Player {
   ArrayList<Weapon> weapons;
   Weapon weapon;
   public Player(Projectiles projectiles) {
-    timer = 0;
-    sprite = loadImage("Sprites/Player_AK.png");
+    timer = 0;  
     this.playPos = new PVector(500, 500);
     this.stepSize = 2;
     fireMod = 1.0;
@@ -18,6 +17,7 @@ class Player {
     weapons.add(new AssaultRifle(projectiles.getProjectiles(), this));
     weapons.add(new Shotgun(projectiles.getProjectiles(), this));
     weapon = weapons.get(0);
+    sprite = weapon.getSprite();
   }
   public PVector getPlayPos() {
     return this.playPos;
@@ -90,6 +90,7 @@ class Player {
     for (Weapon w : weapons) {
       if (w.getWeaponID() > weapon.getWeaponID()) {
         weapon = w;
+        sprite = weapon.getSprite();
         break;
       }
     }
@@ -99,6 +100,7 @@ class Player {
     for ( int i = weapons.size() - 1; i>=0; i--) {
       if (weapons.get(i).getWeaponID() < weapon.getWeaponID()) {
         weapon = weapons.get(i);
+        sprite = weapon.getSprite();
         break;
       }
     }

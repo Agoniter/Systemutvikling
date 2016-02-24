@@ -3,11 +3,14 @@ class Shotgun implements Weapon {
   Player player;
   private float oldPosX, oldPosY, rotation, size, fireRate;
   int weaponID;
+  PImage sprite;
   Shotgun(ArrayList<Projectile> pList, Player player) {
     this.pList = pList;
     fireRate = 60;
     this.player = player;
     weaponID = 2;
+    sprite = loadImage("Sprites/Player_Shotgun.png");
+
   }
 
   void shoot() {
@@ -28,5 +31,8 @@ class Shotgun implements Weapon {
   }
   int getWeaponID(){
     return weaponID;
+  }
+  PImage getSprite(){
+    return sprite;
   }
 }

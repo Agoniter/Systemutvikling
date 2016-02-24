@@ -11,15 +11,15 @@ class Projectiles {
     }
     removeProjectile();
   }
-  void drawProjectiles(){
-    for(Projectile p : projectiles){
-    p.drawProjectile();
+  void drawProjectiles() {
+    for (Projectile p : projectiles) {
+      p.drawProjectile();
     }
   }
   ArrayList<Projectile> getProjectiles() {
     return projectiles;
   }
-   void removeProjectile() {
+  void removeProjectile() {
     Iterator <Projectile> it;
     for (it = projectiles.iterator(); it.hasNext(); ) {
       Projectile p = it.next();

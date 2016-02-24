@@ -4,7 +4,7 @@ class Projectile {
   private PVector rgb;
   boolean isDead;
   //vars used to check the angle between location and the mouse
-  float speed, rotation, size, oldPosX,oldPosY;
+  float speed, rotation, size, oldPosX, oldPosY;
   PVector[] colors;
 
   public Projectile(Player player, float rotation, float size) {
@@ -51,14 +51,14 @@ class Projectile {
     //move the bullet
     location.x = location.x + cos(rotation/180*PI)*speed;
     location.y = location.y + sin(rotation/180*PI)*speed;
-   
+
     //removes the bullet from the arrayList if it is off the room
     if (location.x > 0 && location.x< width && location.y > 0 && location.y < height ) {
     } else {
       setDeath();
     }
   }
-  void drawProjectile(){
+  void drawProjectile() {
     fill(rgb.x, rgb.y, rgb.z);
     ellipse(location.x, location.y, size, size);
     fill(255, 255, 255);

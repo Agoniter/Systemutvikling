@@ -7,5 +7,7 @@ interface Weapon{
   float getFireRate();
   
   int getWeaponID();
+  
+  PImage getSprite();
 
 }

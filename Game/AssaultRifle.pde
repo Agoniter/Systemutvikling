@@ -3,11 +3,13 @@ class AssaultRifle implements Weapon {
   Player player;
   private float oldPosX, oldPosY, rotation, size, fireRate;
   int weaponID;
+  PImage sprite;
   AssaultRifle(ArrayList<Projectile> pList, Player player) {
     this.pList = pList;
     fireRate = 15;
     this.player = player;
     weaponID = 1;
+    sprite = loadImage("Sprites/Player_AK.png");
   }
 
   void shoot() {
@@ -23,7 +25,10 @@ class AssaultRifle implements Weapon {
   float getFireRate() {
     return fireRate;
   }
-  int getWeaponID(){
+  int getWeaponID() {
     return weaponID;
+  }
+  PImage getSprite(){
+    return sprite;
   }
 }
