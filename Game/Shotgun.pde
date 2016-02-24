@@ -2,11 +2,12 @@ class Shotgun implements Weapon {
   ArrayList<Projectile> pList;
   Player player;
   private float oldPosX, oldPosY, rotation, size, fireRate;
-
+  int weaponID;
   Shotgun(ArrayList<Projectile> pList, Player player) {
     this.pList = pList;
     fireRate = 60;
     this.player = player;
+    weaponID = 2;
   }
 
   void shoot() {
@@ -24,5 +25,8 @@ class Shotgun implements Weapon {
   }
   float getFireRate() {
     return fireRate;
+  }
+  int getWeaponID(){
+    return weaponID;
   }
 }

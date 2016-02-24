@@ -1,11 +1,12 @@
-import processing.sound.*; //<>//
+import processing.sound.*; //<>// //<>//
 import interfascia.*;
-import ddf.minim.*; //<>//
+import ddf.minim.*;
 import java.util.Iterator;
 import processing.sound.*;
 GUIController control;
 IFButton button1;
 Player player;
+Projectiles projectiles;
 /* I'm all about that*/Base /* 'bout that */  base; //no treble
 EnemyHandler enemyHandler;
 float timer, lastFire;
@@ -20,11 +21,12 @@ AudioPlayer audio;
 Minim minim;
 
 void setup() {
+  projectiles = new Projectiles();
   control= new GUIController(this);
   button1 = new IFButton("Unpause", 1400, height/2);
   button1.addActionListener(this);
   control.add(button1);
-  player = new Player();
+  player = new Player(projectiles);
   enemyHandler = new EnemyHandler();
   base = new Base(new PVector(60, height/2));
   bg = new PImage();
@@ -56,10 +58,11 @@ void draw() {
   text(frameRate, 20, 140);
   base.drawBase();
   enemyHandler.drawEnemies();
-  player.drawProjectiles();
   player.drawPlayer();
+  projectiles.drawProjectiles();
   switch(gameState) {
   case 0:
+    projectiles.update();
     button1.setX(1400);
     enemyHandler.spawnEnemies(5);
     player.move(keys);
@@ -68,12 +71,13 @@ void draw() {
     endGame();
     //checks to see if the player can shoot a new projectile. The firerate decides how often the player can shoot.
     if (timer - lastFire >= player.getWeapon().getFireRate()) {
-      if (player.shoot(this.player)) {
+      if (player.shoot()) {
         lastFire = timer;
       }
     }
     break;
   case 1:
+    
     button1.setX(width/2);
     break;
   case 2:
@@ -123,15 +127,15 @@ public boolean collisionDetect(PVector location1, float size1, PVector location2
  effect to the dead enemies
  **/
 public void bulletHitCheck() {
-  ArrayList<Projectile> projectiles = player.getProjectiles();
+  ArrayList<Projectile> pList = projectiles.getProjectiles();
   ArrayList<Enemy> enemies = enemyHandler.getEnemies();
 
-  Iterator<Projectile> itP = projectiles.iterator();
+  Iterator<Projectile> itP = pList.iterator();
   Iterator<Enemy> itE = enemies.iterator();
 
   for (itE = enemies.iterator(); itE.hasNext(); ) {
     Enemy enemy = itE.next();
-    for (itP = projectiles.iterator(); itP.hasNext(); ) {
+    for (itP = pList.iterator(); itP.hasNext(); ) {
       Projectile bullet = itP.next();
       if (collisionDetect(bullet.getLocation(), bullet.getSize(), enemy.getLocation(), enemy.getSize())) {
         // enemy.die();
@@ -213,15 +217,15 @@ void keyReleased() {
       audio.unmute();
     }
   }
-  if(key == 'r' || key == 'R'){
-      reset();
-      redraw();
-      loop();
+  if (key == 'r' || key == 'R') {
+    reset();
+    redraw();
+    loop();
   }
-  if(key == 'q' || key == 'Q'){
+  if (key == 'q' || key == 'Q') {
     player.cycleWeaponDown();
   }
-  if(key == 'e' || key == 'E'){
+  if (key == 'e' || key == 'E') {
     player.cycleWeaponUp();
   }
 }  
@@ -236,9 +240,9 @@ void actionPerformed (GUIEvent e) {
     gameState = 0;
     keyPress = 0;
     audio.unmute();
-  }  
+  }
 }
-void reset(){
+void reset() {
   timer = 0;
   lastFire = 0;
   gameState = 0;

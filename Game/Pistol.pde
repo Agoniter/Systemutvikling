@@ -2,11 +2,12 @@ class Pistol implements Weapon{
   ArrayList<Projectile> pList;
   Player player;
   private float oldPosX, oldPosY, rotation, size, fireRate;
-  
+  int weaponID;
   Pistol(ArrayList<Projectile> pList, Player player){
     this.pList = pList;
     fireRate = 30;
     this.player = player;
+    weaponID = 0;
   }
   
   void shoot(){
@@ -22,4 +23,7 @@ class Pistol implements Weapon{
   float getFireRate(){
    return fireRate;
  }
+  int getWeaponID(){
+    return weaponID;
+  }
 }

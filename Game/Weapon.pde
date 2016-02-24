@@ -5,5 +5,7 @@ interface Weapon{
   void secondaryFire();
 
   float getFireRate();
+  
+  int getWeaponID();
 
 }

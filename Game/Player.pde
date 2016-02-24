@@ -4,21 +4,20 @@ class Player {
   PVector playPos, velocity;
   int weaponState;
   float timer, fireRate, fireMod;
-  ArrayList<Projectile> projectiles;
   ArrayList<Weapon> weapons;
   Weapon weapon;
-  public Player() {
+  public Player(Projectiles projectiles) {
     timer = 0;
     sprite = loadImage("Sprites/Player_AK.png");
     this.playPos = new PVector(500, 500);
     this.stepSize = 2;
     fireMod = 1.0;
     weaponState = 1;
-    projectiles = new ArrayList<Projectile>();
     weapons = new ArrayList<Weapon>();
-    weapons.add(new Pistol(projectiles, this));
-    weapons.add(new AssaultRifle(projectiles, this));
-    weapons.add(new Shotgun(projectiles, this));
+    weapons.add(new Pistol(projectiles.getProjectiles(), this));
+    weapons.add(new AssaultRifle(projectiles.getProjectiles(), this));
+    weapons.add(new Shotgun(projectiles.getProjectiles(), this));
+    weapon = weapons.get(0);
   }
   public PVector getPlayPos() {
     return this.playPos;
@@ -37,9 +36,8 @@ class Player {
     text("Player X: " + playPos.x + "  Player y: "  + playPos.y, 20, 60);
     text("Mouse x: " + mouseX + "  Mouse y: " + mouseY, 20, 20);
 
-
-
     float rot = getAngle(playPos, new PVector(mouseX, mouseY));
+
     text("Angle: " + degrees(rot), 20, 40);
 
     pushMatrix();
@@ -67,27 +65,16 @@ class Player {
       playPos.x = constrain(playPos.x - stepSize, 20, width-20);
     }
   }
-  boolean shoot(Player player) {
+
+  boolean shoot() {
     if (mousePressed && (mouseButton == LEFT)) {
-      weaponSwitch();
+      weapon.shoot();
       return true;
     } else if (mousePressed && (mouseButton == RIGHT)) {
       //Special attacks?
       return false;
     }
     return false;
-  }
-
-  void drawProjectiles() {
-    for (int i  = projectiles.size()-1; i >= 0; i--) {
-      Projectile projectile = projectiles.get(i);
-      projectile.update();
-    }
-    removeProjectile();
-  }
-
-  ArrayList<Projectile> getProjectiles() {
-    return projectiles;
   }
 
 
@@ -98,43 +85,25 @@ class Player {
 
     return atan2(dy, dx);
   }
-  void removeProjectile() {
-    Iterator <Projectile> it;
-    for (it = projectiles.iterator(); it.hasNext(); ) {
-      Projectile p = it.next();
-      if (p.isDead()) {
-        it.remove();
+
+  void cycleWeaponUp() {
+    for (Weapon w : weapons) {
+      if (w.getWeaponID() > weapon.getWeaponID()) {
+        weapon = w;
+        break;
       }
     }
   }
-  void weaponSwitch() {
-    text(weaponState, 500, 500);
-    switch(weaponState) {
-    case 1:
-      weapon = new Pistol(projectiles, this);
-      weapon.shoot();
-      break;
-    case 2:
-      weapon = new AssaultRifle(projectiles, this);
-      weapon.shoot();
-      break;
-    case 3:
-      weapon = new Shotgun(projectiles, this);
-      weapon.shoot();
-      break;
-    default:
-      weapon = new Pistol(projectiles, this);
-      weapon.shoot();
+
+  void cycleWeaponDown() {
+    for ( int i = weapons.size() - 1; i>=0; i--) {
+      if (weapons.get(i).getWeaponID() < weapon.getWeaponID()) {
+        weapon = weapons.get(i);
+        break;
+      }
     }
   }
-  void cycleWeaponUp() {
-    weaponState++;
-    constrain(weaponState, 1, 4);
-  }
-  void cycleWeaponDown() {
-    weaponState--;
-    constrain(weaponState, 1, 4);
-  }
+
   Weapon getWeapon() {
     return weapon;
   }
