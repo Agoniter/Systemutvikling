@@ -21,7 +21,7 @@ class AssaultRifle implements Weapon {
     oldPosY = mouseY;
     PVector location= new PVector(player.playPos.x, player.playPos.y);
     rotation = atan2(oldPosY - location.y, oldPosX - location.x) / PI * 180;
-    float tempRot = rotation + (random(-3, 3)* PI/2);
+    float tempRot = rotation + (random(-3.0, 3.0)* PI/2);
     pList.add(new Projectile(player, tempRot, size));
   }
   void secondaryFire() {

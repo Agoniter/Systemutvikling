@@ -12,7 +12,7 @@ EnemyHandler enemyHandler;
 float timer, lastFire;
 PImage bg;
 int gameState;
-int keyPress;
+int keyPress, mutePress;
 boolean keys[] = new boolean[5]; //array used by keyPressed(), keyReleased() and player.move()
 ArrayList<ParticleSystem> ps;
 ArrayList<Decal> decals;
@@ -41,6 +41,7 @@ void setup() {
   lastFire = 0;
   gameState = 0;
   keyPress = 0;
+  mutePress =0;
   cursor(CROSS);
   //enemyHandler.addEnemies(10, this.base);
   ps = new ArrayList<ParticleSystem>();
@@ -227,6 +228,15 @@ void keyReleased() {
   }
   if (key == 'e' || key == 'E') {
     player.cycleWeaponUp();
+  }
+  if (key == 'm' || key == 'M') {
+    if ( keyPress == 0 && gameState == 0) {
+      mutePress = 1;
+      audio.mute();
+    } else if (keyPress == 1 && gameState == 0) {
+      mutePress = 0;
+      audio.unmute();
+    }
   }
 }  
 void endGame() {
