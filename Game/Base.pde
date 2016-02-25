@@ -86,6 +86,6 @@ class Base {
      this.health = this.health - dmg; //<>//
    }
    void setHealth(int newHealth){
-     health = health + newHealth;
+     health = newHealth;
    }
 }

@@ -103,7 +103,8 @@ class Player {
     for (Weapon w : weapons) {
       if (w.getWeaponID() > weapon.getWeaponID()) {
         weapon = w;
-        sprite = tempSprite[0];
+        PImage tmpSprite[] = weapon.getSprite();
+        sprite = tmpSprite[0];
         break;
       }
     }
@@ -113,18 +114,19 @@ class Player {
     for ( int i = weapons.size() - 1; i>=0; i--) {
       if (weapons.get(i).getWeaponID() < weapon.getWeaponID()) {
         weapon = weapons.get(i);
-        sprite = tempSprite[0];
+        PImage tmpSprite[] = weapon.getSprite();
+        sprite = tmpSprite[0];
         break;
       }
     }
   }
   void playerAnimation() {
     tempSprite = weapon.getSprite();
-    if (isMoving && aniTimer < 30) {
+    if (isMoving && aniTimer < 10) {
       sprite = tempSprite[1];
-    } else if (isMoving && aniTimer >= 30 && aniTimer <= 60) {
+    } else if (isMoving && aniTimer >= 10 && aniTimer <= 20) {
       sprite = tempSprite[2];
-    } else if(isMoving && aniTimer >= 60 && aniTimer <= 90){
+    } else if(isMoving && aniTimer >= 20 && aniTimer <= 30){
       sprite = tempSprite[0];
     }
     else{

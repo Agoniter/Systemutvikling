@@ -10,9 +10,9 @@ class Shotgun implements Weapon {
     this.player = player;
     weaponID = 2;
     sprite = new PImage[3];
-    sprite [0] =loadImage("Sprites/Player_gun.png");
-    sprite [1] =loadImage("Sprites/Player_gun_move1.png");
-    sprite [2] =loadImage("Sprites/Player_gun_move2.png");
+    sprite [0] =loadImage("Sprites/Player_Shotgun.png");
+    sprite [1] =loadImage("Sprites/Player_Shotgun_move1.png");
+    sprite [2] =loadImage("Sprites/Player_Shotgun_move2.png");
 
   }
 

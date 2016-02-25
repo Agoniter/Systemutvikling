@@ -10,9 +10,9 @@ class AssaultRifle implements Weapon {
     this.player = player;
     weaponID = 1;
     sprite = new PImage[3];
-    sprite [0] =loadImage("Sprites/Player_gun.png");
-    sprite [1] =loadImage("Sprites/Player_gun_move1.png");
-    sprite [2] =loadImage("Sprites/Player_gun_move2.png");
+    sprite [0] =loadImage("Sprites/Player_AK.png");
+    sprite [1] =loadImage("Sprites/Player_AK_move1.png");
+    sprite [2] =loadImage("Sprites/Player_AK_move2.png");
   }
 
   void shoot() {

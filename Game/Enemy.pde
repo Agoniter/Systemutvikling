@@ -120,8 +120,11 @@ class Enemy {
   // Sets the isDead boolean flag to true
   // Removes the enemy from screen next frame
   void setDeath() {
-    isDead = true;
-    die();
+    if(isDead == false){
+      isDead = true;
+      die();
+    }
+    
   }
   float getHealth(){
     return health;
