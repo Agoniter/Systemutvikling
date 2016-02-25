@@ -16,12 +16,13 @@ class AssaultRifle implements Weapon {
   }
 
   void shoot() {
-    size = 10.0;
+    size = 7.0;
     oldPosX = mouseX;
     oldPosY = mouseY;
     PVector location= new PVector(player.playPos.x, player.playPos.y);
     rotation = atan2(oldPosY - location.y, oldPosX - location.x) / PI * 180;
-    pList.add(new Projectile(player, rotation, size));
+    float tempRot = rotation + (random(-3, 3)* PI/2);
+    pList.add(new Projectile(player, tempRot, size));
   }
   void secondaryFire() {
   }
@@ -31,7 +32,7 @@ class AssaultRifle implements Weapon {
   int getWeaponID() {
     return weaponID;
   }
-  PImage[] getSprite(){
+  PImage[] getSprite() {
     return sprite;
   }
 }

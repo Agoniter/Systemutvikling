@@ -252,6 +252,7 @@ void reset() {
   enemyHandler.clearEnemies();
   base.setHealth(10);
   audio.loop();
+  player.setWeapon(0);
 }
 /*
 static public void main(String args[]) {

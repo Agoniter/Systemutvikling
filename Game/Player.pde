@@ -58,25 +58,24 @@ class Player {
   }
 
   boolean move(boolean keys[]) {
-   if(keys[0] || keys[1] || keys[2] || keys[3]){ 
-    if (keys[0]) {
-      playPos.y = constrain(playPos.y - stepSize, 20, height-20);
-     }
-    if (keys[1]) {
-      playPos.y = constrain(playPos.y + stepSize, 20, height-20);
-
-    }
-    if (keys[2]) {
-      playPos.x = constrain(playPos.x + stepSize, 20, width-20);
-    }
-    if (keys[3]) {
-      playPos.x = constrain(playPos.x - stepSize, 20, width-20);  
-    }
+    if (keys[0] || keys[1] || keys[2] || keys[3]) { 
+      if (keys[0]) {
+        playPos.y = constrain(playPos.y - stepSize, 20, height-20);
+      }
+      if (keys[1]) {
+        playPos.y = constrain(playPos.y + stepSize, 20, height-20);
+      }
+      if (keys[2]) {
+        playPos.x = constrain(playPos.x + stepSize, 20, width-20);
+      }
+      if (keys[3]) {
+        playPos.x = constrain(playPos.x - stepSize, 20, width-20);
+      }
       isMoving = true;
-   }else{
-    isMoving = false;
-   }
-   return isMoving;
+    } else {
+      isMoving = false;
+    }
+    return isMoving;
   }
 
   boolean shoot() {
@@ -126,15 +125,19 @@ class Player {
       sprite = tempSprite[1];
     } else if (isMoving && aniTimer >= 10 && aniTimer <= 20) {
       sprite = tempSprite[2];
-    } else if(isMoving && aniTimer >= 20 && aniTimer <= 30){
+    } else if (isMoving && aniTimer >= 20 && aniTimer <= 30) {
       sprite = tempSprite[0];
-    }
-    else{
-     aniTimer = 0; 
+    } else {
+      aniTimer = 0;
     }
     aniTimer++;
   }
   Weapon getWeapon() {
     return weapon;
+  }
+  void setWeapon(int i) {
+    weapon = weapons.get(i);
+    PImage tmpSprite[] = weapon.getSprite();
+    sprite = tmpSprite[0];
   }
 }
