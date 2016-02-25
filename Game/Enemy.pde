@@ -113,6 +113,9 @@ class Enemy {
   }
   void takeDamage(int weaponDamage){
       health = health - weaponDamage;
+      if(getHealth() <= 0){
+        setDeath();
+      }
   }
   // Sets the isDead boolean flag to true
   // Removes the enemy from screen next frame

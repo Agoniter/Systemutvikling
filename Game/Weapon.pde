@@ -8,6 +8,8 @@ interface Weapon{
   
   int getWeaponID();
   
-  PImage getSprite();
+  PImage[] getSprite();
+  
+  
 
 }

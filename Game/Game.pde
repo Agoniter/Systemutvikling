@@ -142,9 +142,6 @@ public void bulletHitCheck() {
         ps.add(new ParticleSystem(enemy.getLocation(), 1.0, 0.2, 2, null, 1.0));
         itP.remove();
         enemy.takeDamage(1);
-        if(enemy.getHealth() <= 0){
-        enemy.setDeath();
-        }
       }
     }
   }
