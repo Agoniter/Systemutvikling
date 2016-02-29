@@ -3,6 +3,8 @@ class LevelHandler {
   Level currentLevel;
 
   public LevelHandler(EnemyHandler eh) {
+    
+    //Start of level 1
     levels = new ArrayList<Level>();
     ArrayList<Enemy> tmp = new ArrayList<Enemy>();
     Level level1 = new Level(eh);
@@ -17,6 +19,8 @@ class LevelHandler {
     MobGroup mgTmp = new MobGroup(tmp, 600);
     System.out.println("Levelhandler added!");
     level1.addPack(mgTmp);
+    //End of level 1
+    
     
     currentLevel = level1;
   }
