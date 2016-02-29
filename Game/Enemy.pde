@@ -5,6 +5,7 @@
 class Enemy {
 
   private float health, size, rotation, oldPosX, oldPosY, speed, aniTimer;
+  int damage;
   PImage[] sprite;
   EnemyHandler eh;
   private PVector pos;
@@ -16,17 +17,12 @@ class Enemy {
     this.eh = eh;
     this.base = base;
     sprite = new PImage[2];
-    sprite[0] = loadImage("Sprites/Grey_Matters_Medium_enemy_Part1.png");
-    sprite[1] = loadImage("Sprites/Grey_Matters_Medium_enemy_Part2.png");
     this.pos = new PVector(1280.0, random(960));
     this.oldPosX = pos.x;
     this.oldPosY = pos.y;
     this.rotation = atan2(oldPosY - base.getPosY(), oldPosX - base.getPosX()) / PI * 180;
-    this.speed = -2.5; // speed is negative since the enemies move "backwards" on the X-axis
-    size = 60.0;
     this.isDead = false;
     decals = new PImage[3];
-    health = 3;
     for(int i = 1; i <= 3; i++){
      decals[i-1] = loadImage("Sprites/Grey_Matters_Splatt" + i + ".png");
     }
@@ -87,7 +83,7 @@ class Enemy {
   **/
   void move() {
     if (collisionDetect( pos, size, base.getLocation(), base.getSize()) ) { //<>//
-      base.takeDamage(1); //<>//
+      base.takeDamage(damage); //<>//
       setDeath();
     } else {
       pos.x = pos.x + cos(rotation/180*PI)*speed;
@@ -128,5 +124,21 @@ class Enemy {
   }
   float getHealth(){
     return health;
+  }
+  void setSprite(PImage sprite1, PImage sprite2){
+    sprite[0] = sprite1;
+    sprite[1] = sprite2;
+   }
+  void setSpeed(float newSpeed){
+    speed = newSpeed;
+  }
+  void setSize(float newSize){
+    size = newSize;
+  }
+  void setHealth(float newHealth){
+    health = newHealth;
+  }
+  void setDamage(int newDamage){
+    damage = newDamage;
   }
 }
