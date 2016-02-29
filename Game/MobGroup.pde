@@ -9,7 +9,7 @@ ArrayList<Enemy> enemies;
   
   
   float getSpawnTime(){
-   return spawnTime; 
+   return spawnTime;
   }
   
   ArrayList<Enemy> getEnemies(){
