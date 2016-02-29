@@ -17,6 +17,7 @@ int keyPress, mutePress;
 boolean keys[] = new boolean[5]; //array used by keyPressed(), keyReleased() and player.move()
 ArrayList<ParticleSystem> ps;
 ArrayList<Decal> decals;
+ArrayList<PowerUp> powerUps;
 
 AudioPlayer audio;
 Minim minim;
@@ -48,6 +49,7 @@ void setup() {
   //enemyHandler.addEnemies(10, this.base);
   ps = new ArrayList<ParticleSystem>();
   decals = new ArrayList<Decal>();
+  powerUps = new ArrayList<PowerUp>();
   minim = new Minim(this);
   audio = minim.loadFile("Sound/track1.mp3");
   audio.loop();
@@ -60,12 +62,15 @@ void draw() {
   drawDecals();
   text(frameRate, 20, 140);
   base.drawBase();
+  drawPowerups();
   enemyHandler.drawEnemies();
   player.drawPlayer();
   projectiles.drawProjectiles();
+  
   switch(gameState) {
   case 0:
     projectiles.update();
+    updatePowerups();
     button1.setX(1400);
     enemyHandler.spawnEnemies(1);
     player.move(keys);
@@ -93,6 +98,26 @@ void draw() {
   timer++;
 }
 
+void updatePowerups(){
+   Iterator<PowerUp> it;
+  for (it = powerUps.iterator(); it.hasNext(); ) {
+    PowerUp p = it.next();
+    p.update();
+    if (p.isPickedUp()) {
+      it.remove();
+    }
+  }
+}
+
+void drawPowerups(){
+ for(PowerUp p : powerUps){
+  p.drawPowerup(); 
+ }
+}
+
+void addPowerup(PowerUp p){
+  powerUps.add(p);
+}
 
 void drawDecals() {
   for (Decal d : decals) {
@@ -103,6 +128,22 @@ void drawDecals() {
 void addDecal(Decal d) {
   decals.add(d);
 }
+
+
+/**
+Returns true every so often
+@param chance The chance that the method will return true, defined as 1 / chance
+**/
+boolean diceRoll(float chance){
+ float c = int(random(0.0, chance));
+ 
+ if(c == 0){
+  return true; 
+ }
+
+ return false; 
+}
+
 /**
  Collisiondetection used to check if two objects i.e enemy and base are close. 
  The method takes the PVectors for both objects and compares the X and Y values.

@@ -3,15 +3,16 @@ class Player {
   PImage sprite;
   PVector playPos, velocity;
   int weaponState;
-  float timer, fireRate, fireMod, aniTimer;
+  float timer, fireRate, fireMod, aniTimer, size;
   ArrayList<Weapon> weapons;
   PImage tempSprite[];
   Weapon weapon;
   boolean isMoving;
   public Player(Projectiles projectiles) {
     timer = 0;  
-    this.playPos = new PVector(500, 500);
-    this.stepSize = 2;
+    playPos = new PVector(500, 500);
+    stepSize = 2;
+    size = 40;
     fireMod = 1.0;
     weaponState = 1;
     aniTimer = 0;
@@ -139,5 +140,9 @@ class Player {
     weapon = weapons.get(i);
     PImage tmpSprite[] = weapon.getSprite();
     sprite = tmpSprite[0];
+  }
+  
+  float getSize(){
+   return size; 
   }
 }

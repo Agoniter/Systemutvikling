@@ -86,8 +86,8 @@ class Enemy {
       base.takeDamage(damage); //<>//
       setDeath();
     } else {
-      pos.x = pos.x + cos(rotation/180*PI)*speed;
-      pos.y = pos.y + sin(rotation/180*PI)*speed;
+      pos.x = pos.x + cos(rotation/180*PI)*speed; //<>//
+      pos.y = pos.y + sin(rotation/180*PI)*speed; //<>//
     }
   }
   //Getter for the location of the enemy
@@ -102,6 +102,9 @@ class Enemy {
   void die() {
     Decal d = new Decal(decals[int(random(0, 2))], pos, colors[int(random(0,22))]);
     addDecal(d);
+    if(diceRoll(6)){
+     addPowerup(new PowerUp(loadImage("Sprites/Grey_Matters_Core_1_Health.png"), pos, player));
+    } 
   }
   //Getter for the isDead boolean flag 
   boolean isDead() {
