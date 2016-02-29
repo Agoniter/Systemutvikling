@@ -22,7 +22,6 @@ class Level{
      break;
     }
   }
-  System.out.println(timer);
   timer++;
  }
  
