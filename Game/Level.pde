@@ -13,14 +13,16 @@ class Level{
   Iterator<MobGroup> it;
   for(it = packList.iterator(); it.hasNext(); ){
     MobGroup mg = it.next();
-    if(mg.getSpawnTime() >= timer){
+    if(mg.getSpawnTime() <= timer){
      ArrayList<Enemy> tmp = mg.getEnemies();
      for(Enemy e : tmp){
       eh.addEnemy(e); 
      }
-      
+     it.remove();
+     break;
     }
   }
+  timer++;
  }
  
  void addPack(MobGroup pack){

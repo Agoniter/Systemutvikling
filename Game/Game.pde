@@ -1,4 +1,4 @@
-import processing.sound.*; //<>// //<>// //<>// //<>//
+import processing.sound.*; //<>// //<>// //<>// //<>// //<>//
 import interfascia.*;
 import ddf.minim.*;
 import java.util.Iterator;
@@ -7,6 +7,7 @@ GUIController control;
 IFButton button1;
 Player player;
 Projectiles projectiles;
+LevelHandler lh;
 /* I'm all about that*/Base /* 'bout that */  base; //no treble
 EnemyHandler enemyHandler;
 float timer, lastFire;
@@ -29,6 +30,7 @@ void setup() {
   player = new Player(projectiles);
   enemyHandler = new EnemyHandler();
   base = new Base(new PVector(60, height/2));
+  lh = new LevelHandler(enemyHandler);
   bg = new PImage();
   bg = loadImage("Sprites/Grey_Matters_Map.png");
   size(1280, 960);
@@ -69,6 +71,7 @@ void draw() {
     player.move(keys);
     bulletHitCheck();
     particleHandler();
+    lh.handler();
     endGame();
     //checks to see if the player can shoot a new projectile. The firerate decides how often the player can shoot.
     if (timer - lastFire >= player.getWeapon().getFireRate()) {
