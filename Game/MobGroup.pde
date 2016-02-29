@@ -16,4 +16,8 @@ ArrayList<Enemy> enemies;
    return enemies; 
   }
   
+  void addEnemy(Enemy e){
+   enemies.add(e);
+  }
+  
 }

@@ -45,4 +45,8 @@ class EnemyHandler {
   void clearEnemies(){
     enemies.clear();
   }
+  
+  void addEnemy(Enemy e){
+    enemies.add(e);
+  }
 }

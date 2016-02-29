@@ -1,7 +1,7 @@
 class LevelHandler {
   ArrayList<Level> levels; 
 
-  public LevelHandler() {
+  public LevelHandler(EnemyHandler eh) {
     levels = new ArrayList<Level>();
   }
 }
