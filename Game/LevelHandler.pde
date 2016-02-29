@@ -63,7 +63,6 @@ class LevelHandler {
     tmp4.add(new BigEnemy(base, eh));
     tmp4.add(new BigEnemy(base, eh));
     tmp4.add(new BigEnemy(base, eh));
-    tmp4.add(new BigEnemy(base, eh));
     
     MobGroup mgTmp3 = new MobGroup(tmp3, 600);
     MobGroup mgTmp4 = new MobGroup(tmp4, 1200);
