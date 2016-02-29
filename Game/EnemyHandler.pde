@@ -49,4 +49,9 @@ class EnemyHandler {
   void addEnemy(Enemy e){
     enemies.add(e);
   }
+  
+  
+  void setSpawnRate(float rate){
+   spawnRate = rate;
+  }
 }

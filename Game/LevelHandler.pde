@@ -1,6 +1,7 @@
 class LevelHandler {
   ArrayList<Level> levels; 
   Level currentLevel;
+  Iterator<Level> it;
 
   public LevelHandler(EnemyHandler eh) {
     levels = new ArrayList<Level>();
@@ -70,13 +71,32 @@ class LevelHandler {
     level2.addPack(mgTmp4);
     //End of level 1
     
-
-    currentLevel = level1;
+    levels.add(level1);
+    levels.add(level2);
+    it = levels.iterator();
+    currentLevel = it.next();
+    
   }
   
   
   void handler(){
-    currentLevel.spawner();
+    if(!currentLevel.isFinished()){
+      currentLevel.spawner();
+    }
+    else{
+      if(it.hasNext()){
+       currentLevel = it.next();
+      }
+      else{
+        enemyHandler.setSpawnRate(10000000);
+         if(enemyHandler.getEnemies().isEmpty()){
+           lh = new LevelHandler(enemyHandler);
+           enemyHandler.setSpawnRate(200);
+           reset();
+         }
+      }
+    }
+      
   }
   
   
