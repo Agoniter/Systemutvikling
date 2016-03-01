@@ -86,8 +86,8 @@ class Enemy {
       setDeath(); //<>//
     } else if (collisionDetect(pos, pDetectRadius, player.getPlayPos(), player.getSize())) { 
       rotation = atan2(pos.y - player.getPlayPos().y, pos.x - player.getPlayPos().x) / PI * 180;
-       //<>//
-      if (collisionDetect(pos, size, player.getPlayPos(), player.getSize())) { //<>//
+       //<>// //<>//
+      if (collisionDetect(pos, size, player.getPlayPos(), player.getSize())) { //<>// //<>//
         player.takeDamage(damage);
         setDeath();
       }
@@ -110,7 +110,7 @@ class Enemy {
     Decal d = new Decal(decals[int(random(0, 2))], pos, colors[int(random(0, 22))]);
     addDecal(d);
     if (diceRoll(6)) {
-      addPowerup(new PowerUp(loadImage("Sprites/Grey_Matters_Core_1_Health.png"), pos, player));
+      addPowerup(new SpeedUp(pos, player));
     }
   }
   //Getter for the isDead boolean flag 

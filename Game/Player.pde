@@ -155,4 +155,8 @@ class Player {
   void setHealth(float newHealth){
     health = newHealth;
   }
+  
+  void setSpeed(float s){
+    stepSize = s;
+  }
 }
