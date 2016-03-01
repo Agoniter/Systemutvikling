@@ -1,3 +1,8 @@
+/**
+Subclass for the enemy class. Contains the sprites of the big enemy
+and uses several setters to set relevant fields in enemy to values specific
+for BigEnemy
+**/
 class BigEnemy extends Enemy {
   public BigEnemy(Base base, EnemyHandler eh) {
     super(base, eh);

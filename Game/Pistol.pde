@@ -1,3 +1,7 @@
+/**
+Pistol implementation of the weapon interface.
+Basic weaponclass which fires one projectile every 0.5 seconds 
+**/
 class Pistol implements Weapon {
   ArrayList<Projectile> pList;
   Player player;
@@ -25,13 +29,22 @@ class Pistol implements Weapon {
   }
   void secondaryFire() {
   }
+  /**
+  Getter for the fireRate field
+  **/
   float getFireRate() {
     return fireRate;
   }
-  int getWeaponID() {
+  /**
+  Getter for the weaponID field
+  **/
+  int getWeaponID(){
     return weaponID;
   }
-  PImage[] getSprite() {
+  /**
+  Getter for sprite array
+  **/
+  PImage[] getSprite(){
     return sprite;
   }
 }
