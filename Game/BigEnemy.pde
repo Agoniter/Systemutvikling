@@ -9,8 +9,8 @@ class BigEnemy extends Enemy {
     setSprite(loadImage("Sprites/Grey_Matters_Big_Enemy_Part1.png"), loadImage("Sprites/Grey_Matters_Big_Enemy_Part2.png"));
     setSpeed(-1); // speed is negative since the enemies move "backwards" on the X-axis
     setSize(125.0);
-    setHealth(3);
-    setDamage(2);
-    setPDetectRadius(300);
+    setHealth(5);
+    setDamage(2); // Big enemies do more damage when they crash into stuff
+    setPDetectRadius(300); // Bigger detectionradius on the bigger enemies
   }
 }

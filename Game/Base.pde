@@ -85,6 +85,7 @@ class Base {
    public void takeDamage(int dmg){
      this.health = this.health - dmg; //<>//
    }
+   //Setter for Base health field
    void setHealth(int newHealth){
      health = newHealth;
    }
