@@ -11,11 +11,13 @@ class Enemy {
   private PVector pos;
   boolean isDead;
   Base base;
+  Player player;
   PImage[] decals;
   PVector[] colors;
-  public Enemy( Base base, EnemyHandler eh) {
+  public Enemy( Base base, EnemyHandler eh, Player player) {
     this.eh = eh;
     this.base = base;
+    this.player = player;
     sprite = new PImage[2];
     this.pos = new PVector(1280.0, random(960));
     this.oldPosX = pos.x;
@@ -80,10 +82,13 @@ class Enemy {
   while constantly checking collisionDetect() to see of the enemy has crashed into the base.
   If the enemy crashes into the base, the base takes damage and the boolean flag isDead is
   set to true by the setDeath method.
-  **/
-  void move() {
+  **/ //<>//
+  void move() { //<>//
     if (collisionDetect( pos, size, base.getLocation(), base.getSize()) ) { //<>//
       base.takeDamage(damage); //<>//
+      setDeath(); //<>//
+    } else if(collisionDetect(pos, size, player.getPlayPos(), player.getSize())) { //<>//
+      player.takeDamage(damage);
       setDeath();
     } else {
       pos.x = pos.x + cos(rotation/180*PI)*speed; //<>//

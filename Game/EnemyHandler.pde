@@ -8,7 +8,7 @@ class EnemyHandler {
   }
   public void addEnemies(int enemyNum, Base base) {
     for (int i = 0; i < enemyNum; i++) {
-      enemies.add(new SmallEnemy(base, this));
+      enemies.add(new SmallEnemy(base, this, player));
     }
   }
   public void spawnEnemies(int enemyWave) {

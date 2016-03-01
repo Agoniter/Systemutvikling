@@ -4,8 +4,8 @@ uses several setters to set relevant fields in enemy to values specific
 for SmallEnemy
 **/
 class SmallEnemy extends Enemy {
-  public SmallEnemy(Base base, EnemyHandler eh) {
-    super(base, eh);
+  public SmallEnemy(Base base, EnemyHandler eh, Player player) {
+    super(base, eh, player);
     setSprite(loadImage("Sprites/Grey_Matters_Small_Enemy_Part1.png"), loadImage("Sprites/Grey_Matters_Small_Enemy_Part2.png"));
     setSpeed(-5); // speed is negative since the enemies move "backwards" on the X-axis
     setSize(28.0);

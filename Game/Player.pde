@@ -3,7 +3,7 @@ class Player {
   PImage sprite;
   PVector playPos, velocity;
   int weaponState;
-  float timer, fireRate, fireMod, aniTimer, size;
+  float timer, fireRate, fireMod, aniTimer, size, health;
   ArrayList<Weapon> weapons;
   PImage tempSprite[];
   Weapon weapon;
@@ -24,6 +24,7 @@ class Player {
     isMoving = false;
     PImage[] tmp = weapon.getSprite();
     sprite = tmp[0];
+    health = 5;
   }
   public PVector getPlayPos() {
     return this.playPos;
@@ -41,7 +42,7 @@ class Player {
     // rect(playPos.x, playPos.y, 20.0, 20.0);
     text("Player X: " + playPos.x + "  Player y: "  + playPos.y, 20, 60);
     text("Mouse x: " + mouseX + "  Mouse y: " + mouseY, 20, 20);
-
+    text("Player health: " + health, 20, 150);
     float rot = getAngle(playPos, new PVector(mouseX, mouseY));
 
     text("Angle: " + degrees(rot), 20, 40);
@@ -144,5 +145,8 @@ class Player {
   
   float getSize(){
    return size; 
+  }
+  void takeDamage(float damage){
+    health = health - damage;
   }
 }
