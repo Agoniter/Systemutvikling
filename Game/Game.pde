@@ -284,7 +284,7 @@ void keyReleased() {
   }
 }  
 void endGame() {
-  if (base.getHealth() <= 0) {
+  if (base.getHealth() <= 0 || player.getHealth() <= 0) {
     gameState = 2;
     audio.mute();
   }
@@ -307,8 +307,5 @@ void reset() {
   base.setHealth(10);
   audio.loop();
   player.setWeapon(0);
+  player.setHealth(5);
 }
-/*
-static public void main(String args[]) {
- PApplet.main("Game");
- }*/

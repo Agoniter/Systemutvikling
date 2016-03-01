@@ -149,4 +149,10 @@ class Player {
   void takeDamage(float damage){
     health = health - damage;
   }
+  float getHealth(){
+    return health;
+  }
+  void setHealth(float newHealth){
+    health = newHealth;
+  }
 }
