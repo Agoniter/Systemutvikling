@@ -78,16 +78,16 @@ class Enemy {
    Move method for the enemy class. This method moves the enemy towards the base
    while constantly checking collisionDetect() to see of the enemy has crashed into the base.
    If the enemy crashes into the base, the base takes damage and the boolean flag isDead is
-   set to true by the setDeath method. Also check if the enemy is near the player and targets
-   the player if he's within the detection radius of the enemy.
+   set to true by the setDeath method.
    **/
   void move() {
     if (collisionDetect( pos, size, base.getLocation(), base.getSize()) ) { 
       base.takeDamage(damage);  //<>//
       setDeath(); //<>//
     } else if (collisionDetect(pos, pDetectRadius, player.getPlayPos(), player.getSize())) { 
-      rotation = atan2(pos.y - player.getPlayPos().y, pos.x - player.getPlayPos().x) / PI * 180; //<>//
-      if (collisionDetect(pos, size, player.getPlayPos(), player.getSize())) { //<>//
+      rotation = atan2(pos.y - player.getPlayPos().y, pos.x - player.getPlayPos().x) / PI * 180;
+       //<>// //<>//
+      if (collisionDetect(pos, size, player.getPlayPos(), player.getSize())) { //<>// //<>//
         player.takeDamage(damage);
         setDeath();
       }
@@ -110,7 +110,7 @@ class Enemy {
     Decal d = new Decal(decals[int(random(0, 2))], pos, colors[int(random(0, 22))]);
     addDecal(d);
     if (diceRoll(6)) {
-      addPowerup(new PowerUp(loadImage("Sprites/Grey_Matters_Core_1_Health.png"), pos, player));
+      addPowerup(new SpeedUp(pos, player));
     }
   }
   //Getter for the isDead boolean flag 
@@ -131,32 +131,26 @@ class Enemy {
       die();
     }
   }
-  //Getter for health field
   float getHealth() {
     return health;
   }
-  //Setter for sprite array
   void setSprite(PImage sprite1, PImage sprite2) {
     sprite[0] = sprite1;
     sprite[1] = sprite2;
   }
-  //Setter for speed field
   void setSpeed(float newSpeed) {
     speed = newSpeed;
   }
-  //Setter for size field
   void setSize(float newSize) {
     size = newSize;
   }
-  //Setter for health field
   void setHealth(float newHealth) {
     health = newHealth;
   }
-  //Setter for damage field
   void setDamage(int newDamage) {
     damage = newDamage;
   }
-  //Setter for detectionradius field
+  
   void setPDetectRadius(float r){
     pDetectRadius = r; 
   }

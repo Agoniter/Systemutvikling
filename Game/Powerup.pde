@@ -1,7 +1,7 @@
 class PowerUp{
  PVector pos;
  PImage sprite;
- float size;
+ float size, duration, timer;
  boolean pickedUp;
  Player p;
   
@@ -10,6 +10,7 @@ class PowerUp{
    this.pos = pos;
    p = player;
    size = 60;
+   timer = 0;
  }
  
  void update(){
@@ -20,6 +21,14 @@ class PowerUp{
      onPickup();
    }
    
+   if((timer > duration) && pickedUp){
+    powerUpEnd(); 
+    timer = 0;
+   }
+   
+   if(pickedUp){
+     timer++;
+   }
  }
  
  void onPickup(){
@@ -38,5 +47,9 @@ class PowerUp{
  
  boolean isPickedUp(){
   return pickedUp; 
+ }
+ 
+ void powerUpEnd(){
+   
  }
 }
