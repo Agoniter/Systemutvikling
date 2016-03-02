@@ -1,3 +1,7 @@
+/**
+Assault rifle implementation of weapon interface.
+The assaultrifle fires projectiles often, but with some spread.
+**/
 class AssaultRifle implements Weapon {
   ArrayList<Projectile> pList;
   Player player;
@@ -21,18 +25,27 @@ class AssaultRifle implements Weapon {
     oldPosY = mouseY;
     PVector location= new PVector(player.playPos.x, player.playPos.y);
     rotation = atan2(oldPosY - location.y, oldPosX - location.x) / PI * 180;
-    float tempRot = rotation + (random(-3.0, 3.0)* PI/2);
+    float tempRot = rotation + (random(-3.0, 3.0)* PI/2); //adds a random angle to the projectile path.
     pList.add(new Projectile(player, tempRot, size));
   }
   void secondaryFire() {
   }
+   /**
+  Getter for the fireRate field
+  **/
   float getFireRate() {
     return fireRate;
   }
-  int getWeaponID() {
+  /**
+  Getter for the weaponID field
+  **/
+  int getWeaponID(){
     return weaponID;
   }
-  PImage[] getSprite() {
+  /**
+  Getter for sprite array
+  **/
+  PImage[] getSprite(){
     return sprite;
   }
 }

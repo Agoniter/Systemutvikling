@@ -66,7 +66,7 @@ void draw() {
   enemyHandler.drawEnemies();
   player.drawPlayer();
   projectiles.drawProjectiles();
-  
+
   switch(gameState) {
   case 0:
     projectiles.update();
@@ -86,7 +86,6 @@ void draw() {
     }
     break;
   case 1:
-    
     button1.setX(width/2);
     break;
   case 2:
@@ -98,8 +97,8 @@ void draw() {
   timer++;
 }
 
-void updatePowerups(){
-   Iterator<PowerUp> it;
+void updatePowerups() {
+  Iterator<PowerUp> it;
   for (it = powerUps.iterator(); it.hasNext(); ) {
     PowerUp p = it.next();
     p.update();
@@ -109,15 +108,15 @@ void updatePowerups(){
   }
 }
 
-void drawPowerups(){
- for(PowerUp p : powerUps){
+void drawPowerups() {
+  for (PowerUp p : powerUps) {
    if(!p.isPickedUp()){
      p.drawPowerup(); 
    }
- }
+  }
 }
 
-void addPowerup(PowerUp p){
+void addPowerup(PowerUp p) {
   powerUps.add(p);
 }
 
@@ -133,17 +132,17 @@ void addDecal(Decal d) {
 
 
 /**
-Returns true every so often
-@param chance The chance that the method will return true, defined as 1 / chance
-**/
-boolean diceRoll(float chance){
- float c = int(random(0.0, chance));
- 
- if(c == 0){
-  return true; 
- }
+ Returns true every so often
+ @param chance The chance that the method will return true, defined as 1 / chance
+ **/
+boolean diceRoll(float chance) {
+  float c = int(random(0.0, chance));
 
- return false; 
+  if (c == 0) {
+    return true;
+  }
+
+  return false;
 }
 
 /**
