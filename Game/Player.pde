@@ -8,6 +8,7 @@ class Player {
   PImage tempSprite[];
   Weapon weapon;
   boolean isMoving;
+  float ammoCount[];
   public Player(Projectiles projectiles) {
     timer = 0;  
     playPos = new PVector(500, 500);

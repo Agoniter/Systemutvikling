@@ -112,6 +112,9 @@ class Enemy {
     if (diceRoll(6)) {
       addPowerup(new SpeedUp(pos, player));
     }
+    if (diceRoll(6)) {
+      addPowerup(new FireRateUp(pos, player.getWeapon()));
+    }
   }
   //Getter for the isDead boolean flag 
   boolean isDead() {

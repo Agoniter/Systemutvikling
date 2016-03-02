@@ -13,5 +13,6 @@ class Shotgun extends Weapon {
     setSize(7);
     setFireRate(60);
     setID(2);
+    setAmmo(10);
   }
 }

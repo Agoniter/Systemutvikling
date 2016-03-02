@@ -61,6 +61,7 @@ void draw() {
   fill(255, 255, 255);
   drawDecals();
   text(frameRate, 20, 140);
+  text("Ammo: " + player.getWeapon().getAmmo(), 20, 160);
   base.drawBase();
   drawPowerups();
   enemyHandler.drawEnemies();
