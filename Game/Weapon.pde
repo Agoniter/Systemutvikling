@@ -1,10 +1,10 @@
 /**
- /Interface class for the different weapons in the game
+ /Main class for the different weapons in the game
  **/
 class Weapon {
   ArrayList<Projectile> pList;
   Player player;
-  private float oldPosX, oldPosY, rotation, size, fireRate, fireMod, damage;
+  private float oldPosX, oldPosY, rotation, size, fireRate, fireMod, damage, spreadStart, spreadStop;
   int weaponID;
   PImage[] sprite;
   float ammo;
@@ -21,15 +21,13 @@ class Weapon {
     if(ammo > 0 || weaponID == 0){
       PVector location= new PVector(player.playPos.x, player.playPos.y);
       rotation = atan2(oldPosY - location.y, oldPosX - location.x) / PI * 180;
-      if (weaponID == 1) {
-        float tempRot = rotation + (random(-3.0, 3.0)* PI/2); //adds a random angle to the projectile path.
-        pList.add(new Projectile(player, tempRot, size));
-      } else if (weaponID == 2) {
+      if (weaponID == 2) {
         for (int i=0; i<5; i++) {
-          float tempRot = rotation + (random(-10, 10)* PI/2); //Adds a random angle to the path of the projectile. This is calculated for each of the projectiles
-          pList.add(new Projectile(player, tempRot, size));
+          rotation = rotation + setSpread();
+          pList.add(new Projectile(player, rotation, size));
         }
       } else {
+        rotation = rotation + setSpread();
         pList.add(new Projectile(player, rotation, size));
       }
       if(weaponID != 0){
@@ -92,7 +90,12 @@ class Weapon {
   float getAmmo(){
    return ammo; 
   }
-  //float setSpread(float value1, float value2){
-  //  float tempRot = rotation + (random(value1, value2)* PI/2);    
-  //}
+  float setSpread(){
+   float tempRot = (random(spreadStart, spreadStop)* PI/2);
+   return tempRot;
+  }
+  void setSpreadAngles(float start, float stop){
+     spreadStart = start;
+     spreadStop = stop;
+  }
 }
