@@ -2,12 +2,13 @@ class PowerUp{
  PVector pos;
  PImage sprite;
  float size, duration, timer;
- boolean pickedUp;
+ boolean pickedUp, isDead;
  Player p;
   
  public PowerUp(PImage sprite, PVector pos, Player player){
    this.sprite = sprite;
    this.pos = pos;
+   isDead = false;
    p = player;
    size = 60;
    timer = 0;
@@ -47,6 +48,14 @@ class PowerUp{
  
  boolean isPickedUp(){
   return pickedUp; 
+ }
+ 
+ void setDead(){
+  isDead = true; 
+ }
+ 
+ boolean isDead(){
+  return isDead; 
  }
  
  void powerUpEnd(){

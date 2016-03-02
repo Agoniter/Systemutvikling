@@ -1,4 +1,4 @@
-import processing.sound.*;  //<>//
+import processing.sound.*;  //<>// //<>//
 import interfascia.*;
 import ddf.minim.*;
 import java.util.Iterator;
@@ -103,7 +103,7 @@ void updatePowerups(){
   for (it = powerUps.iterator(); it.hasNext(); ) {
     PowerUp p = it.next();
     p.update();
-    if (p.isPickedUp()) {
+    if (p.isDead()) {
       it.remove();
     }
   }
@@ -111,7 +111,9 @@ void updatePowerups(){
 
 void drawPowerups(){
  for(PowerUp p : powerUps){
-  p.drawPowerup(); 
+   if(!p.isPickedUp()){
+     p.drawPowerup(); 
+   }
  }
 }
 

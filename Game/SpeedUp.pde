@@ -15,7 +15,8 @@ void onPickup(){
 }
 
 void powerUpEnd(){
- p.setSpeed(2); 
+ p.setSpeed(2);
+ setDead();
 }
 
 
