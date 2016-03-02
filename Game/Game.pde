@@ -8,6 +8,7 @@ IFButton button1;
 Player player;
 Projectiles projectiles;
 LevelHandler lh;
+PowerupHandler pHandler;
 /* I'm all about that*/Base /* 'bout that */  base; //no treble
 EnemyHandler enemyHandler;
 float timer, lastFire;
@@ -17,7 +18,7 @@ int keyPress, mutePress;
 boolean keys[] = new boolean[5]; //array used by keyPressed(), keyReleased() and player.move()
 ArrayList<ParticleSystem> ps;
 ArrayList<Decal> decals;
-ArrayList<PowerUp> powerUps;
+
 
 AudioPlayer audio;
 Minim minim;
@@ -32,6 +33,7 @@ void setup() {
   enemyHandler = new EnemyHandler();
   base = new Base(new PVector(60, height/2));
   lh = new LevelHandler(enemyHandler);
+  pHandler = new PowerupHandler();
   bg = new PImage();
   bg = loadImage("Sprites/Grey_Matters_Map.png");
   size(1280, 960);
@@ -49,7 +51,6 @@ void setup() {
   //enemyHandler.addEnemies(10, this.base);
   ps = new ArrayList<ParticleSystem>();
   decals = new ArrayList<Decal>();
-  powerUps = new ArrayList<PowerUp>();
   minim = new Minim(this);
   audio = minim.loadFile("Sound/track1.mp3");
   audio.loop();
@@ -63,7 +64,7 @@ void draw() {
   text(frameRate, 20, 140);
   text("Ammo: " + player.getWeapon().getAmmo(), 20, 160);
   base.drawBase();
-  drawPowerups();
+  pHandler.drawPowerups();
   enemyHandler.drawEnemies();
   player.drawPlayer();
   projectiles.drawProjectiles();
@@ -71,7 +72,7 @@ void draw() {
   switch(gameState) {
   case 0:
     projectiles.update();
-    updatePowerups();
+    pHandler.updatePowerups();
     button1.setX(1400);
     enemyHandler.spawnEnemies(1);
     player.move(keys);
@@ -97,30 +98,6 @@ void draw() {
 
   timer++;
 }
-
-void updatePowerups() {
-  Iterator<PowerUp> it;
-  for (it = powerUps.iterator(); it.hasNext(); ) {
-    PowerUp p = it.next();
-    p.update();
-    if (p.isDead()) {
-      it.remove();
-    }
-  }
-}
-
-void drawPowerups() {
-  for (PowerUp p : powerUps) {
-   if(!p.isPickedUp()){
-     p.drawPowerup(); 
-   }
-  }
-}
-
-void addPowerup(PowerUp p) {
-  powerUps.add(p);
-}
-
 void drawDecals() {
   for (Decal d : decals) {
     d.drawDecal();

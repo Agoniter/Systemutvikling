@@ -1,4 +1,4 @@
-/*
+/* //<>// //<>// //<>// //<>//
 / Parentklasse til fiende. Alle fiender vil extende denne klassen
  */
 
@@ -82,12 +82,12 @@ class Enemy {
    **/
   void move() {
     if (collisionDetect( pos, size, base.getLocation(), base.getSize()) ) { 
-      base.takeDamage(damage);  //<>//
-      setDeath(); //<>//
+      base.takeDamage(damage); 
+      setDeath();
     } else if (collisionDetect(pos, pDetectRadius, player.getPlayPos(), player.getSize())) { 
       rotation = atan2(pos.y - player.getPlayPos().y, pos.x - player.getPlayPos().x) / PI * 180;
-       //<>// //<>//
-      if (collisionDetect(pos, size, player.getPlayPos(), player.getSize())) { //<>// //<>//
+      //<>//
+      if (collisionDetect(pos, size, player.getPlayPos(), player.getSize())) { //<>//
         player.takeDamage(damage);
         setDeath();
       }
@@ -95,7 +95,7 @@ class Enemy {
       rotation = atan2(oldPosY - base.getPosY(), oldPosX - base.getPosX()) / PI * 180;
     }
     pos.x = pos.x + cos(rotation/180*PI)*speed; 
-    pos.y = pos.y + sin(rotation/180*PI)*speed;   
+    pos.y = pos.y + sin(rotation/180*PI)*speed;
   }
   //Getter for the location of the enemy
   PVector getLocation() {
@@ -109,12 +109,7 @@ class Enemy {
   void die() {
     Decal d = new Decal(decals[int(random(0, 2))], pos, colors[int(random(0, 22))]);
     addDecal(d);
-    if (diceRoll(6)) {
-      addPowerup(new SpeedUp(pos, player));
-    }
-    if (diceRoll(6)) {
-      addPowerup(new FireRateUp(pos, player.getWeapon()));
-    }
+    pHandler.trigger(this);
   }
   //Getter for the isDead boolean flag 
   boolean isDead() {
@@ -153,8 +148,8 @@ class Enemy {
   void setDamage(int newDamage) {
     damage = newDamage;
   }
-  
-  void setPDetectRadius(float r){
-    pDetectRadius = r; 
+
+  void setPDetectRadius(float r) {
+    pDetectRadius = r;
   }
 }

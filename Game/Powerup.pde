@@ -61,4 +61,7 @@ class PowerUp{
  void powerUpEnd(){
    
  }
+ PVector getPos(){
+   return pos;
+ }
 }
