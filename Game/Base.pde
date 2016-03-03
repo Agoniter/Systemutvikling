@@ -60,7 +60,7 @@ class Base {
     health = newHealth;
   }
   void heal(int newHealth) {
-    health = newHealth;
+    health += newHealth;
     health = constrain(health, 0, 10);
   }
 }
