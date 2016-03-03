@@ -4,7 +4,7 @@
 class Weapon {
   ArrayList<Projectile> pList;
   Player player;
-  private float oldPosX, oldPosY, rotation, size, fireRate, fireMod, damage, spreadStart, spreadStop;
+  private float oldPosX, oldPosY, rotation, size, fireRate, fireMod, damage, spread;
   int weaponID;
   PImage[] sprite;
   float ammo;
@@ -91,11 +91,10 @@ class Weapon {
    return ammo; 
   }
   float setSpread(){
-   float tempRot = (random(spreadStart, spreadStop)* PI/2);
+   float tempRot = (random(spread, -spread)* PI/2);
    return tempRot;
   }
-  void setSpreadAngles(float start, float stop){
-     spreadStart = start;
-     spreadStop = stop;
+  void setSpreadAngles(float spread){
+     this.spread = spread;
   }
 }

@@ -13,6 +13,6 @@ class Pistol extends Weapon {
     setFireRate(30);
     setSize(10);
     setID(0);
-    setSpreadAngles(0,0);
+    setSpreadAngles(0);
   }
 }
