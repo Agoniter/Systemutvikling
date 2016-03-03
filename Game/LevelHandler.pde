@@ -83,7 +83,11 @@ class LevelHandler {
       currentLevel.spawner();
     }
     else{
-      if(it.hasNext()){
+      if(!nextLevel()){
+        text("Game complete", width/2, height/2);
+        noLoop();
+      }
+      /*if(it.hasNext()){
        currentLevel = it.next();
       }
       else{
@@ -93,9 +97,17 @@ class LevelHandler {
            enemyHandler.setSpawnRate(200);
            reset();
          }
-      }
+      }*/
     }
       
+  }
+  
+  boolean nextLevel(){
+      if(it.hasNext()){
+       currentLevel = it.next();
+       return true;
+      }
+    return false;
   }
   
   
