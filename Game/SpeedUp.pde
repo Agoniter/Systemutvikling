@@ -2,7 +2,7 @@ class SpeedUp extends PowerUp {
   Player p;
 
   public SpeedUp(PVector pos, Player p) {
-    super(loadImage("Sprites/SpeedUp.png"), pos, p);
+    super(loadImage("Sprites/speedup.png"), pos, p);
     this.p = p;
     duration = 300;
   }
