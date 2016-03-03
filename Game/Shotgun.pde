@@ -11,9 +11,9 @@ class Shotgun extends Weapon {
       loadImage("Sprites/Player_Shotgun_move1.png"), 
       loadImage("Sprites/Player_Shotgun_move2.png"));
     setSize(7);
-    setFireRate(60);
+    setFireRate(15);
     setID(2);
-    setAmmo(10);
+    setAmmo(1000);
     setSpreadAngles(10);
   }
 }

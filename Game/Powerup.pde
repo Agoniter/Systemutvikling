@@ -1,7 +1,7 @@
 class PowerUp{
  PVector pos;
  PImage sprite;
- float size, duration, timer;
+ float size, duration, timer, weight;
  boolean pickedUp, isDead;
  Player p;
   
@@ -12,6 +12,9 @@ class PowerUp{
    p = player;
    size = 60;
    timer = 0;
+ }
+ public PowerUp(float weight){
+   this.weight = weight;
  }
  
  void update(){
@@ -63,5 +66,11 @@ class PowerUp{
  }
  PVector getPos(){
    return pos;
+ }
+ void setWeight(float newWeight){
+   weight = newWeight;
+ }
+ float getWeight(){
+   return weight;
  }
 }

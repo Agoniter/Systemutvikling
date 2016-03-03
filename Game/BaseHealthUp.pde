@@ -3,6 +3,10 @@ class BaseHealthUp extends PowerUp {
   public BaseHealthUp(PVector pos, Base b) {
     super(loadImage("Sprites/Grey_Matters_core_1up.png"), pos, player);
     this.b = b;
+    setWeight(0.5);
+  }
+  public BaseHealthUp(float weight){
+    super(weight);
   }
 
   void onPickup() {
