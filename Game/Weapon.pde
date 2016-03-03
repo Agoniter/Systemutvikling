@@ -91,7 +91,7 @@ class Weapon {
    return ammo; 
   }
   float setSpread(){
-   float tempRot = (random(spread, -spread)* PI/2);
+   float tempRot = (random(-spread, spread)* PI/2);
    return tempRot;
   }
   void setSpreadAngles(float spread){
