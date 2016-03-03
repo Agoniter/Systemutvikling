@@ -4,6 +4,7 @@ class SpeedUp extends PowerUp {
   public SpeedUp(PVector pos, Player p) {
     super(loadImage("Sprites/Grey_Matters_speedup.png"), pos, p);
     this.p = p;
+    duration = 300;
   }
   public SpeedUp(float weight) {
     super(weight);
