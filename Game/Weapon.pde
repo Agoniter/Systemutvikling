@@ -23,11 +23,11 @@ class Weapon {
       rotation = atan2(oldPosY - location.y, oldPosX - location.x) / PI * 180;
       if (weaponID == 2) {
         for (int i=0; i<5; i++) {
-          rotation = rotation + setSpread();
+          rotation = rotation + getSpread();
           pList.add(new Projectile(player, rotation, size));
         }
       } else {
-        rotation = rotation + setSpread();
+        rotation = rotation + getSpread();
         pList.add(new Projectile(player, rotation, size));
       }
       if(weaponID != 0){
@@ -90,7 +90,7 @@ class Weapon {
   float getAmmo(){
    return ammo; 
   }
-  float setSpread(){
+  float getSpread(){
    float tempRot = (random(-spread, spread)* PI/2);
    return tempRot;
   }
