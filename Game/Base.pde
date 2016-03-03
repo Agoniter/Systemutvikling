@@ -79,14 +79,19 @@ class Base {
    }
    /**
    Method used for damaging the base.
-   This method is called when the enemy //<>// //<>//
+   This method is called when the enemy //<>// //<>// //<>//
    crashes into the base.
    **/
    public void takeDamage(int dmg){
-     this.health = this.health - dmg; //<>//
+     this.health = this.health - dmg; //<>// //<>//
    }
    //Setter for Base health field
    void setHealth(int newHealth){
      health = newHealth;
    }
+   void setHealth(int newHealth){
+     health = newHealth;
+     constrain(health, 0,10);
+   }
+   
 }

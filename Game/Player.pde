@@ -143,21 +143,25 @@ class Player {
     PImage tmpSprite[] = weapon.getSprite();
     sprite = tmpSprite[0];
   }
-  
-  float getSize(){
-   return size; 
+
+  float getSize() {
+    return size;
   }
-  void takeDamage(float damage){
+  void takeDamage(float damage) {
     health = health - damage;
   }
-  float getHealth(){
+  float getHealth() {
     return health;
   }
-  void setHealth(float newHealth){
+  void setHealth(float newHealth) {
     health = newHealth;
+    constrain(health, 0, 5);
   }
-  
-  void setSpeed(float s){
+  void setHeal(float newHealth) {
+    health += newHealth;
+    constrain(health, 0, 5);
+  }
+  void setSpeed(float s) {
     stepSize = s;
   }
 }
