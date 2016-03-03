@@ -16,7 +16,7 @@ class PowerUp{
  
  void update(){
   
-   if(collisionDetect(pos, size, p.getPlayPos(), p.getSize())){
+   if(collisionDetect(pos, size, p.getPlayPos(), p.getSize()) && !pickedUp){
      pickedUp = true;
      System.out.println("Powerup picked up!");
      onPickup();
