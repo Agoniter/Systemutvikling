@@ -155,11 +155,11 @@ class Player {
   }
   void setHealth(float newHealth) {
     health = newHealth;
-    constrain(health, 0, 5);
+    health = constrain(health, 0, 5);
   }
   void heal(float newHealth) {
     health += newHealth;
-    constrain(health, 0, 5);
+    health = constrain(health, 0, 5);
   }
   void setSpeed(float s) {
     stepSize = s;
