@@ -157,7 +157,7 @@ class Player {
     health = newHealth;
     constrain(health, 0, 5);
   }
-  void setHeal(float newHealth) {
+  void heal(float newHealth) {
     health += newHealth;
     constrain(health, 0, 5);
   }

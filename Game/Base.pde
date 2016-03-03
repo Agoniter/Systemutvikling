@@ -89,7 +89,7 @@ class Base {
    void setHealth(int newHealth){
      health = newHealth;
    }
-   void setHealth(int newHealth){
+   void heal(int newHealth){
      health = newHealth;
      constrain(health, 0,10);
    }

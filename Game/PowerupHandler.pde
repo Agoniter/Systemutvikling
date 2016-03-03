@@ -11,6 +11,12 @@ class PowerupHandler {
     if (diceRoll(6)) {
       addPowerup(new FireRateUp(enemy.getLocation(), player.getWeapon()));
     }
+    if (diceRoll(6)) {
+      addPowerup(new PlayerHealthUp(enemy.getLocation(), player));
+    }
+    if (diceRoll(6)) {
+      addPowerup(new BaseHealthUp(enemy.getLocation(), base));
+    }
   }
   void updatePowerups() {
     Iterator<PowerUp> it;

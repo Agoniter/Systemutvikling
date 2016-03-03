@@ -8,7 +8,7 @@ class PlayerHealthUp extends PowerUp {
 
 
   void onPickup() {
-    p.setHeal(2);
+    p.heal(2);
   }
 
   void powerUpEnd() {

@@ -8,7 +8,7 @@ Base b;
 
 
   void onPickup() {
-    b.setHeal(4);
+    b.heal(4);
   }
 
   void powerUpEnd() {
