@@ -3,7 +3,7 @@ Weapon w;
 float timer;
 
 public FireRateUp(PVector pos, Weapon w){
- super(loadImage("Sprites/Grey_Matters_Core_1_Health.png"), pos, player);
+ super(loadImage("Sprites/FireRateUp.png"), pos, player);
  this.w = w;
 }
   public FireRateUp(float weight){
