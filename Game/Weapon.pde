@@ -18,17 +18,18 @@ class Weapon {
   void shoot() {
     oldPosX = mouseX;
     oldPosY = mouseY;
+    float tmpRot = 0;
     if(ammo > 0 || weaponID == 0){
       PVector location= new PVector(player.playPos.x, player.playPos.y);
       rotation = atan2(oldPosY - location.y, oldPosX - location.x) / PI * 180;
       if (weaponID == 2) {
         for (int i=0; i<5; i++) {
-          rotation = rotation + getSpread();
-          pList.add(new Projectile(player, rotation, size));
+          tmpRot = rotation + getSpread();
+          pList.add(new Projectile(player, tmpRot, size));
         }
       } else {
-        rotation = rotation + getSpread();
-        pList.add(new Projectile(player, rotation, size));
+        tmpRot = rotation + getSpread();
+        pList.add(new Projectile(player, tmpRot, size));
       }
       if(weaponID != 0){
         addAmmo(-1);
