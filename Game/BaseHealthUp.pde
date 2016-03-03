@@ -3,7 +3,6 @@ class BaseHealthUp extends PowerUp {
   public BaseHealthUp(PVector pos, Base b) {
     super(loadImage("Sprites/speedup.png"), pos, player);
     this.b = b;
-    duration = 300;
   }
 
   void onPickup() {
