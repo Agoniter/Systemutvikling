@@ -21,51 +21,23 @@ class Base {
    **/
   public void drawBase() {
     text("Base health: " + health, 20, 100);
-    switch(health) {
-    case 1: 
-      image(sprites[0], pos.x, pos.y);
-      break;
-    case 2:
-      image(sprites[1], pos.x, pos.y);
-      break;
-    case 3: 
-      image(sprites[2], pos.x, pos.y);
-      break;
-    case 4: 
-      image(sprites[3], pos.x, pos.y);
-      break;
-    case 5: 
-      image(sprites[4], pos.x, pos.y);
-      break;
-    case 6: 
-      image(sprites[5], pos.x, pos.y);
-      break;
-    case 7: 
-      image(sprites[6], pos.x, pos.y);
-      break;
-    case 8: 
-      image(sprites[7], pos.x, pos.y);
-      break;        
-    case 9: 
-      image(sprites[8], pos.x, pos.y);
-      break;
-    case 10: 
-      image(sprites[9], pos.x, pos.y);
-
-    default:
+    
+    if(health != 0){
+      image(sprites[health-1], pos.x, pos.y);
     }
+    
   }
   //Getter for the X position of the base
   public float getPosX() {  
-    return this.pos.x;
+    return pos.x;
   }
   //Getter for the Y position of the base
   public float getPosY() {  
-    return this.pos.y;
+    return pos.y;
   }
   //Getter for the  position of the base
   public PVector getLocation() {
-    return this.pos;
+    return pos;
   }
   //Getter for the size of the base
   public float getSize() {
@@ -73,7 +45,7 @@ class Base {
   }
   //Getter for the  health of the base
   int getHealth() {
-    return this.health;
+    return health;
   }
   /**
    Method used for damaging the base.
@@ -81,7 +53,7 @@ class Base {
    crashes into the base.
    **/ //<>//
   public void takeDamage(int dmg) {
-    this.health = this.health - dmg; //<>//
+    health = health - dmg; //<>//
   }
   //Setter for Base health field //<>//
   void setHealth(int newHealth) {
