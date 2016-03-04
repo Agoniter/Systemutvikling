@@ -13,8 +13,8 @@ class Projectile {
     colors = new PVector[25];
     oldPosX = mouseX;
     oldPosY = mouseY;
-    PVector offset = new PVector(oldPosX - player.playPos.x, oldPosY - player.playPos.y);
-    offset = PVector.mult(offset, 0.1);
+    PVector offset = new PVector(oldPosX - player.playPos.x, oldPosY - player.playPos.y).normalize();
+    offset = PVector.mult(offset, 40);
     location = new PVector(player.playPos.x + offset.x, player.playPos.y + offset.y);
     this.rotation = rotation;
     this.size = size;
