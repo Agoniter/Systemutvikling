@@ -64,7 +64,7 @@ class Projectile {
    /* fill(rgb.x, rgb.y, rgb.z);
     ellipse(location.x, location.y, size, size);
     fill(255, 255, 255);*/
-    tint(rgb.x, rgb.y, rgb.z);
+    tint(rgb.x, rgb.y, rgb.z, 200);
     image(sprite, location.x, location.y);
     noTint();
   }
