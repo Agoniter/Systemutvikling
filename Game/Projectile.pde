@@ -4,7 +4,7 @@ class Projectile {
   private PVector rgb;
   boolean isDead;
   //vars used to check the angle between location and the mouse
-  float speed, rotation, size, oldPosX, oldPosY;
+  float speed, rotation, size, oldPosX, oldPosY, spriteRot;
   PVector[] colors;
   PImage sprite;
 
@@ -18,6 +18,7 @@ class Projectile {
     location = new PVector(player.playPos.x + offset.x, player.playPos.y + offset.y);
     this.rotation = rotation;
     this.size = size;
+    spriteRot = atan2(oldPosY - location.y, oldPosX - location.x);
     sprite = loadImage("Sprites/Bullet.png");
     for (int i = 0; i < 25; i++) {
       colors[i] = new PVector();
@@ -64,9 +65,13 @@ class Projectile {
    /* fill(rgb.x, rgb.y, rgb.z);
     ellipse(location.x, location.y, size, size);
     fill(255, 255, 255);*/
+    pushMatrix();
+    translate(location.x, location.y);
+    rotate(spriteRot);
     tint(rgb.x, rgb.y, rgb.z, 200);
-    image(sprite, location.x, location.y);
+    image(sprite, 0, 0);
     noTint();
+    popMatrix();
   }
   PVector getLocation() {
     return location;
