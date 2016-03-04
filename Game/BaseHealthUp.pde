@@ -3,7 +3,6 @@ class BaseHealthUp extends PowerUp {
   public BaseHealthUp(PVector pos, Base b) {
     super(loadImage("Sprites/BaseHealthUp.png"), pos, player);
     this.b = b;
-    setWeight(0.5);
   }
   public BaseHealthUp(float weight){
     super(weight);

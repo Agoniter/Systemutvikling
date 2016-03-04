@@ -63,6 +63,7 @@ void draw() {
   drawDecals();
   text(frameRate, 20, 140);
   text("Ammo: " + player.getWeapon().getAmmo(), 20, 160);
+  text("Damage: " + player.getWeapon().getDamage(), 20, 180);
   base.drawBase();
   pHandler.drawPowerups();
   enemyHandler.drawEnemies();
@@ -165,7 +166,7 @@ public void bulletHitCheck() {
         // enemy.die();
         ps.add(new ParticleSystem(enemy.getLocation(), 1.0, 0.2, 2, null, 1.0));
         itP.remove();
-        enemy.takeDamage(1);
+        enemy.takeDamage(player.getWeapon().getDamage());
       }
     }
   }

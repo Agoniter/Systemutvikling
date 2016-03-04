@@ -1,10 +1,9 @@
 class AmmoUp extends PowerUp {
-
+  float randVal;
   Weapon w;
   public AmmoUp(PVector pos, Weapon w) {
     super(loadImage("Sprites/AmmoUpAK.png"), pos, player);
     this.w = w;
-    setWeight(0.5);
   }
 
   void onPickup() {

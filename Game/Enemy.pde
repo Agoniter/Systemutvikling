@@ -1,5 +1,5 @@
-/* //<>// //<>// //<>// //<>//
-/ Parentklasse til fiende. Alle fiender vil extende denne klassen
+/* //<>// //<>// //<>// //<>// //<>// //<>//
+ / Parentklasse til fiende. Alle fiender vil extende denne klassen
  */
 
 class Enemy {
@@ -86,8 +86,8 @@ class Enemy {
       setDeath();
     } else if (collisionDetect(pos, pDetectRadius, player.getPlayPos(), player.getSize())) { 
       rotation = atan2(pos.y - player.getPlayPos().y, pos.x - player.getPlayPos().x) / PI * 180;
-      //<>//
-      if (collisionDetect(pos, size, player.getPlayPos(), player.getSize())) { //<>//
+
+      if (collisionDetect(pos, size, player.getPlayPos(), player.getSize())) {
         player.takeDamage(damage);
         setDeath();
       }
@@ -115,7 +115,7 @@ class Enemy {
   boolean isDead() {
     return isDead;
   }
-  void takeDamage(int weaponDamage) {
+  void takeDamage(float weaponDamage) {
     health = health - weaponDamage;
     if (getHealth() <= 0) {
       setDeath();
