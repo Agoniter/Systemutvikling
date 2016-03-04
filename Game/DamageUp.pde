@@ -9,10 +9,10 @@ class DamageUp extends PowerUp {
     super(weight);
   }
   void onPickup(){
-    w.setDamage(2);
+    w.setDamageMod(2);
   }
   void powerUpEnd(){
-    w.setDamage(1);
+    w.setDamageMod(1);
     setDead();
   }
 }

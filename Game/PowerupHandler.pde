@@ -11,7 +11,7 @@ class PowerupHandler {
     powerUps = new ArrayList<PowerUp>();
     probabilityList = new ArrayList<PowerUp>();
     probabilityList.add(new SpeedUp(0.3));
-    probabilityList.add(new FireRateUp(0.1));
+    probabilityList.add(new FireRateUp(1));
     probabilityList.add(new PlayerHealthUp(0.5));
     probabilityList.add(new BaseHealthUp(0.4));
     probabilityList.add(new DamageUp(1));

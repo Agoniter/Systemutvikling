@@ -4,13 +4,14 @@
 class Weapon {
   ArrayList<Projectile> pList;
   Player player;
-  private float oldPosX, oldPosY, rotation, size, fireRate, fireMod, damage, spread;
+  private float oldPosX, oldPosY, rotation, size, fireRate, fireMod, damageMod, spread, damage;
   int weaponID;
   PImage[] sprite;
   float ammo;
   public Weapon(ArrayList<Projectile> pList, Player player) {
     this.pList = pList;
     this.player = player;
+    damageMod = 1;
     damage = 1;
     fireMod = 1;
     sprite = new PImage[3];
@@ -71,7 +72,7 @@ class Weapon {
     fireRate = newRate;
   }
   float getDamage() {
-    return damage;
+    return damage * damageMod;
   }
   void setDamage(float newDamage) {
     damage = newDamage;
@@ -95,7 +96,10 @@ class Weapon {
    float tempRot = (random(-spread, spread)* PI/2);
    return tempRot;
   }
-  void setSpreadAngles(float spread){
-     this.spread = spread;
+  void setSpreadAngles(float newSpread){
+       spread = newSpread;
+  }
+  void setDamageMod(float newMod){
+    damageMod = newMod;
   }
 }
