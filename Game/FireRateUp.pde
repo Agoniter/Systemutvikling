@@ -1,8 +1,8 @@
 class FireRateUp extends PowerUp{
-Weapon w;
-public FireRateUp(PVector pos, Weapon w){
+Player p;
+public FireRateUp(PVector pos, Player p){
  super(loadImage("Sprites/FireRateUp.png"), pos, player);
- this.w = w;
+ this.p = p;
  duration = 300;
 }
   public FireRateUp(float weight){
@@ -11,11 +11,11 @@ public FireRateUp(PVector pos, Weapon w){
 
 
 void onPickup(){
- w.setFireMod(0.5);
+ p.setFireMod(0.5);
 }
 
 void powerUpEnd(){
- w.setFireMod(1);
+ p.setFireMod(1);
  setDead();
 }
 

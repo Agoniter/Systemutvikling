@@ -3,7 +3,7 @@ class Player {
   PImage sprite;
   PVector playPos, velocity;
   int weaponState;
-  float timer, fireRate, fireMod, aniTimer, size, health;
+  float timer, fireRate, fireMod, aniTimer, size, health, damageMod;
   ArrayList<Weapon> weapons;
   PImage tempSprite[];
   Weapon weapon;
@@ -15,6 +15,7 @@ class Player {
     stepSize = 2;
     size = 40;
     fireMod = 1.0;
+    damageMod = 1.0;
     weaponState = 1;
     aniTimer = 0;
     weapons = new ArrayList<Weapon>();
@@ -83,6 +84,8 @@ class Player {
 
   boolean shoot() {
     if (mousePressed && (mouseButton == LEFT)) {
+      weapon.setFireMod(fireMod);
+      weapon.setDamageMod(damageMod);
       weapon.shoot();
       return true;
     } else if (mousePressed && (mouseButton == RIGHT)) {
@@ -163,5 +166,13 @@ class Player {
   }
   void setSpeed(float s) {
     stepSize = s;
+  }
+  
+  void setFireMod(float mod){
+   fireMod = mod; 
+  }
+  
+  void setDamageMod(float mod){
+   damageMod = mod; 
   }
 }

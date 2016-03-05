@@ -31,7 +31,7 @@ class PowerupHandler {
         addPowerup(new SpeedUp(enemy.getLocation(), player));
       }
       if (tmp instanceof FireRateUp) {
-        addPowerup(new FireRateUp(enemy.getLocation(), player.getWeapon()));
+        addPowerup(new FireRateUp(enemy.getLocation(), player));
       }
       if (tmp instanceof PlayerHealthUp) {
         addPowerup(new PlayerHealthUp(enemy.getLocation(), player));
@@ -40,7 +40,7 @@ class PowerupHandler {
         addPowerup(new BaseHealthUp(enemy.getLocation(), base));
       }
       if (tmp instanceof DamageUp){
-        addPowerup(new DamageUp(enemy.getLocation(), player.getWeapon()));
+        addPowerup(new DamageUp(enemy.getLocation(), player));
       }
     }
   }
