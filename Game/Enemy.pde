@@ -5,7 +5,7 @@
 class Enemy {
 
   private float health, size, rotation, oldPosX, oldPosY, speed, aniTimer, pDetectRadius;
-  int damage;
+  int damage, dCount;
   PImage[] sprite;
   EnemyHandler eh;
   private PVector pos;
@@ -24,9 +24,11 @@ class Enemy {
     this.oldPosY = pos.y;
     rotation = atan2(oldPosY - base.getPosY(), oldPosX - base.getPosX()) / PI * 180;
     isDead = false;
-    decals = new PImage[3];
+    dCount = 3;
+    decals = new PImage[int(dCount)];
+    
     pDetectRadius = 200;
-    for (int i = 1; i <= 3; i++) {
+    for (int i = 1; i <= dCount; i++) {
       decals[i-1] = loadImage("Sprites/Grey_Matters_Splatt" + i + ".png");
     }
     imageMode(CENTER);
@@ -107,7 +109,7 @@ class Enemy {
   }
   //This method is currently not in use
   void die() {
-    Decal d = new Decal(decals[int(random(0, 2))], pos, colors[int(random(0, 22))]);
+    Decal d = new Decal(decals[int(random(0, dCount-1))], pos, colors[int(random(0, 22))]);
     addDecal(d);
     pHandler.trigger(this);
   }
