@@ -29,11 +29,22 @@ class Menu {
       exit();
     }
   } 
-  void drawStartMenu() {
+  void drawButtons() {
+    switch(gameState){
+    case 0:
+    for(IFButton b : buttonList){
+      b.setX(1400);
+    }
+    break;
+    case 1:
+    pauseButton.setX(width/2-40);
+    break;
+    case 2:
+    break;
+    case 3:
     startButton.setX(width/2-40);
     quitButton.setX(width/2-40);
-  }
-  void unDrawButtons(){
-    
+    break;
+    }
   }
 }

@@ -62,6 +62,7 @@ void draw() {
   enemyHandler.drawEnemies();
   player.drawPlayer();
   projectiles.drawProjectiles();
+  menu.drawButtons();
   int grid = 50; // change this number to 20 or 50, etc., if you want fewer grid lines 
   for (int i = 0; i < width; i+=grid) {
     line (i, 0, i, height);
@@ -93,7 +94,6 @@ void draw() {
     noLoop();
     break;
   case 3:
-    menu.drawStartMenu();
     break;
   }
 
