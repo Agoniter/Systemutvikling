@@ -3,11 +3,11 @@ import interfascia.*;
 import ddf.minim.*;
 import java.util.Iterator;
 import processing.sound.*;
-GUIController control;
-IFButton button1;
 Player player;
+Menu menu;
 Projectiles projectiles;
 LevelHandler lh;
+GUIController control;
 PowerupHandler pHandler;
 /* I'm all about that*/Base /* 'bout that */  base; //no treble
 EnemyHandler enemyHandler;
@@ -18,17 +18,13 @@ int keyPress, mutePress;
 boolean keys[] = new boolean[5]; //array used by keyPressed(), keyReleased() and player.move()
 ArrayList<ParticleSystem> ps;
 ArrayList<Decal> decals;
-
-
 AudioPlayer audio;
 Minim minim;
 
 void setup() {
-  projectiles = new Projectiles();
   control= new GUIController(this);
-  button1 = new IFButton("Unpause", 1400, height/2);
-  button1.addActionListener(this);
-  control.add(button1);
+  menu = new Menu(control);
+  projectiles = new Projectiles();
   player = new Player(projectiles);
   enemyHandler = new EnemyHandler();
   base = new Base(new PVector(60, height/2));
@@ -44,16 +40,14 @@ void setup() {
   keys[4] = false;
   timer = 0;
   lastFire = 0;
-  gameState = 0;
+  gameState = 3;
   keyPress = 0;
   mutePress =0;
   cursor(CROSS);
-  //enemyHandler.addEnemies(10, this.base);
   ps = new ArrayList<ParticleSystem>();
   decals = new ArrayList<Decal>();
   minim = new Minim(this);
   audio = minim.loadFile("Sound/track1.mp3");
-  audio.loop();
 }
 
 void draw() {
@@ -69,12 +63,18 @@ void draw() {
   enemyHandler.drawEnemies();
   player.drawPlayer();
   projectiles.drawProjectiles();
-
+  int grid = 50; // change this number to 20 or 50, etc., if you want fewer grid lines 
+  for (int i = 0; i < width; i+=grid) {
+    line (i, 0, i, height);
+  }
+  for (int i = 0; i < height; i+=grid) {
+    line (0, i, width, i);
+  }
   switch(gameState) {
   case 0:
+    audio.loop();
     projectiles.update();
     pHandler.updatePowerups();
-    button1.setX(1400);
     enemyHandler.spawnEnemies(1);
     player.move(keys);
     bulletHitCheck();
@@ -89,11 +89,13 @@ void draw() {
     }
     break;
   case 1:
-    button1.setX(width/2);
     break;
   case 2:
     text("Game over!", width/2, height/2);
     noLoop();
+    break;
+  case 3:
+    menu.drawStartMenu();
     break;
   }
 
@@ -269,13 +271,7 @@ void endGame() {
     audio.mute();
   }
 }
-void actionPerformed (GUIEvent e) {
-  if (e.getSource() == button1) {
-    gameState = 0;
-    keyPress = 0;
-    audio.unmute();
-  }
-}
+
 void reset() {
   timer = 0;
   lastFire = 0;
@@ -288,4 +284,8 @@ void reset() {
   audio.loop();
   player.setWeapon(0);
   player.setHealth(5);
+}
+
+void actionPerformed (GUIEvent e) {
+  menu.actionPerformed(e);
 }
