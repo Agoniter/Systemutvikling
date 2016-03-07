@@ -1,4 +1,4 @@
-import processing.sound.*;  //<>// //<>//
+import processing.sound.*;  //<>// //<>// //<>//
 import interfascia.*;
 import ddf.minim.*;
 import java.util.Iterator;
@@ -23,7 +23,7 @@ Minim minim;
 
 void setup() {
   control= new GUIController(this);
-  menu = new Menu(control);
+  menu = new Menu(control, this);
   projectiles = new Projectiles();
   player = new Player(projectiles);
   enemyHandler = new EnemyHandler();
@@ -287,5 +287,6 @@ void reset() {
 }
 
 void actionPerformed (GUIEvent e) {
+  System.out.println("Action");
   menu.actionPerformed(e);
 }

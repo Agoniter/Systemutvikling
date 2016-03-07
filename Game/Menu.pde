@@ -1,13 +1,14 @@
 class Menu {
   GUIController control;
   IFButton pauseButton, startButton, quitButton;
-  public Menu(GUIController control) {
+  public Menu(GUIController control, Game g) {
+    this.control = control;
     pauseButton = new IFButton("Unpause", 1400, height/2-20);
     startButton = new IFButton("Start game", 1400, height/2 - 120);
     quitButton  = new IFButton("Quit game", 1400, height/2 - 60);
-    pauseButton.addActionListener(this);
-    startButton.addActionListener(this);
-    quitButton.addActionListener(this);
+    pauseButton.addActionListener(g);
+    startButton.addActionListener(g);
+    quitButton.addActionListener(g);
     control.add(pauseButton);
     control.add(quitButton);
     control.add(startButton);
