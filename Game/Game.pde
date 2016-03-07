@@ -7,7 +7,6 @@ Player player;
 Menu menu;
 Projectiles projectiles;
 LevelHandler lh;
-GUIController control;
 PowerupHandler pHandler;
 /* I'm all about that*/Base /* 'bout that */  base; //no treble
 EnemyHandler enemyHandler;
@@ -22,8 +21,7 @@ AudioPlayer audio;
 Minim minim;
 
 void setup() {
-  control= new GUIController(this);
-  menu = new Menu(control, this);
+  menu = new Menu(this);
   projectiles = new Projectiles();
   player = new Player(projectiles);
   enemyHandler = new EnemyHandler();
