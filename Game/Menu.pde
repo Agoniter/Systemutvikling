@@ -17,7 +17,6 @@ class Menu {
     }
   }
   void actionPerformed (GUIEvent e) {
-    System.out.println("Action performed");
     if (e.getSource() == pauseButton) {
       gameState = 0;
       keyPress = 0;
