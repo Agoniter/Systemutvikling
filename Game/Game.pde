@@ -1,4 +1,4 @@
-import processing.sound.*;  //<>// //<>// //<>//
+import processing.sound.*;  //<>// //<>// //<>// //<>//
 import interfascia.*;
 import ddf.minim.*;
 import java.util.Iterator;
@@ -46,6 +46,7 @@ void setup() {
   decals = new ArrayList<Decal>();
   minim = new Minim(this);
   audio = minim.loadFile("Sound/track1.mp3");
+  audio.loop();
 }
 
 void draw() {
@@ -70,7 +71,6 @@ void draw() {
   }
   switch(gameState) {
   case 0:
-    audio.loop();
     projectiles.update();
     pHandler.updatePowerups();
     enemyHandler.spawnEnemies(1);
