@@ -39,7 +39,7 @@ class PowerupHandler {
       if (tmp instanceof BaseHealthUp) {
         addPowerup(new BaseHealthUp(enemy.getLocation(), base));
       }
-      if (tmp instanceof DamageUp){
+      if (tmp instanceof DamageUp) {
         addPowerup(new DamageUp(enemy.getLocation(), player));
       }
     }
@@ -66,6 +66,7 @@ class PowerupHandler {
   void addPowerup(PowerUp p) {
     powerUps.add(p);
   }
+  
   PowerUp getWeightedRandom() {
     float num = rand.nextFloat() * count;
     num = tMap.floorKey(num);
