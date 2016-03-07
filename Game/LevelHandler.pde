@@ -79,8 +79,8 @@ class LevelHandler {
 
   void handler() {
     currentLevel.spawner();
-      if (nextLevel()) {
-        if (enemyHandler.getEnemies().isEmpty()) {
+      if (!nextLevel()) {
+        if (enemyHandler.getEnemies().isEmpty() && currentLevel.isFinished()) {
           text("Game complete", width/2, height/2);
           noLoop();
         }
