@@ -175,4 +175,7 @@ class Player {
   void setDamageMod(float mod){
    damageMod = mod; 
   }
+  ArrayList<Weapon> getWeapons(){
+    return weapons;
+  }
 }
