@@ -1,4 +1,4 @@
-/* //<>// //<>// //<>// //<>// //<>// //<>//
+/* //<>// //<>// //<>// //<>// //<>// //<>// //<>//
  / Parentklasse til fiende. Alle fiender vil extende denne klassen
  */
 
@@ -24,7 +24,7 @@ class Enemy {
     this.oldPosY = pos.y;
     rotation = atan2(oldPosY - base.getPosY(), oldPosX - base.getPosX()) / PI * 180;
     isDead = false;
-    dCount = 3;
+    dCount = 5;
     decals = new PImage[int(dCount)];
     
     pDetectRadius = 200;
