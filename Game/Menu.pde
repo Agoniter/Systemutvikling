@@ -7,21 +7,20 @@ class Menu {
   public Menu(Game g) {
     transLook = new IFLookAndFeel(g, IFLookAndFeel.DEFAULT);
     transLook.baseColor = color(255, 255, 255, 0);
-    //transLook.borderColor = color(255, 255, 255, 0);
+    transLook.borderColor = color(255, 255, 255, 0);
     transLook.activeColor = color(255, 255, 255, 0);
     transLook.highlightColor = color(255, 255, 255, 0);
 
     buttonList = new ArrayList<IFButton>();
     control = new GUIController(g);
-    pauseButton = new IFButton("Unpause", 1400, height/2-150);
-    startButton = new IFButton("Start Game", 1400, height/2 - 150, 280, 60);
-    quitButton  = new IFButton("Quit game", 1400, height/2 + 220, 220, 60);
-    helpButton  = new IFButton("Help", 1400, height/2 + 91, 230, 60);
-    backButton  = new IFButton("Back", 1400, height/2 + 280, 180, 50);
-    optionsButton = new IFButton("Options", 1400, height/2-35, 330, 62);
-    survivalButton = new IFButton("Survival", 1400, height/2+90, 450, 62);
-    normalButton = new IFButton("Normal", 1400, height/2 - 120, 340, 62);
-
+    pauseButton = new IFButton("", 1400, height/2-150);
+    startButton = new IFButton("", 1400, height/2 - 150, 280, 60);
+    quitButton  = new IFButton("", 1400, height/2 + 220, 220, 60);
+    helpButton  = new IFButton("", 1400, height/2 + 91, 230, 60);
+    backButton  = new IFButton("", 1400, height/2 + 280, 180, 50);
+    optionsButton = new IFButton("", 1400, height/2-35, 330, 62);
+    survivalButton = new IFButton("", 1400, height/2+90, 450, 62);
+    normalButton = new IFButton("", 1400, height/2 - 120, 340, 62);
     buttonList.add(pauseButton);
     buttonList.add(startButton);
     buttonList.add(quitButton);
