@@ -90,7 +90,8 @@ class Player {
       return true;
     } else if (mousePressed && (mouseButton == RIGHT)) {
       //Special attacks?
-      return false;
+      weapon.secondaryFire();
+      return true;
     }
     return false;
   }
