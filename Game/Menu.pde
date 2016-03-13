@@ -4,7 +4,8 @@ class Menu {
   IFLookAndFeel transLook;
   int helpMenuState;
   ArrayList<IFButton> buttonList;
-  PImage[] menuSprites;
+  PImage[] menuSprites, numSprites;
+  PImage[] ;
   public Menu(Game g) {
     helpMenuState = 0;
     transLook = new IFLookAndFeel(g, IFLookAndFeel.DEFAULT);
@@ -14,7 +15,7 @@ class Menu {
     transLook.highlightColor = color(255, 255, 255, 0);
     buttonList = new ArrayList<IFButton>();
     control = new GUIController(g);
-    pauseButton = new IFButton("", 1400, height/2-150);
+    pauseButton = new IFButton("", 1400, height/2-150, 580, 60);
     startButton = new IFButton("", 1400, height/2 - 150, 280, 60);
     quitButton  = new IFButton("", 1400, height/2 + 220, 220, 60);
     helpButton  = new IFButton("", 1400, height/2 + 91, 230, 60);
@@ -22,10 +23,10 @@ class Menu {
     optionsButton = new IFButton("", 1400, height/2-35, 330, 62);
     survivalButton = new IFButton("", 1400, height/2+90, 450, 62);
     normalButton = new IFButton("", 1400, height/2 - 120, 340, 62);
-    controlButton = new IFButton("CONTROL", 1400, height/2 - 145, 450, 65);
-    powerupButton = new IFButton("POWERUP", 1400, height/2 + 135, 450, 65);
-    enemyButton = new IFButton("ENEMY", 1400, height/2 - 120, 340, 62);
-    helpBackButton = new IFButton("HELPBACK", 1400, height/2 + 280, 180, 50);
+    controlButton = new IFButton("", 1400, height/2 - 145, 450, 65);
+    powerupButton = new IFButton("", 1400, height/2 + 135, 450, 65);
+    enemyButton = new IFButton("", 1400, height/2 - 120, 340, 62);
+    helpBackButton = new IFButton("", 1400, height/2 + 280, 180, 50);
     buttonList.add(pauseButton);
     buttonList.add(startButton);
     buttonList.add(quitButton);
@@ -44,7 +45,7 @@ class Menu {
       b.setLookAndFeel(transLook);
     }
 
-    menuSprites = new PImage[7];
+    menuSprites = new PImage[8];
     menuSprites[0] = loadImage("Sprites/MainMenu.png");
     menuSprites[1] = loadImage("Sprites/HelpMenu.png");
     menuSprites[2] = loadImage("Sprites/StartMenu.png");
@@ -52,6 +53,8 @@ class Menu {
     menuSprites[4] = loadImage("Sprites/ControlsMenu.png");
     menuSprites[5] = loadImage("Sprites/EnemiesMenu.png");
     menuSprites[6] = loadImage("Sprites/PowerupsMenu.png");
+    menuSprites[7] = loadImage("Sprites/PauseMenu.png");
+    
   }
   void actionPerformed (GUIEvent e) {
     if (e.getSource() == pauseButton) {
@@ -77,7 +80,7 @@ class Menu {
       helpMenuState = 2;
     } else if (e.getSource() == powerupButton) {
       helpMenuState = 3;
-    }else if(e.getSource() == helpBackButton){
+    } else if (e.getSource() == helpBackButton) {
       helpMenuState = 0;
     }
   } 
@@ -87,11 +90,12 @@ class Menu {
       unDrawButtons();
       break;
     case 1:
+      image(menuSprites[7], width/2, height/2);
       unDrawButtons();
-      pauseButton.setX(width/2-40);
-      helpButton.setX(width/2-40);
-      optionsButton.setX(width/2-40);
-      quitButton.setX(width/2-40);
+      pauseButton.setX(width/2-285);
+      helpButton.setX(width/2-120);
+      optionsButton.setX(width/2-165);
+      quitButton.setX(width/2-110);
       break;
     case 2:
       break;
@@ -127,19 +131,19 @@ class Menu {
         backButton.setX(width/2 - 100);
         break;
       case 1:
-      image(menuSprites[4], width/2, height/2);
-      backButton.setX(1400);
-      helpBackButton.setX(width/2-100);
+        image(menuSprites[4], width/2, height/2);
+        backButton.setX(1400);
+        helpBackButton.setX(width/2-100);
         break;
       case 2:
-      image(menuSprites[5], width/2, height/2);
-      backButton.setX(1400);
-      helpBackButton.setX(width/2-100);
+        image(menuSprites[5], width/2, height/2);
+        backButton.setX(1400);
+        helpBackButton.setX(width/2-100);
         break;
       case 3:
-      image(menuSprites[6], width/2, height/2);
-      backButton.setX(1400);
-      helpBackButton.setX(width/2-100);
+        image(menuSprites[6], width/2, height/2);
+        backButton.setX(1400);
+        helpBackButton.setX(width/2-100);
         break;
       }
       break;
