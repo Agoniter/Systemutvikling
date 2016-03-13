@@ -8,7 +8,7 @@ class Grenade extends Projectile{
     damage = 2;
     blastRadius = 200;
     explosionDuration = 5;
-    sprite = loadImage("Sprites/spookysprite.png");
+    sprite = loadImage("Sprites/Grenade.png");
     sprite.resize(20, 20);
     blastTimer = 0;
     timer = 0;
