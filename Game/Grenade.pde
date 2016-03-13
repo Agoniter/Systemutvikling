@@ -27,6 +27,7 @@ class Grenade extends Projectile{
     if(exploding){
       if(blastTimer > explosionDuration){
        super.isDead = true; 
+       ps.add(new ParticleSystem(getLocation()));
       }
      blastTimer++;
     }
@@ -44,6 +45,10 @@ class Grenade extends Projectile{
     super.speed = 0;
     exploding = true;
     
+  }
+  
+   float getDamage(){
+   return damage; 
   }
   
 }

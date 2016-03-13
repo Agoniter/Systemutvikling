@@ -1,4 +1,4 @@
-import processing.sound.*;  //<>// //<>// //<>// //<>//
+import processing.sound.*;  //<>// //<>// //<>// //<>// //<>//
 import interfascia.*;
 import ddf.minim.*;
 import java.util.Iterator;
@@ -167,7 +167,8 @@ public void bulletHitCheck() {
       if (collisionDetect(bullet.getLocation(), bullet.getSize(), enemy.getLocation(), enemy.getSize())) {
         // enemy.die();
         if(bullet instanceof Grenade){
-          ps.add(new ParticleSystem(bullet.getLocation()));
+          Grenade g = (Grenade)bullet;
+          enemy.takeDamage(g.getDamage());
         }
         else{
         ps.add(new ParticleSystem(enemy.getLocation(), 1.0, 0.2, 2, null, 1.0));
