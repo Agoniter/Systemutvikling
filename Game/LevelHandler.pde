@@ -107,4 +107,8 @@ class LevelHandler {
     }
     return false;
   }
+  
+  void goNextLevel(){
+   currentLevel = it.next(); 
+  }
 }
