@@ -95,8 +95,8 @@ class Menu {
     } else if (e.getSource() == helpButton) {
       gameState = 6;
     } else if (e.getSource() == normalButton) {
-      gameState = 0;
       lh = new LevelHandler(enemyHandler, false);
+      gameState = 0;
     } else if (e.getSource() == backButton) {
       gameState = (int)(backStack.pop());
       System.out.println(gameState);
