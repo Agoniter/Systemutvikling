@@ -49,12 +49,13 @@ class Base {
   }
   /**
    Method used for damaging the base.
-   This method is called when the enemy //<>// //<>//
+   This method is called when the enemy //<>// //<>// //<>//
    crashes into the base.
-   **/ //<>//
+   **/ //<>// //<>//
   public void takeDamage(int dmg) {
-    health = health - dmg; //<>//
-  }
+    health = health - dmg; //<>// //<>//
+    ah.sfxPlay(3);
+  } //<>//
   //Setter for Base health field //<>//
   void setHealth(int newHealth) {
     health = newHealth;

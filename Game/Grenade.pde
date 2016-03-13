@@ -28,6 +28,7 @@ class Grenade extends Projectile{
       if(blastTimer > explosionDuration){
        super.isDead = true; 
        ps.add(new ParticleSystem(getLocation()));
+       ah.sfxPlay(6);
       }
      blastTimer++;
     }

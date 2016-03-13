@@ -87,6 +87,9 @@ class Player {
       weapon.setFireMod(fireMod);
       weapon.setDamageMod(damageMod);
       weapon.shoot();
+      if (weapon.getAmmo() > 0) {
+        ah.sfxPlay(weapon.getWeaponID());
+      }
       return true;
     } else if (mousePressed && (mouseButton == RIGHT)) {
       //Special attacks?
@@ -153,6 +156,7 @@ class Player {
   }
   void takeDamage(float damage) {
     health = health - damage;
+    ah.sfxPlay(8);
   }
   float getHealth() {
     return health;
@@ -168,15 +172,15 @@ class Player {
   void setSpeed(float s) {
     stepSize = s;
   }
-  
-  void setFireMod(float mod){
-   fireMod = mod; 
+
+  void setFireMod(float mod) {
+    fireMod = mod;
   }
-  
-  void setDamageMod(float mod){
-   damageMod = mod; 
+
+  void setDamageMod(float mod) {
+    damageMod = mod;
   }
-  ArrayList<Weapon> getWeapons(){
+  ArrayList<Weapon> getWeapons() {
     return weapons;
   }
 }

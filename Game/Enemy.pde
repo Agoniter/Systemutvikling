@@ -1,4 +1,4 @@
-/** //<>//
+/** //<>// //<>//
  Main class for the enemies of the game
  **/
 
@@ -120,6 +120,7 @@ class Enemy {
   //Subtracts an amount of health from the total health of enemy when it is hit by a bullet.
   void takeDamage(float weaponDamage) {
     health = health - weaponDamage;
+    ah.sfxPlay(4);
     if (getHealth() <= 0) {
       setDeath();
     }

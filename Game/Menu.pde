@@ -20,15 +20,15 @@ class Menu {
     quitButton  = new IFButton("", 1400, height/2 + 220, 220, 60);
     helpButton  = new IFButton("", 1400, height/2 + 91, 230, 60);
     backButton  = new IFButton("", 1400, height/2 + 280, 180, 50);
-    optionsButton = new IFButton("", 1400, height/2-35, 330, 62);
+    optionsButton = new IFButton("", 1400, height/2-35, 390, 62);
     survivalButton = new IFButton("", 1400, height/2+90, 450, 62);
     normalButton = new IFButton("", 1400, height/2 - 120, 340, 62);
     controlButton = new IFButton("", 1400, height/2 - 145, 450, 65);
     powerupButton = new IFButton("", 1400, height/2 + 135, 450, 65);
     enemyButton = new IFButton("", 1400, height/2 - 5, 405, 62);
     helpBackButton = new IFButton("", 1400, height/2 + 280, 180, 50);
-    mainVolUp =  new IFButton("UP", 1400, height/2 + 125, 50, 50);
-    mainVolDown = new IFButton("DOWN", 1400, height/2 + 125, 50, 50);
+    mainVolUp =  new IFButton("", 1400, height/2 + 125, 50, 50);
+    mainVolDown = new IFButton("", 1400, height/2 + 125, 50, 50);
     buttonList.add(pauseButton);
     buttonList.add(startButton);
     buttonList.add(quitButton);
@@ -90,16 +90,15 @@ class Menu {
       helpMenuState = 3;
     } else if (e.getSource() == helpBackButton) {
       helpMenuState = 0;
-    }else if(e.getSource() == mainVolUp){
-       ah.mainVolUp();
-       if(volCount < 10){
-       volCount++;
-       }
-       
-    }else if(e.getSource() == mainVolDown){
+    } else if (e.getSource() == mainVolUp) {
+      ah.mainVolUp();
+      if (volCount < 10) {
+        volCount++;
+      }
+    } else if (e.getSource() == mainVolDown) {
       ah.mainVolDown();
-      if(volCount > 0){
-      volCount--;
+      if (volCount > 0) {
+        volCount--;
       }
     }
   } 
@@ -113,7 +112,7 @@ class Menu {
       unDrawButtons();
       pauseButton.setX(width/2-285);
       helpButton.setX(width/2-120);
-      optionsButton.setX(width/2-165);
+      optionsButton.setX(width/2-195);
       quitButton.setX(width/2-110);
       break;
     case 2:
@@ -121,7 +120,7 @@ class Menu {
     case 3:
       unDrawButtons();
       startButton.setX(width/2-140);
-      optionsButton.setX(width/2-165);
+      optionsButton.setX(width/2-195);
       helpButton.setX(width/2-120);
       quitButton.setX(width/2-110);
       image(menuSprites[0], width/2, height/2);
@@ -142,7 +141,6 @@ class Menu {
       backButton.setX(width/2 - 100);
       break;
     case 6:
-
       unDrawButtons();
       switch(helpMenuState) {
       case 0:   
