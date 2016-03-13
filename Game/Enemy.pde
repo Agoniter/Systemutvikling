@@ -1,6 +1,6 @@
-/* //<>// //<>// //<>// //<>// //<>// //<>// //<>//
- / Parentklasse til fiende. Alle fiender vil extende denne klassen
- */
+/** //<>//
+ Main class for the enemies of the game
+ **/
 
 class Enemy {
 
@@ -26,7 +26,7 @@ class Enemy {
     isDead = false;
     dCount = 5;
     decals = new PImage[int(dCount)];
-    
+
     pDetectRadius = 200;
     for (int i = 1; i <= dCount; i++) {
       decals[i-1] = loadImage("Sprites/Grey_Matters_Splatt" + i + ".png");
@@ -117,6 +117,7 @@ class Enemy {
   boolean isDead() {
     return isDead;
   }
+  //Subtracts an amount of health from the total health of enemy when it is hit by a bullet.
   void takeDamage(float weaponDamage) {
     health = health - weaponDamage;
     if (getHealth() <= 0) {
@@ -131,26 +132,32 @@ class Enemy {
       die();
     }
   }
+  //Getter for health field
   float getHealth() {
     return health;
   }
+  //Setter for the enemy sprites
   void setSprite(PImage sprite1, PImage sprite2) {
     sprite[0] = sprite1;
     sprite[1] = sprite2;
   }
+  //Setter for speed field
   void setSpeed(float newSpeed) {
     speed = newSpeed;
   }
+  //Setter for size field
   void setSize(float newSize) {
     size = newSize;
   }
+  //Setter for health field
   void setHealth(float newHealth) {
     health = newHealth;
   }
+  //setter for damage field
   void setDamage(int newDamage) {
     damage = newDamage;
   }
-
+  //Setter for enemy detection radius
   void setPDetectRadius(float r) {
     pDetectRadius = r;
   }
