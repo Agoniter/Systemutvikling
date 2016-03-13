@@ -21,6 +21,8 @@ AudioPlayer audio;
 Minim minim;
 
 void setup() {
+  noSmooth();
+  size(1280, 960);
   menu = new Menu(this);
   projectiles = new Projectiles();
   player = new Player(projectiles);
@@ -30,7 +32,6 @@ void setup() {
   pHandler = new PowerupHandler();
   bg = new PImage();
   bg = loadImage("Sprites/Grey_Matters_Map.png");
-  size(1280, 960);
   keys[0] = false;
   keys[1] = false;
   keys[2] = false;

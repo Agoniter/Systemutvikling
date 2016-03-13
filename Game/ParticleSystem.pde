@@ -76,7 +76,7 @@ class ParticleSystem{
      pLife = 1*frameRate;
      speedFactor = 3.0;
      lifeTime = 1*frameRate;
-     rate = 2;
+     rate = 0.1;
      particles = new ArrayList<Particle>();
      dead = false;
      isGrenade = true;
