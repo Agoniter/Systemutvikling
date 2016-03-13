@@ -2,12 +2,12 @@ class Menu {
   GUIController control;
   IFButton pauseButton, startButton, quitButton, helpButton, optionsButton, backButton, survivalButton, normalButton, mainVolUp, mainVolDown, controlButton, powerupButton, enemyButton, helpBackButton;
   IFLookAndFeel transLook;
-  int helpMenuState;
+  int helpMenuState, volCount;
   ArrayList<IFButton> buttonList;
   PImage[] menuSprites, numSprites;
-  PImage[] ;
   public Menu(Game g) {
     helpMenuState = 0;
+    volCount = 10;
     transLook = new IFLookAndFeel(g, IFLookAndFeel.DEFAULT);
     transLook.baseColor = color(255, 255, 255, 0);
     //transLook.borderColor = color(255, 255, 255, 0);
@@ -25,8 +25,10 @@ class Menu {
     normalButton = new IFButton("", 1400, height/2 - 120, 340, 62);
     controlButton = new IFButton("", 1400, height/2 - 145, 450, 65);
     powerupButton = new IFButton("", 1400, height/2 + 135, 450, 65);
-    enemyButton = new IFButton("", 1400, height/2 - 120, 340, 62);
+    enemyButton = new IFButton("", 1400, height/2 - 5, 405, 62);
     helpBackButton = new IFButton("", 1400, height/2 + 280, 180, 50);
+    mainVolUp =  new IFButton("UP", 1400, height/2 + 125, 50, 50);
+    mainVolDown = new IFButton("DOWN", 1400, height/2 + 125, 50, 50);
     buttonList.add(pauseButton);
     buttonList.add(startButton);
     buttonList.add(quitButton);
@@ -39,6 +41,8 @@ class Menu {
     buttonList.add(enemyButton);
     buttonList.add(powerupButton);
     buttonList.add(helpBackButton);
+    buttonList.add(mainVolUp);
+    buttonList.add(mainVolDown);
     for (IFButton b : buttonList) {
       b.addActionListener(g);
       control.add(b);
@@ -54,13 +58,17 @@ class Menu {
     menuSprites[5] = loadImage("Sprites/EnemiesMenu.png");
     menuSprites[6] = loadImage("Sprites/PowerupsMenu.png");
     menuSprites[7] = loadImage("Sprites/PauseMenu.png");
-    
+
+    numSprites = new PImage[11];
+    for (int i = 0; i <11; i++) {
+      numSprites[i] = loadImage("Sprites/" + i + ".png");
+    }
   }
   void actionPerformed (GUIEvent e) {
     if (e.getSource() == pauseButton) {
       gameState = 0;
       keyPress = 0;
-      audio.unmute();
+      ah.unmute();
     } else if ( e.getSource() == startButton) {
       gameState = 4;
       keyPress = 0;
@@ -82,6 +90,17 @@ class Menu {
       helpMenuState = 3;
     } else if (e.getSource() == helpBackButton) {
       helpMenuState = 0;
+    }else if(e.getSource() == mainVolUp){
+       ah.mainVolUp();
+       if(volCount < 10){
+       volCount++;
+       }
+       
+    }else if(e.getSource() == mainVolDown){
+      ah.mainVolDown();
+      if(volCount > 0){
+      volCount--;
+      }
     }
   } 
   void drawButtons() {
@@ -117,6 +136,9 @@ class Menu {
     case 5:
       unDrawButtons();
       image(menuSprites[3], width/2, height/2);
+      image(numSprites[volCount], width/2, height/2 + 150);
+      mainVolUp.setX(width/2 + 95);
+      mainVolDown.setX(width/2-145);
       backButton.setX(width/2 - 100);
       break;
     case 6:
@@ -126,7 +148,7 @@ class Menu {
       case 0:   
         image(menuSprites[1], width/2, height/2);
         controlButton.setX(width/2 -230);
-        enemyButton.setX(width/2);
+        enemyButton.setX(width/2 - 205);
         powerupButton.setX(width/2 - 220);
         backButton.setX(width/2 - 100);
         break;

@@ -1,4 +1,4 @@
-import processing.sound.*;  //<>// //<>// //<>// //<>// //<>//
+import processing.sound.*;  //<>// //<>// //<>// //<>// //<>// //<>//
 import interfascia.*;
 import ddf.minim.*;
 import java.util.Iterator;
@@ -17,13 +17,13 @@ int keyPress, mutePress;
 boolean keys[] = new boolean[5]; //array used by keyPressed(), keyReleased() and player.move()
 ArrayList<ParticleSystem> ps;
 ArrayList<Decal> decals;
-AudioPlayer audio;
-Minim minim;
 
+AudioHandler ah;
 void setup() {
   int startTime = millis();
   noSmooth();
   size(1280, 960);
+  ah = new AudioHandler(this);
   menu = new Menu(this);
   projectiles = new Projectiles();
   player = new Player(projectiles);
@@ -46,8 +46,6 @@ void setup() {
   cursor(CROSS);
   ps = new ArrayList<ParticleSystem>();
   decals = new ArrayList<Decal>();
-  minim = new Minim(this);
-  audio = minim.loadFile("Sound/track1.mp3");
   int endTime = millis();
   System.out.println("Game initialized in " + (endTime - startTime) + "ms"); 
   //audio.loop();
@@ -250,11 +248,11 @@ void keyReleased() {
     if ( keyPress == 0) {
       gameState = 1;
       keyPress = 1;
-      audio.mute();
+      ah.mute();
     } else if (keyPress == 1) {
       gameState = 0;
       keyPress = 0;
-      audio.unmute();
+      ah.unmute();
     }
   }
   if (key == 'r' || key == 'R') {
@@ -271,17 +269,17 @@ void keyReleased() {
   if (key == 'm' || key == 'M') {
     if ( keyPress == 0 && gameState == 0) {
       mutePress = 1;
-      audio.mute();
+      ah.mute();
     } else if (keyPress == 1 && gameState == 0) {
       mutePress = 0;
-      audio.unmute();
+      ah.unmute();
     }
   }
 }  
 void endGame() {
   if (base.getHealth() <= 0 || player.getHealth() <= 0) {
     gameState = 2;
-    audio.mute();
+    ah.mute();
   }
 }
 
@@ -294,7 +292,7 @@ void reset() {
   decals.clear();
   enemyHandler.clearEnemies();
   base.setHealth(10);
-  audio.loop();
+  //audio.loop();
   player.setWeapon(0);
   player.setHealth(5);
 }
