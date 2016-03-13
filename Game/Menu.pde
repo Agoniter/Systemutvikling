@@ -87,8 +87,8 @@ class Menu {
     } else if (e.getSource() == helpButton) {
       gameState = 6;
     } else if (e.getSource() == normalButton) {
-      gameState = 0;
       lh = new LevelHandler(enemyHandler, false);
+      gameState = 0;
     } else if (e.getSource() == backButton) {
       gameState = 3;
     } else if (e.getSource() == controlButton) {
@@ -124,7 +124,7 @@ class Menu {
       gameState = 0;
     } else if (e.getSource() == nextLevel) {
       gameState = 0;
-      //lh.goNextLevel();
+      lh.goNextLevel();
     }
   } 
   void drawButtons() {

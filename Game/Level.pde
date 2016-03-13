@@ -33,10 +33,11 @@ class Level{
  
  void spawner(){
    
-  if(!survivalMode){ 
+  if(!survivalMode){
     Iterator<MobGroup> it;
     for(it = packList.iterator(); it.hasNext(); ){
       MobGroup mg = it.next();
+      
       if(mg.getSpawnTime() <= timer){
        ArrayList<Enemy> tmp = mg.getEnemies();
        for(Enemy e : tmp){
@@ -75,8 +76,9 @@ class Level{
     }
     
   }
-  timer++;
+  
  }
+ timer++;
  }
  
  void addPack(MobGroup pack){
