@@ -47,7 +47,6 @@ void setup() {
   decals = new ArrayList<Decal>();
   int endTime = millis();
   System.out.println("Game initialized in " + (endTime - startTime) + "ms"); 
-  //audio.loop();
 }
 
 void draw() {

@@ -1,6 +1,6 @@
 class Menu {
   GUIController control;
-  IFButton unPauseButton, startButton, quitButton, helpButton, optionsButton, backButton, survivalButton, normalButton, mainVolUp, mainVolDown, controlButton, powerupButton, enemyButton, helpBackButton, muteButton, sfxUp, sfxDown;
+  IFButton unPauseButton, startButton, quitButton, helpButton, optionsButton, backButton, survivalButton, normalButton, mainVolUp, mainVolDown, controlButton, powerupButton, enemyButton, helpBackButton, muteButton, sfxUp, sfxDown, nextLevel;
   IFLookAndFeel transLook;
   int helpMenuState, volCount;
   ArrayList<IFButton> buttonList;
@@ -19,18 +19,18 @@ class Menu {
     startButton = new IFButton("", 1400, height/2 - 150, 280, 60);
     quitButton  = new IFButton("", 1400, height/2 + 220, 220, 60);
     helpButton  = new IFButton("", 1400, height/2 + 91, 230, 60);
-    backButton  = new IFButton("", 1400, height/2 + 280, 180, 50);
+    backButton  = new IFButton("", 1400, height/2 + 280);
     optionsButton = new IFButton("", 1400, height/2-35, 390, 62);
     survivalButton = new IFButton("", 1400, height/2+90, 450, 62);
     normalButton = new IFButton("", 1400, height/2 - 120, 340, 62);
     controlButton = new IFButton("", 1400, height/2 - 145, 450, 65);
     powerupButton = new IFButton("", 1400, height/2 + 135, 450, 65);
     enemyButton = new IFButton("", 1400, height/2 - 5, 405, 62);
-    helpBackButton = new IFButton("", 1400, height/2 + 280, 180, 50);
+    helpBackButton = new IFButton("", 1400, height/2 + 280, 170, 50);
     mainVolUp =  new IFButton("", 1400, height/2 + 125, 50, 50);
     mainVolDown = new IFButton("", 1400, height/2 + 125, 50, 50);
     muteButton = new IFButton("", width - 75, 5, 50, 50);
-    ;
+    nextLevel = new IFButton("", 1400, height/2 - 110, 540, 130);
     buttonList.add(unPauseButton);
     buttonList.add(startButton);
     buttonList.add(quitButton);
@@ -46,13 +46,14 @@ class Menu {
     buttonList.add(mainVolUp);
     buttonList.add(mainVolDown);
     buttonList.add(muteButton);
+    buttonList.add(nextLevel);
     for (IFButton b : buttonList) {
       b.addActionListener(g);
       control.add(b);
       b.setLookAndFeel(transLook);
     }
 
-    menuSprites = new PImage[8];
+    menuSprites = new PImage[9];
     menuSprites[0] = loadImage("Sprites/MainMenu.png");
     menuSprites[1] = loadImage("Sprites/HelpMenu.png");
     menuSprites[2] = loadImage("Sprites/StartMenu.png");
@@ -61,6 +62,7 @@ class Menu {
     menuSprites[5] = loadImage("Sprites/EnemiesMenu.png");
     menuSprites[6] = loadImage("Sprites/PowerupsMenu.png");
     menuSprites[7] = loadImage("Sprites/PauseMenu.png");
+    menuSprites[8] = loadImage("Sprites/LevelCompleteMenu.png");
 
     numSprites = new PImage[11];
     for (int i = 0; i <11; i++) {
@@ -117,10 +119,12 @@ class Menu {
         ah.sfxUnmute();
         ah.unmute();
       }
-    }
-    else if(e.getSource() == survivalButton){
+    } else if (e.getSource() == survivalButton) {
       lh = new LevelHandler(enemyHandler, true);
       gameState = 0;
+    } else if (e.getSource() == nextLevel) {
+      gameState = 0;
+      //lh.goNextLevel();
     }
   } 
   void drawButtons() {
@@ -147,6 +151,9 @@ class Menu {
       optionsButton.setX(width/2-195);
       helpButton.setX(width/2-120);
       quitButton.setX(width/2-110);
+      backButton.setY(height/2 + 280);
+      backButton.setWidth(170);
+      backButton.setHeight(50);
       image(menuSprites[0], width/2, height/2);
       break;
     case 4:
@@ -154,7 +161,7 @@ class Menu {
       drawMute();
       survivalButton.setX(width/2-225);
       normalButton.setX(width/2 - 170);
-      backButton.setX(width/2 - 100);
+      backButton.setX(width/2 - 85);
       image(menuSprites[2], width/2, height/2);
       break;
     case 5:
@@ -164,7 +171,7 @@ class Menu {
       image(numSprites[volCount], width/2, height/2 + 150);
       mainVolUp.setX(width/2 + 95);
       mainVolDown.setX(width/2-145);
-      backButton.setX(width/2 - 100);
+      backButton.setX(width/2 - 85);
       break;
     case 6:
       unDrawButtons();
@@ -175,24 +182,34 @@ class Menu {
         controlButton.setX(width/2 -230);
         enemyButton.setX(width/2 - 205);
         powerupButton.setX(width/2 - 220);
-        backButton.setX(width/2 - 100);
+        backButton.setX(width/2 - 85);
         break;
       case 1:
         image(menuSprites[4], width/2, height/2);
         backButton.setX(1400);
-        helpBackButton.setX(width/2-100);
+        helpBackButton.setX(width/2-85);
         break;
       case 2:
         image(menuSprites[5], width/2, height/2);
         backButton.setX(1400);
-        helpBackButton.setX(width/2-100);
+        helpBackButton.setX(width/2-85);
         break;
       case 3:
         image(menuSprites[6], width/2, height/2);
         backButton.setX(1400);
-        helpBackButton.setX(width/2-100);
+        helpBackButton.setX(width/2-85);
         break;
       }
+      break;
+    case 7:
+      unDrawButtons();
+      drawMute();
+      image(menuSprites[8], width/2, height/2);
+      nextLevel.setX(width/2 - 270);
+      backButton.setX(width/2 - 230);
+      backButton.setY(height/2 + 140);
+      backButton.setWidth(460);
+      backButton.setHeight(100);
       break;
     }
   }
