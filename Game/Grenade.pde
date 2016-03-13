@@ -1,5 +1,5 @@
 class Grenade extends Projectile{
-  float blastRadius, damage, blastTimer, explosionDuration;
+  float blastRadius, damage, blastTimer, explosionDuration, timer, airTime;
   boolean exploding;
   PImage sprite;
   
@@ -7,9 +7,13 @@ class Grenade extends Projectile{
     super(p, rot, 5);
     damage = 2;
     blastRadius = 200;
-    explosionDuration = 10;
+    explosionDuration = 5;
     sprite = loadImage("Sprites/spookysprite.png");
     sprite.resize(20, 20);
+    blastTimer = 0;
+    timer = 0;
+    airTime = 0.8*frameRate;
+    speed = 5;
   }
   
     void drawProjectile() {
@@ -23,11 +27,18 @@ class Grenade extends Projectile{
     
     if(exploding){
       ellipse(super.location.x, super.location.y, blastRadius, blastRadius);
-      if(timer > explosionDuration){
+      if(blastTimer > explosionDuration){
        super.isDead = true; 
       }
-     timer++;
+     blastTimer++;
     }
+    
+    if(timer > airTime){
+     setDeath(); 
+    }
+    
+    
+    timer++;
   }
   
     void setDeath() {
