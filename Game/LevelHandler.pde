@@ -93,8 +93,7 @@ class LevelHandler {
     if(!survivalMode){
       if (!nextLevel()) {
         if (enemyHandler.getEnemies().isEmpty() && currentLevel.isFinished()) {
-          text("Game complete", width/2, height/2);
-          //noLoop();
+          gameState = 8;
         }
       }
     }

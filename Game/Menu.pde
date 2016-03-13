@@ -63,7 +63,7 @@ class Menu {
       b.setLookAndFeel(transLook);
     }
 
-    menuSprites = new PImage[10];
+    menuSprites = new PImage[11];
     menuSprites[0] = loadImage("Sprites/MainMenu.png");
     menuSprites[1] = loadImage("Sprites/HelpMenu.png");
     menuSprites[2] = loadImage("Sprites/StartMenu.png");
@@ -74,6 +74,8 @@ class Menu {
     menuSprites[7] = loadImage("Sprites/PauseMenu.png");
     menuSprites[8] = loadImage("Sprites/LevelCompleteMenu.png");
     menuSprites[9] = loadImage("Sprites/GameOverMenu.png");
+    menuSprites[10] = loadImage("Sprites/GameCompleteMenu.png");
+
 
     numSprites = new PImage[11];
     for (int i = 0; i <11; i++) {
@@ -147,8 +149,8 @@ class Menu {
       if (sfxCount > 0) {
         sfxCount--;
       }
-    }else if( e.getSource() == mainMenuButton){
-       gameState = 3;
+    } else if ( e.getSource() == mainMenuButton) {
+      gameState = 3;
     }
   }
 
@@ -247,6 +249,15 @@ class Menu {
       mainMenuButton.setY(height/2 + 140);
       mainMenuButton.setWidth(460);
       mainMenuButton.setHeight(100);
+      break;
+    case 8:
+      unDrawButtons();
+      drawMute();
+      image(menuSprites[10], width/2, height/2);
+      mainMenuButton.setX(width/2 - 225);
+      mainMenuButton.setY(height/2 + 190);
+      mainMenuButton.setWidth(450);
+      mainMenuButton.setHeight(50);
       break;
     }
   }
