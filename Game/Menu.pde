@@ -1,7 +1,7 @@
 import java.util.Stack;
 class Menu {
   GUIController control;
-  IFButton unPauseButton, startButton, quitButton, helpButton, optionsButton, backButton, survivalButton, normalButton, mainVolUp, mainVolDown, controlButton, powerupButton, enemyButton, helpBackButton, muteButton, sfxUp, sfxDown, nextLevel;
+  IFButton unPauseButton, startButton, quitButton, helpButton, optionsButton, backButton, survivalButton, normalButton, mainVolUp, mainVolDown, controlButton, powerupButton, enemyButton, helpBackButton, muteButton, sfxUp, sfxDown, nextLevel, mainMenuButton;
   IFLookAndFeel transLook;
   int helpMenuState, volCount, sfxCount, newState;
   ArrayList<IFButton> buttonList;
@@ -23,7 +23,7 @@ class Menu {
     startButton = new IFButton("", 1400, height/2 - 150, 280, 60);
     quitButton  = new IFButton("", 1400, height/2 + 220, 220, 60);
     helpButton  = new IFButton("", 1400, height/2 + 91, 230, 60);
-    backButton  = new IFButton("", 1400, height/2 + 280);
+    backButton  = new IFButton("", 1400, height/2 + 280, 170, 50);
     optionsButton = new IFButton("", 1400, height/2-35, 390, 62);
     survivalButton = new IFButton("", 1400, height/2+90, 450, 62);
     normalButton = new IFButton("", 1400, height/2 - 120, 340, 62);
@@ -37,6 +37,7 @@ class Menu {
     nextLevel = new IFButton("", 1400, height/2 - 110, 540, 130);
     sfxUp =  new IFButton("", 1400, height/2 - 40, 50, 50);
     sfxDown = new IFButton("", 1400, height/2 - 40, 50, 50);
+    mainMenuButton = new IFButton("", 1400, height/2 - 90, 470, 65);
     buttonList.add(unPauseButton);
     buttonList.add(startButton);
     buttonList.add(quitButton);
@@ -55,13 +56,14 @@ class Menu {
     buttonList.add(nextLevel);
     buttonList.add(sfxUp);
     buttonList.add(sfxDown);
+    buttonList.add(mainMenuButton);
     for (IFButton b : buttonList) {
       b.addActionListener(g);
       control.add(b);
       b.setLookAndFeel(transLook);
     }
 
-    menuSprites = new PImage[9];
+    menuSprites = new PImage[10];
     menuSprites[0] = loadImage("Sprites/MainMenu.png");
     menuSprites[1] = loadImage("Sprites/HelpMenu.png");
     menuSprites[2] = loadImage("Sprites/StartMenu.png");
@@ -71,6 +73,7 @@ class Menu {
     menuSprites[6] = loadImage("Sprites/PowerupsMenu.png");
     menuSprites[7] = loadImage("Sprites/PauseMenu.png");
     menuSprites[8] = loadImage("Sprites/LevelCompleteMenu.png");
+    menuSprites[9] = loadImage("Sprites/GameOverMenu.png");
 
     numSprites = new PImage[11];
     for (int i = 0; i <11; i++) {
@@ -144,8 +147,11 @@ class Menu {
       if (sfxCount > 0) {
         sfxCount--;
       }
+    }else if( e.getSource() == mainMenuButton){
+       gameState = 3;
     }
-  } 
+  }
+
   void drawButtons() {
     switch(gameState) {
     case 0:
@@ -163,6 +169,15 @@ class Menu {
       quitButton.setX(width/2-110);
       break;
     case 2:
+      unDrawButtons();
+      drawMute();
+      image(menuSprites[9], width/2, height/2);
+      mainMenuButton.setX(width/2 - 235);
+      mainMenuButton.setY(height/2 - 90);
+      mainMenuButton.setWidth(470);
+      mainMenuButton.setHeight(65); 
+      quitButton.setX(width/2-110);
+      quitButton.setY(height/2 + 120);
       break;
     case 3:
       backStack.push(gameState);
@@ -172,9 +187,7 @@ class Menu {
       optionsButton.setX(width/2-195);
       helpButton.setX(width/2-120);
       quitButton.setX(width/2-110);
-      backButton.setY(height/2 + 280);
-      backButton.setWidth(170);
-      backButton.setHeight(50);
+      quitButton.setY(height/2 + 220);
       image(menuSprites[0], width/2, height/2);
       break;
     case 4:
@@ -230,10 +243,10 @@ class Menu {
       drawMute();
       image(menuSprites[8], width/2, height/2);
       nextLevel.setX(width/2 - 270);
-      backButton.setX(width/2 - 230);
-      backButton.setY(height/2 + 140);
-      backButton.setWidth(460);
-      backButton.setHeight(100);
+      mainMenuButton.setX(width/2 - 230);
+      mainMenuButton.setY(height/2 + 140);
+      mainMenuButton.setWidth(460);
+      mainMenuButton.setHeight(100);
       break;
     }
   }
