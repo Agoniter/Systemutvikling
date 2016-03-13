@@ -96,7 +96,7 @@ void draw() {
     //noLoop();
     break;
   case 3:
-     
+
     break;
   }
 
@@ -167,17 +167,15 @@ public void bulletHitCheck() {
       Projectile bullet = itP.next();
       if (collisionDetect(bullet.getLocation(), bullet.getSize(), enemy.getLocation(), enemy.getSize())) {
         // enemy.die();
-        if(bullet instanceof Grenade){
+        if (bullet instanceof Grenade) {
           Grenade g = (Grenade)bullet;
           enemy.takeDamage(g.getDamage());
-        }
-        else{
-        ps.add(new ParticleSystem(enemy.getLocation(), 1.0, 0.2, 2, null, 1.0));
-        
+        } else {
+          ps.add(new ParticleSystem(enemy.getLocation(), 1.0, 0.2, 2, null, 1.0));
         }
         bullet.setDeath();
-        if(bullet.isDead()){
-         itP.remove(); 
+        if (bullet.isDead()) {
+          itP.remove();
         }
         enemy.takeDamage(player.getWeapon().getDamage());
       }
@@ -280,7 +278,6 @@ void endGame() {
   if (base.getHealth() <= 0 || player.getHealth() <= 0) {
     gameState = 2;
     ah.mute();
-    ah.sfxPlay(5);
   }
 }
 

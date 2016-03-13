@@ -1,10 +1,10 @@
 class Menu {
   GUIController control;
-  IFButton pauseButton, startButton, quitButton, helpButton, optionsButton, backButton, survivalButton, normalButton, mainVolUp, mainVolDown, controlButton, powerupButton, enemyButton, helpBackButton;
+  IFButton unPauseButton, startButton, quitButton, helpButton, optionsButton, backButton, survivalButton, normalButton, mainVolUp, mainVolDown, controlButton, powerupButton, enemyButton, helpBackButton, muteButton, sfxUp, sfxDown;
   IFLookAndFeel transLook;
   int helpMenuState, volCount;
   ArrayList<IFButton> buttonList;
-  PImage[] menuSprites, numSprites;
+  PImage[] menuSprites, numSprites, muteSprites;
   public Menu(Game g) {
     helpMenuState = 0;
     volCount = 10;
@@ -15,7 +15,7 @@ class Menu {
     transLook.highlightColor = color(255, 255, 255, 0);
     buttonList = new ArrayList<IFButton>();
     control = new GUIController(g);
-    pauseButton = new IFButton("", 1400, height/2-150, 580, 60);
+    unPauseButton = new IFButton("", 1400, height/2-150, 580, 60);
     startButton = new IFButton("", 1400, height/2 - 150, 280, 60);
     quitButton  = new IFButton("", 1400, height/2 + 220, 220, 60);
     helpButton  = new IFButton("", 1400, height/2 + 91, 230, 60);
@@ -29,7 +29,9 @@ class Menu {
     helpBackButton = new IFButton("", 1400, height/2 + 280, 180, 50);
     mainVolUp =  new IFButton("", 1400, height/2 + 125, 50, 50);
     mainVolDown = new IFButton("", 1400, height/2 + 125, 50, 50);
-    buttonList.add(pauseButton);
+    muteButton = new IFButton("", width - 75, 5, 50, 50);
+    ;
+    buttonList.add(unPauseButton);
     buttonList.add(startButton);
     buttonList.add(quitButton);
     buttonList.add(backButton);
@@ -43,6 +45,7 @@ class Menu {
     buttonList.add(helpBackButton);
     buttonList.add(mainVolUp);
     buttonList.add(mainVolDown);
+    buttonList.add(muteButton);
     for (IFButton b : buttonList) {
       b.addActionListener(g);
       control.add(b);
@@ -63,9 +66,12 @@ class Menu {
     for (int i = 0; i <11; i++) {
       numSprites[i] = loadImage("Sprites/" + i + ".png");
     }
+    muteSprites = new PImage[2];
+    muteSprites[0] = loadImage("Sprites/Mute.png");
+    muteSprites[1] = loadImage("Sprites/Unmute.png");
   }
   void actionPerformed (GUIEvent e) {
-    if (e.getSource() == pauseButton) {
+    if (e.getSource() == unPauseButton) {
       gameState = 0;
       keyPress = 0;
       ah.unmute();
@@ -100,17 +106,29 @@ class Menu {
       if (volCount > 0) {
         volCount--;
       }
+    } else if (e.getSource() == muteButton) {
+      if (mutePress == 0) {
+        mutePress = 1;
+        ah.sfxMute();
+        ah.mute();
+      } else if (mutePress == 1) {
+        mutePress = 0;
+        ah.sfxUnmute();
+        ah.unmute();
+      }
     }
   } 
   void drawButtons() {
     switch(gameState) {
     case 0:
       unDrawButtons();
+      drawMute();
       break;
     case 1:
       image(menuSprites[7], width/2, height/2);
       unDrawButtons();
-      pauseButton.setX(width/2-285);
+      drawMute();
+      unPauseButton.setX(width/2-285);
       helpButton.setX(width/2-120);
       optionsButton.setX(width/2-195);
       quitButton.setX(width/2-110);
@@ -119,6 +137,7 @@ class Menu {
       break;
     case 3:
       unDrawButtons();
+      drawMute();
       startButton.setX(width/2-140);
       optionsButton.setX(width/2-195);
       helpButton.setX(width/2-120);
@@ -127,6 +146,7 @@ class Menu {
       break;
     case 4:
       unDrawButtons();
+      drawMute();
       survivalButton.setX(width/2-225);
       normalButton.setX(width/2 - 170);
       backButton.setX(width/2 - 100);
@@ -134,6 +154,7 @@ class Menu {
       break;
     case 5:
       unDrawButtons();
+      drawMute();
       image(menuSprites[3], width/2, height/2);
       image(numSprites[volCount], width/2, height/2 + 150);
       mainVolUp.setX(width/2 + 95);
@@ -142,6 +163,7 @@ class Menu {
       break;
     case 6:
       unDrawButtons();
+      drawMute();
       switch(helpMenuState) {
       case 0:   
         image(menuSprites[1], width/2, height/2);
@@ -171,7 +193,17 @@ class Menu {
   }
   void unDrawButtons() {
     for (IFButton b : buttonList) {
-      b.setX(1400);
+      if (b == muteButton) {
+      } else {
+        b.setX(1400);
+      }
+    }
+  }
+  void drawMute() {
+    if (mutePress == 0) {
+      image(muteSprites[0], width -50, 30);
+    } else if (mutePress == 1) {
+      image(muteSprites[1], width -50, 30);
     }
   }
 }
