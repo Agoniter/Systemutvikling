@@ -22,7 +22,7 @@ class Base {
   public void drawBase() {
     text("Base health: " + health, 20, 100);
     
-    if(health != 0){
+    if(health > 0){
       image(sprites[health-1], pos.x, pos.y);
     }
     

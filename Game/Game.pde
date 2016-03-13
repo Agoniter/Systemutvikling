@@ -165,8 +165,17 @@ public void bulletHitCheck() {
       Projectile bullet = itP.next();
       if (collisionDetect(bullet.getLocation(), bullet.getSize(), enemy.getLocation(), enemy.getSize())) {
         // enemy.die();
+        if(bullet instanceof Grenade){
+          ps.add(new ParticleSystem(bullet.getLocation()));
+        }
+        else{
         ps.add(new ParticleSystem(enemy.getLocation(), 1.0, 0.2, 2, null, 1.0));
-        itP.remove();
+        
+        }
+        bullet.setDeath();
+        if(bullet.isDead()){
+         itP.remove(); 
+        }
         enemy.takeDamage(player.getWeapon().getDamage());
       }
     }

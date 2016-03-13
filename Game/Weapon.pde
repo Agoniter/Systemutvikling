@@ -38,6 +38,11 @@ class Weapon {
     }
   }
   void secondaryFire() {
+    oldPosX = mouseX;
+    oldPosY = mouseY;
+    PVector location= new PVector(player.playPos.x, player.playPos.y);
+    rotation = atan2(oldPosY - location.y, oldPosX - location.x) / PI * 180;
+    pList.add(new Grenade(player, rotation));
   }
   /**
    Getter for the fireRate field
