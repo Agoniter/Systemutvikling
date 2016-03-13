@@ -2,9 +2,11 @@ class LevelHandler {
   ArrayList<Level> levels; 
   Level currentLevel;
   Iterator<Level> it;
+  boolean survivalMode;
 
   public LevelHandler(EnemyHandler eh) {
     levels = new ArrayList<Level>();
+    survivalMode = false;
 
     //Start of level 1
     ArrayList<Enemy> tmp = new ArrayList<Enemy>();
@@ -75,28 +77,22 @@ class LevelHandler {
     it = levels.iterator();
     currentLevel = it.next();
   }
+  
+  public LevelHandler(EnemyHandler eh, boolean survival){
+   enemyHandler = eh;
+   survivalMode = survival;
+  }
+  
 
 
   void handler() {
     currentLevel.spawner();
-      if (!nextLevel()) {
+      if (!nextLevel() && !survivalMode) {
         if (enemyHandler.getEnemies().isEmpty() && currentLevel.isFinished()) {
           text("Game complete", width/2, height/2);
-          noLoop();
+          //noLoop();
         }
       }
-      /*if(it.hasNext()){
-       currentLevel = it.next();
-       }
-       else{
-       enemyHandler.setSpawnRate(10000000);
-       if(enemyHandler.getEnemies().isEmpty()){
-       lh = new LevelHandler(enemyHandler);
-       enemyHandler.setSpawnRate(200);
-       reset();
-       }
-       }*/
-    
   }
 
   boolean nextLevel() {
