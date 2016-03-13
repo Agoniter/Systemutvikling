@@ -107,9 +107,4 @@ class LevelHandler {
     }
     return false;
   }
-  
-  
-  void setSurvivalMode(){
-    
-  }
 }
