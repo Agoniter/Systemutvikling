@@ -2,12 +2,13 @@ class AudioHandler {
   AudioPlayer audio;
   AudioPlayer[] sfx;
   Minim minim;
-  float gain;
+  float gain, sfxGain;
   public AudioHandler(Game game) {
     minim = new Minim(game);
     audio = minim.loadFile("Sound/track1.mp3");
     audio.loop();
     gain = 0;
+    sfxGain = 0;
     sfx = new AudioPlayer[10];
     sfx[0] = minim.loadFile("Sound/SFX/pistol.wav");
     sfx[1] = minim.loadFile("Sound/SFX/assaultrifle.wav");
@@ -49,5 +50,17 @@ class AudioHandler {
   }
   void sfxPlay(int sfxNum) {
     sfx[sfxNum].play(0);
+  }
+  void sfxVolUp(){
+    sfxGain = constrain(gain + 8, -80, 0);
+    for (AudioPlayer ap : sfx) {
+      ap.setGain(sfxGain);
+    }
+  }
+  void sfxVolDown(){
+   sfxGain = constrain(gain - 8, -80, 0);
+    for (AudioPlayer ap : sfx) {
+      ap.setGain(sfxGain);
+    }
   }
 }

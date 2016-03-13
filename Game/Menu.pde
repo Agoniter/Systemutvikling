@@ -1,13 +1,17 @@
+import java.util.Stack;
 class Menu {
   GUIController control;
   IFButton unPauseButton, startButton, quitButton, helpButton, optionsButton, backButton, survivalButton, normalButton, mainVolUp, mainVolDown, controlButton, powerupButton, enemyButton, helpBackButton, muteButton, sfxUp, sfxDown, nextLevel;
   IFLookAndFeel transLook;
-  int helpMenuState, volCount;
+  int helpMenuState, volCount, sfxCount, newState;
   ArrayList<IFButton> buttonList;
   PImage[] menuSprites, numSprites, muteSprites;
+  Stack backStack;
   public Menu(Game g) {
+    backStack = new Stack();
     helpMenuState = 0;
     volCount = 10;
+    sfxCount = 10;
     transLook = new IFLookAndFeel(g, IFLookAndFeel.DEFAULT);
     transLook.baseColor = color(255, 255, 255, 0);
     //transLook.borderColor = color(255, 255, 255, 0);
@@ -31,6 +35,8 @@ class Menu {
     mainVolDown = new IFButton("", 1400, height/2 + 125, 50, 50);
     muteButton = new IFButton("", width - 75, 5, 50, 50);
     nextLevel = new IFButton("", 1400, height/2 - 110, 540, 130);
+    sfxUp =  new IFButton("", 1400, height/2 - 40, 50, 50);
+    sfxDown = new IFButton("", 1400, height/2 - 40, 50, 50);
     buttonList.add(unPauseButton);
     buttonList.add(startButton);
     buttonList.add(quitButton);
@@ -47,6 +53,8 @@ class Menu {
     buttonList.add(mainVolDown);
     buttonList.add(muteButton);
     buttonList.add(nextLevel);
+    buttonList.add(sfxUp);
+    buttonList.add(sfxDown);
     for (IFButton b : buttonList) {
       b.addActionListener(g);
       control.add(b);
@@ -90,7 +98,8 @@ class Menu {
       gameState = 0;
       lh = new LevelHandler(enemyHandler, false);
     } else if (e.getSource() == backButton) {
-      gameState = 3;
+      gameState = (int)(backStack.pop());
+      System.out.println(gameState);
     } else if (e.getSource() == controlButton) {
       helpMenuState = 1;
     } else if (e.getSource() == enemyButton) {
@@ -124,7 +133,17 @@ class Menu {
       gameState = 0;
     } else if (e.getSource() == nextLevel) {
       gameState = 0;
-      //lh.goNextLevel();
+      lh.goNextLevel();
+    } else if (e.getSource() == sfxUp) {
+      ah.sfxVolUp();
+      if (sfxCount < 10) {
+        sfxCount++;
+      }
+    } else if (e.getSource() == sfxDown) {
+      ah.sfxVolDown();
+      if (sfxCount > 0) {
+        sfxCount--;
+      }
     }
   } 
   void drawButtons() {
@@ -134,6 +153,7 @@ class Menu {
       drawMute();
       break;
     case 1:
+      backStack.push(gameState);
       image(menuSprites[7], width/2, height/2);
       unDrawButtons();
       drawMute();
@@ -145,6 +165,7 @@ class Menu {
     case 2:
       break;
     case 3:
+      backStack.push(gameState);
       unDrawButtons();
       drawMute();
       startButton.setX(width/2-140);
@@ -169,6 +190,9 @@ class Menu {
       drawMute();
       image(menuSprites[3], width/2, height/2);
       image(numSprites[volCount], width/2, height/2 + 150);
+      image(numSprites[sfxCount], width/2, height/2);
+      sfxUp.setX(width/2 + 95);
+      sfxDown.setX(width/2-145);
       mainVolUp.setX(width/2 + 95);
       mainVolDown.setX(width/2-145);
       backButton.setX(width/2 - 85);
