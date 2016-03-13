@@ -8,8 +8,7 @@ class Grenade extends Projectile{
     damage = 2;
     blastRadius = 200;
     explosionDuration = 5;
-    sprite = loadImage("Sprites/spookysprite.png");
-    sprite.resize(20, 20);
+    sprite = loadImage("Sprites/Grenade.png");
     blastTimer = 0;
     timer = 0;
     airTime = 0.8*frameRate;
@@ -26,9 +25,9 @@ class Grenade extends Projectile{
     popMatrix();
     
     if(exploding){
-      ellipse(super.location.x, super.location.y, blastRadius, blastRadius);
       if(blastTimer > explosionDuration){
        super.isDead = true; 
+       ps.add(new ParticleSystem(getLocation()));
       }
      blastTimer++;
     }
@@ -46,6 +45,10 @@ class Grenade extends Projectile{
     super.speed = 0;
     exploding = true;
     
+  }
+  
+   float getDamage(){
+   return damage; 
   }
   
 }

@@ -21,6 +21,7 @@ AudioPlayer audio;
 Minim minim;
 
 void setup() {
+  int startTime = millis();
   noSmooth();
   size(1280, 960);
   menu = new Menu(this);
@@ -47,9 +48,9 @@ void setup() {
   decals = new ArrayList<Decal>();
   minim = new Minim(this);
   audio = minim.loadFile("Sound/track1.mp3");
-  audio.loop();
-  System.out.println(audio.getControls());
-  audio.setGain(-80);
+  int endTime = millis();
+  System.out.println("Game initialized in " + (endTime - startTime) + "ms"); 
+  //audio.loop();
 }
 
 void draw() {
@@ -66,13 +67,13 @@ void draw() {
   player.drawPlayer();
   projectiles.drawProjectiles();
   menu.drawButtons();
-  int grid = 50; // change this number to 20 or 50, etc., if you want fewer grid lines 
-  for (int i = 0; i < width; i+=grid) {
-  line (i, 0, i, height);
-  }
-  for (int i = 0; i < height; i+=grid) {
-  line (0, i, width, i);
-  }
+  //int grid = 50; // change this number to 20 or 50, etc., if you want fewer grid lines 
+  //for (int i = 0; i < width; i+=grid) {
+  // line (i, 0, i, height);
+  //}
+  //for (int i = 0; i < height; i+=grid) {
+  // line (0, i, width, i);
+  //}
   switch(gameState) {
   case 0:
     projectiles.update();
@@ -169,7 +170,8 @@ public void bulletHitCheck() {
       if (collisionDetect(bullet.getLocation(), bullet.getSize(), enemy.getLocation(), enemy.getSize())) {
         // enemy.die();
         if(bullet instanceof Grenade){
-          ps.add(new ParticleSystem(bullet.getLocation()));
+          Grenade g = (Grenade)bullet;
+          enemy.takeDamage(g.getDamage());
         }
         else{
         ps.add(new ParticleSystem(enemy.getLocation(), 1.0, 0.2, 2, null, 1.0));
