@@ -21,6 +21,7 @@ AudioPlayer audio;
 Minim minim;
 
 void setup() {
+  int startTime = millis();
   noSmooth();
   size(1280, 960);
   menu = new Menu(this);
@@ -47,6 +48,8 @@ void setup() {
   decals = new ArrayList<Decal>();
   minim = new Minim(this);
   audio = minim.loadFile("Sound/track1.mp3");
+  int endTime = millis();
+  System.out.println("Game initialized in " + (endTime - startTime) + "ms"); 
   //audio.loop();
 }
 
