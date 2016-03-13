@@ -81,18 +81,21 @@ class LevelHandler {
   public LevelHandler(EnemyHandler eh, boolean survival){
    enemyHandler = eh;
    survivalMode = survival;
+   currentLevel = new Level(enemyHandler, true);
   }
   
 
 
   void handler() {
     currentLevel.spawner();
-      if (!nextLevel() && !survivalMode) {
+    if(!survivalMode){
+      if (!nextLevel()) {
         if (enemyHandler.getEnemies().isEmpty() && currentLevel.isFinished()) {
           text("Game complete", width/2, height/2);
           //noLoop();
         }
       }
+    }
   }
 
   boolean nextLevel() {

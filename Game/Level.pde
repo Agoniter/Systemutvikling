@@ -58,13 +58,25 @@ class Level{
     }
     
     if(timer % int((10*60 / intensity)) == 0){
-      eh.addEnemy(getWeightedRandom());
+      
+      for(int i = 0; i < (10); i++){
+        if(diceRoll(constrain(11-intensity, 0, 10))){
+        Enemy e = getWeightedRandom();
+        if(e instanceof BigEnemy){
+         enemyHandler.addEnemy(new BigEnemy(base, enemyHandler, player)); 
+        }
+        else if(e instanceof MediumEnemy){
+          enemyHandler.addEnemy(new MediumEnemy(base, enemyHandler, player)); 
+        }
+        else if(e instanceof SmallEnemy){
+          enemyHandler.addEnemy(new SmallEnemy(base, enemyHandler, player)); 
+        }
+      }
     }
-    
-    
     
   }
   timer++;
+ }
  }
  
  void addPack(MobGroup pack){
@@ -77,7 +89,7 @@ class Level{
  
 Enemy getWeightedRandom() {
 
-  float num = random(0,1000) * count;
+  float num = random(0,1) * count;
   num = tMap.floorKey(num);
   Enemy m = tMap.get(num);
   return m;
