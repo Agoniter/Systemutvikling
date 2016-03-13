@@ -87,7 +87,7 @@ class Player {
       weapon.setFireMod(fireMod);
       weapon.setDamageMod(damageMod);
       weapon.shoot();
-      if (weapon.getAmmo() > 0) {
+      if (weapon.getAmmo() > 0 || weapon.getWeaponID() == 0) {
         ah.sfxPlay(weapon.getWeaponID());
       }
       return true;

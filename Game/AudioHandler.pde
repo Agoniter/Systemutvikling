@@ -19,27 +19,35 @@ class AudioHandler {
     sfx[7] = minim.loadFile("Sound/SFX/levelcomplete.wav");
     sfx[8] = minim.loadFile("Sound/SFX/playertakedamage.wav");
     sfx[9] = minim.loadFile("Sound/SFX/win.wav");
-    
   }
-  AudioPlayer getAudio(){
+  AudioPlayer getAudio() {
     return audio;
   }
-  void mainVolUp(){
+  void mainVolUp() {
     gain = constrain(gain + 8, -80, 0);
     audio.setGain(gain);
   }
-  void mainVolDown(){
+  void mainVolDown() {
     gain = constrain(gain - 8, -80, 0);
     audio.setGain(gain);
   }
-  void mute(){
+  void mute() {
     audio.mute();
   }
-  void unmute(){
+  void unmute() {
     audio.unmute();
   }
-  void sfxPlay(int sfxNum){
-    sfx[sfxNum].play();
-    sfx[sfxNum].rewind(); 
+  void sfxMute() {
+    for (AudioPlayer ap : sfx) {
+      ap.mute();
+    }
+  }
+  void sfxUnmute() {
+    for (AudioPlayer ap : sfx) {
+      ap.unmute();
+    }
+  }
+  void sfxPlay(int sfxNum) {
+    sfx[sfxNum].play(0);
   }
 }

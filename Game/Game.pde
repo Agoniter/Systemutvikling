@@ -92,8 +92,8 @@ void draw() {
   case 1:
     break;
   case 2:
-    text("Game over!", width/2, height/2);
-    noLoop();
+    text("Game over!", width/2, height/2); 
+    //noLoop();
     break;
   case 3:
      
@@ -280,6 +280,7 @@ void endGame() {
   if (base.getHealth() <= 0 || player.getHealth() <= 0) {
     gameState = 2;
     ah.mute();
+    ah.sfxPlay(5);
   }
 }
 
