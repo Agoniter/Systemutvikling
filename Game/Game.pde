@@ -1,4 +1,4 @@
-import processing.sound.*;  //<>// //<>// //<>// //<>//
+import processing.sound.*;  //<>// //<>// //<>// //<>// //<>//
 import interfascia.*;
 import ddf.minim.*;
 import java.util.Iterator;
@@ -47,7 +47,9 @@ void setup() {
   decals = new ArrayList<Decal>();
   minim = new Minim(this);
   audio = minim.loadFile("Sound/track1.mp3");
-  //audio.loop();
+  audio.loop();
+  System.out.println(audio.getControls());
+  audio.setGain(-80);
 }
 
 void draw() {
@@ -64,13 +66,13 @@ void draw() {
   player.drawPlayer();
   projectiles.drawProjectiles();
   menu.drawButtons();
-  //int grid = 50; // change this number to 20 or 50, etc., if you want fewer grid lines 
-  //for (int i = 0; i < width; i+=grid) {
-  // line (i, 0, i, height);
-  //}
-  //for (int i = 0; i < height; i+=grid) {
-  // line (0, i, width, i);
-  //}
+  int grid = 50; // change this number to 20 or 50, etc., if you want fewer grid lines 
+  for (int i = 0; i < width; i+=grid) {
+  line (i, 0, i, height);
+  }
+  for (int i = 0; i < height; i+=grid) {
+  line (0, i, width, i);
+  }
   switch(gameState) {
   case 0:
     projectiles.update();
