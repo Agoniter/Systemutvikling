@@ -1,3 +1,6 @@
+/**
+ PowerUp subclass. This powerup increases the damage of the weapons when the player picks it up.
+ **/
 class DamageUp extends PowerUp {
   Player p;
   public DamageUp(PVector pos, Player p) {
@@ -5,13 +8,16 @@ class DamageUp extends PowerUp {
     this.p = p;
     duration = 300;
   }
+  //Constructor used when adding powerups to probabilityList
   public DamageUp(float weight) {
     super(weight);
   }
-  void onPickup(){
+  //Increases weapondamage.
+  void onPickup() {
     p.setDamageMod(2);
   }
-  void powerUpEnd(){
+  //Sets the damage back to normal when the duration is over.
+  void powerUpEnd() {
     p.setDamageMod(1);
     setDead();
   }

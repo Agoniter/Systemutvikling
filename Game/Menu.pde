@@ -1,6 +1,6 @@
 class Menu {
   GUIController control;
-  IFButton pauseButton, startButton, quitButton, helpButton, optionsButton, backButton, survivalButton, normalButton;
+  IFButton pauseButton, startButton, quitButton, helpButton, optionsButton, backButton, survivalButton, normalButton, mainVolUp, mainVolDown;
   IFLookAndFeel transLook;
   ArrayList<IFButton> buttonList;
   PImage[] menuSprites;
@@ -10,7 +10,6 @@ class Menu {
     transLook.borderColor = color(255, 255, 255, 0);
     transLook.activeColor = color(255, 255, 255, 0);
     transLook.highlightColor = color(255, 255, 255, 0);
-
     buttonList = new ArrayList<IFButton>();
     control = new GUIController(g);
     pauseButton = new IFButton("", 1400, height/2-150);
