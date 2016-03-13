@@ -1,4 +1,4 @@
-import processing.sound.*;  //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+import processing.sound.*;  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 import interfascia.*;
 import ddf.minim.*;
 import java.util.Iterator;
@@ -29,7 +29,6 @@ void setup() {
   player = new Player(projectiles);
   enemyHandler = new EnemyHandler();
   base = new Base(new PVector(60, height/2));
-  lh = new LevelHandler(enemyHandler, true);
   pHandler = new PowerupHandler();
   bg = new PImage();
   bg = loadImage("Sprites/Grey_Matters_Map.png");

@@ -3,8 +3,15 @@ class LevelHandler {
   Level currentLevel;
   Iterator<Level> it;
   boolean survivalMode;
-
-  public LevelHandler(EnemyHandler eh) {
+  
+  public LevelHandler(EnemyHandler eh, boolean survival){
+    survivalMode = survival;
+   if(survivalMode){
+     enemyHandler = eh;
+     survivalMode = survival;
+     currentLevel = new Level(enemyHandler, true);
+   }
+   else{
     levels = new ArrayList<Level>();
     survivalMode = false;
 
@@ -75,13 +82,8 @@ class LevelHandler {
     levels.add(level1);
     levels.add(level2);
     it = levels.iterator();
-    currentLevel = it.next();
-  }
-  
-  public LevelHandler(EnemyHandler eh, boolean survival){
-   enemyHandler = eh;
-   survivalMode = survival;
-   currentLevel = new Level(enemyHandler, true);
+    currentLevel = it.next(); 
+   }
   }
   
 
@@ -104,5 +106,10 @@ class LevelHandler {
       return true;
     }
     return false;
+  }
+  
+  
+  void setSurvivalMode(){
+    
   }
 }

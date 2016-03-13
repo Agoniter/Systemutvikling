@@ -86,6 +86,7 @@ class Menu {
       gameState = 6;
     } else if (e.getSource() == normalButton) {
       gameState = 0;
+      lh = new LevelHandler(enemyHandler, false);
     } else if (e.getSource() == backButton) {
       gameState = 3;
     } else if (e.getSource() == controlButton) {
@@ -116,6 +117,10 @@ class Menu {
         ah.sfxUnmute();
         ah.unmute();
       }
+    }
+    else if(e.getSource() == survivalButton){
+      lh = new LevelHandler(enemyHandler, true);
+      gameState = 0;
     }
   } 
   void drawButtons() {
