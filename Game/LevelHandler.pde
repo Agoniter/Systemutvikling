@@ -102,7 +102,7 @@ class LevelHandler {
 
   boolean nextLevel() {
     if (it.hasNext() && currentLevel.isFinished()) {
-      currentLevel = it.next();
+      gameState = 7;
       return true;
     }
     return false;
