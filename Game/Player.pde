@@ -178,4 +178,19 @@ class Player {
   ArrayList<Weapon> getWeapons() {
     return weapons;
   }
+  
+  void resetPlayer(){
+    weapons = new ArrayList<Weapon>();
+    weapons.add(new Pistol(projectiles.getProjectiles(), this));
+    weapons.add(new AssaultRifle(projectiles.getProjectiles(), this));
+    weapons.add(new Shotgun(projectiles.getProjectiles(), this)); 
+    
+    damageMod = 1.0;
+    fireMod = 1.0;
+    weaponState = 1;
+    stepSize = 2;
+    health = 5;
+    setWeapon(0);
+    
+  }
 }
