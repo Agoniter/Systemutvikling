@@ -220,11 +220,17 @@ void keyPressed() {
   if (key == 'p' || key == 'P') {
     keys[4] = true;
   }
+  if(key == ESC){
+    key = 321;
+  }
 }
 /**
  Checks to see if the keys that have been pressed are released.
  **/
 void keyReleased() {
+  if(key == ESC){
+    key = 'p';
+  }
   if (key == 'w' || key == 'W') {
     keys[0] = false;
   }
@@ -240,7 +246,7 @@ void keyReleased() {
   if (key == 'a' || key == 'A') {
     keys[3] = false;
   }
-  if (key == 'p' || key == 'P') {
+  if (key == 'p' || key == 'P' || key == 321) {
     if ( keyPress == 0) {
       gameState = 1;
       keyPress = 1;
