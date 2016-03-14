@@ -1,4 +1,4 @@
-import processing.sound.*;  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+import processing.sound.*;  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 import interfascia.*;
 import ddf.minim.*;
 import java.util.Iterator;
@@ -284,6 +284,7 @@ void reset() {
   keyPress = 0;
   ps.clear();
   decals.clear();
+  projectiles.clearProjectiles();
   enemyHandler.clearEnemies();
   base.setHealth(10);
   //audio.loop();

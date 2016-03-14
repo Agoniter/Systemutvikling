@@ -28,4 +28,8 @@ class Projectiles {
       }
     }
   }
+  
+  void clearProjectiles(){
+   projectiles.clear(); 
+  }
 }

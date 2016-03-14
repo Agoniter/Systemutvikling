@@ -17,11 +17,11 @@ class EnemyHandler {
   }
   //Adds enemies, based on a timer and moves them.
   public void spawnEnemies(int enemyWave) {
-
+/*
     if (timer - timeSinceLast >= spawnRate) {
       addEnemies(enemyWave, base);
       timeSinceLast = timer;
-    }
+    }*/
     removeDeadEnemy();
     for (Enemy e : enemies) {
       e.move();

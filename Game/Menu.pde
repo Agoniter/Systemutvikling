@@ -141,6 +141,7 @@ class Menu {
       gameState = 0;
     } else if (e.getSource() == nextLevel) {
       gameState = 0;
+      reset();
       lh.goNextLevel();
     } else if (e.getSource() == sfxUp) {
       ah.sfxVolUp();
