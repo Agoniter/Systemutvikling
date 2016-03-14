@@ -1,4 +1,4 @@
-/** //<>// //<>//
+/** //<>// //<>// //<>//
  Main class for the enemies of the game
  **/
 
@@ -19,7 +19,7 @@ class Enemy {
     this.base = base;
     this.player = player;
     sprite = new PImage[2];
-    this.pos = new PVector(1280.0, random(960));
+    this.pos = new PVector(1280.0 + random(60,300), random(960));
     this.oldPosX = pos.x;
     this.oldPosY = pos.y;
     rotation = atan2(oldPosY - base.getPosY(), oldPosX - base.getPosX()) / PI * 180;
