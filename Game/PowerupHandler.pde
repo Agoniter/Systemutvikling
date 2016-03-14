@@ -14,8 +14,9 @@ class PowerupHandler {
     probabilityList.add(new FireRateUp(1));
     probabilityList.add(new PlayerHealthUp(0.5));
     probabilityList.add(new BaseHealthUp(0.4));
-    probabilityList.add(new DamageUp(20));
+    probabilityList.add(new DamageUp(1));
     probabilityList.add(new AmmoUp(3));
+    probabilityList.add(new GrenadeUp(20));
     tMap = new TreeMap();
     rand = new Random();
     count = 0;
@@ -45,6 +46,9 @@ class PowerupHandler {
       }
       if(tmp instanceof AmmoUp){
         addPowerup(new AmmoUp(enemy.getLocation(), player.getWeapon()));
+      }
+      if(tmp instanceof GrenadeUp){
+        addPowerup(new GrenadeUp(enemy.getLocation(), player.getWeapon()));
       }
     }
   }

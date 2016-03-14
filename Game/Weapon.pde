@@ -4,7 +4,7 @@
 class Weapon {
   ArrayList<Projectile> pList;
   Player player;
-  private float oldPosX, oldPosY, rotation, size, fireRate, fireMod, damageMod, spread, damage;
+  private float oldPosX, oldPosY, rotation, size, fireRate, fireMod, damageMod, spread, damage, secondaryAmmo;
   int weaponID;
   PImage[] sprite;
   float ammo;
@@ -15,32 +15,33 @@ class Weapon {
     damage = 1;
     fireMod = 1;
     sprite = new PImage[3];
+    secondaryAmmo = 1;
   }
   void shoot() {
     oldPosX = mouseX;
     oldPosY = mouseY;
     float tmpRot = 0;
-    if(ammo > 0 || weaponID == 0){
+    if (ammo > 0 || weaponID == 0) {
       PVector location= new PVector(player.playPos.x, player.playPos.y);
       rotation = atan2(oldPosY - location.y, oldPosX - location.x) / PI * 180;
       if (weaponID == 2) {
         for (int i=0; i<5; i++) {
           tmpRot = rotation + getSpread();
           Projectile pTmp = new Projectile(player, tmpRot, size);
-          if(damageMod > 1.0){
+          if (damageMod > 1.0) {
             pTmp.setPowered();
           }
-        pList.add(pTmp);
+          pList.add(pTmp);
         }
       } else {
         tmpRot = rotation + getSpread();
         Projectile pTmp = new Projectile(player, tmpRot, size);
-        if(damageMod > 1.0){
+        if (damageMod > 1.0) {
           pTmp.setPowered();
         }
         pList.add(pTmp);
       }
-      if(weaponID != 0){
+      if (weaponID != 0) {
         addAmmo(-1);
       }
     }
@@ -50,7 +51,9 @@ class Weapon {
     oldPosY = mouseY;
     PVector location= new PVector(player.playPos.x, player.playPos.y);
     rotation = atan2(oldPosY - location.y, oldPosX - location.x) / PI * 180;
-    pList.add(new Grenade(player, rotation));
+    if (secondaryAmmo > 0) {
+      pList.add(new Grenade(player, rotation));
+    }
   }
   /**
    Getter for the fireRate field
@@ -90,29 +93,35 @@ class Weapon {
   void setDamage(float newDamage) {
     damage = newDamage;
   }
-  void setFireMod(float newMod){
+  void setFireMod(float newMod) {
     fireMod = newMod;
   }
-  
-  void setAmmo(float newAmmo){
-   ammo = newAmmo; 
+
+  void setAmmo(float newAmmo) {
+    ammo = newAmmo;
   }
-  
-  void addAmmo(float ammo){
-   this.ammo += ammo; 
+
+  void addAmmo(float ammo) {
+    this.ammo += ammo;
   }
-  
-  float getAmmo(){
-   return ammo; 
+
+  float getAmmo() {
+    return ammo;
   }
-  float getSpread(){
-   float tempRot = (random(-spread, spread)* PI/2);
-   return tempRot;
+  float getSpread() {
+    float tempRot = (random(-spread, spread)* PI/2);
+    return tempRot;
   }
-  void setSpreadAngles(float newSpread){
-       spread = newSpread;
+  void setSpreadAngles(float newSpread) {
+    spread = newSpread;
   }
-  void setDamageMod(float newMod){
+  void setDamageMod(float newMod) {
     damageMod = newMod;
+  }
+  void addSecondaryAmmo(float newAmmo) {
+    secondaryAmmo += newAmmo;
+  }
+  float getSecondaryAmmo() {
+    return secondaryAmmo;
   }
 }
