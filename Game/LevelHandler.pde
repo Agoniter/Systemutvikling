@@ -192,10 +192,85 @@ class LevelHandler {
       level4.addPack(mgTmp11);
       level4.addPack(mgTmp12);
       //End of level 4
+
+      //Start of level 5
+      ArrayList<Enemy> tmp13 = new ArrayList<Enemy>();
+      ArrayList<Enemy> tmp14 = new ArrayList<Enemy>();
+      ArrayList<Enemy> tmp15 = new ArrayList<Enemy>();
+      ArrayList<Enemy> tmp16 = new ArrayList<Enemy>();
+      ArrayList<Enemy> tmp17 = new ArrayList<Enemy>();
+      Level level5 = new Level(enemyHandler, 3.5);
+
+      //Pack 1
+      tmp13.add(new BigEnemy(base, enemyHandler, player));
+      tmp13.add(new BigEnemy(base, enemyHandler, player));
+      tmp13.add(new BigEnemy(base, enemyHandler, player));
+      tmp13.add(new MediumEnemy(base, enemyHandler, player));
+      tmp13.add(new MediumEnemy(base, enemyHandler, player));
+      tmp13.add(new MediumEnemy(base, enemyHandler, player));
+      tmp13.add(new SmallEnemy(base, enemyHandler, player));
+      tmp13.add(new SmallEnemy(base, enemyHandler, player));
+      tmp13.add(new SmallEnemy(base, enemyHandler, player));
+
+      //Pack 2
+      tmp14.add(new BigEnemy(base, enemyHandler, player));
+      tmp14.add(new BigEnemy(base, enemyHandler, player));
+      tmp14.add(new MediumEnemy(base, enemyHandler, player));
+      tmp14.add(new MediumEnemy(base, enemyHandler, player));
+      tmp14.add(new SmallEnemy(base, enemyHandler, player));
+      tmp14.add(new SmallEnemy(base, enemyHandler, player));
+      tmp14.add(new SmallEnemy(base, enemyHandler, player));
+      tmp14.add(new SmallEnemy(base, enemyHandler, player));
+      tmp14.add(new SmallEnemy(base, enemyHandler, player));
+
+      //Pack 3
+      tmp15.add(new MediumEnemy(base, enemyHandler, player));
+      tmp15.add(new MediumEnemy(base, enemyHandler, player));
+      tmp15.add(new MediumEnemy(base, enemyHandler, player));
+      tmp15.add(new MediumEnemy(base, enemyHandler, player));
+      tmp15.add(new MediumEnemy(base, enemyHandler, player));
+      tmp15.add(new MediumEnemy(base, enemyHandler, player));
+      tmp15.add(new MediumEnemy(base, enemyHandler, player));
+      tmp15.add(new MediumEnemy(base, enemyHandler, player));
+
+      //Pack 4
+      tmp16.add(new BigEnemy(base, enemyHandler, player));
+      tmp16.add(new BigEnemy(base, enemyHandler, player));
+      tmp16.add(new BigEnemy(base, enemyHandler, player));
+      tmp16.add(new BigEnemy(base, enemyHandler, player));
+      tmp16.add(new BigEnemy(base, enemyHandler, player));
+      tmp16.add(new BigEnemy(base, enemyHandler, player));
+      tmp16.add(new BigEnemy(base, enemyHandler, player));
+      tmp16.add(new BigEnemy(base, enemyHandler, player));
+
+      //Pack 5
+      tmp17.add(new BigEnemy(base, enemyHandler, player));
+      tmp17.add(new BigEnemy(base, enemyHandler, player));
+      tmp17.add(new BigEnemy(base, enemyHandler, player));
+      tmp17.add(new BigEnemy(base, enemyHandler, player));
+      tmp17.add(new MediumEnemy(base, enemyHandler, player));
+      tmp17.add(new MediumEnemy(base, enemyHandler, player));
+      tmp17.add(new MediumEnemy(base, enemyHandler, player));
+      tmp17.add(new MediumEnemy(base, enemyHandler, player));
+      tmp17.add(new MediumEnemy(base, enemyHandler, player));
+      tmp17.add(new MediumEnemy(base, enemyHandler, player));
+
+      MobGroup mgTmp13 = new MobGroup(tmp13, 600);
+      MobGroup mgTmp14 = new MobGroup(tmp14, 1800);
+      MobGroup mgTmp15 = new MobGroup(tmp15, 3000);
+      MobGroup mgTmp16 = new MobGroup(tmp16, 4200);
+      MobGroup mgTmp17 = new MobGroup(tmp17, 6400);
+      level5.addPack(mgTmp13);
+      level5.addPack(mgTmp14);
+      level5.addPack(mgTmp15);
+      level5.addPack(mgTmp16);
+      level5.addPack(mgTmp17);
+      //End of Level 5
       levels.add(level1);
       levels.add(level2);
       levels.add(level3);
       levels.add(level4);
+      levels.add(level5);
       it = levels.iterator();
       currentLevel = it.next();
     }
