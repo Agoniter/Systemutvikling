@@ -11,14 +11,14 @@ PowerupHandler pHandler;
 HUD hud;
 /* I'm all about that*/Base /* 'bout that */  base; //no treble
 EnemyHandler enemyHandler;
-float timer, lastFire;
+float timer, lastFire, dCount;
 PImage bg;
 int gameState;
 int keyPress, mutePress;
 boolean keys[] = new boolean[5]; //array used by keyPressed(), keyReleased() and player.move()
 ArrayList<ParticleSystem> ps;
 ArrayList<Decal> decals;
-PImage[] bEnemySprites, mEnemySprites, sEnemySprites;
+PImage[] bEnemySprites, mEnemySprites, sEnemySprites, decalSprites;
 
 AudioHandler ah;
 void setup() {
@@ -35,6 +35,11 @@ void setup() {
   sEnemySprites[0] = loadImage("Sprites/Grey_Matters_Small_Enemy_Part1.png");
   sEnemySprites[1] = loadImage("Sprites/Grey_Matters_Small_Enemy_Part2.png");
   
+  dCount = 5;
+  decalSprites = new PImage[int(dCount)];
+   for (int i = 1; i <= dCount; i++) {
+      decalSprites[i-1] = loadImage("Sprites/Grey_Matters_Splatt" + i + ".png");
+    }
 
   noSmooth();
   size(1280, 960);

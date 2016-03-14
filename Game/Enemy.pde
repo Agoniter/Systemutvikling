@@ -1,11 +1,11 @@
-/** //<>// //<>// //<>//
+/** //<>// //<>// //<>// //<>//
  Main class for the enemies of the game
  **/
 
 class Enemy {
 
   private float health, size, rotation, oldPosX, oldPosY, speed, aniTimer, pDetectRadius;
-  int damage, dCount;
+  int damage;
   PImage[] sprite;
   EnemyHandler eh;
   private PVector pos;
@@ -24,13 +24,11 @@ class Enemy {
     this.oldPosY = pos.y;
     rotation = atan2(oldPosY - base.getPosY(), oldPosX - base.getPosX()) / PI * 180;
     isDead = false;
-    dCount = 5;
     decals = new PImage[int(dCount)];
 
     pDetectRadius = 200;
-    for (int i = 1; i <= dCount; i++) {
-      decals[i-1] = loadImage("Sprites/Grey_Matters_Splatt" + i + ".png");
-    }
+    
+    this.decals = decalSprites;
     imageMode(CENTER);
     aniTimer = 0;
 

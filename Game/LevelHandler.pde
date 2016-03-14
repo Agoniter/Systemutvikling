@@ -12,7 +12,7 @@ class LevelHandler {
       currentLevel = new Level(enemyHandler, true);
     } else {
       levels = new ArrayList<Level>();
-
+      int testTime1 = millis();
       //Start of level 1
       ArrayList<Enemy> tmp = new ArrayList<Enemy>();
       ArrayList<Enemy> tmp2 = new ArrayList<Enemy>();
@@ -53,6 +53,8 @@ class LevelHandler {
       level1.addPack(mgTmp2);
       level1.addPack(mgTmp5);
       //End of level 1
+      int testTime1end = millis();
+      System.out.println("Level 1 generation done in " + (testTime1end - testTime1));
 
 
       //Start of level 2
