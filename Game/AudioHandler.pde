@@ -8,7 +8,7 @@ class AudioHandler {
     audio = minim.loadFile("Sound/track1.mp3");
     audio.loop();
     gain = 0;
-    sfxGain = 0;
+    sfxGain = -16;
     sfx = new AudioPlayer[10];
     sfx[0] = minim.loadFile("Sound/SFX/pistol.wav");
     sfx[1] = minim.loadFile("Sound/SFX/assaultrifle.wav");

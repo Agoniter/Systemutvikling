@@ -12,7 +12,7 @@ class Menu {
     backStack = new Stack();
     helpMenuState = 0;
     volCount = 10;
-    sfxCount = 10;
+    sfxCount = 8;
     transLook = new IFLookAndFeel(g, IFLookAndFeel.DEFAULT);
     transLook.baseColor = color(255, 255, 255, 0);
     //transLook.borderColor = color(255, 255, 255, 0);
@@ -140,8 +140,8 @@ class Menu {
       lh = new LevelHandler(enemyHandler, true);
       gameState = 0;
     } else if (e.getSource() == nextLevel) {
-      gameState = 0;
       reset();
+      gameState = 0;
       lh.goNextLevel();
     } else if (e.getSource() == sfxUp) {
       ah.sfxVolUp();
@@ -154,6 +154,7 @@ class Menu {
         sfxCount--;
       }
     } else if (e.getSource() == mainMenuButton) {
+      reset();
       gameState = 3;
     } else if (e.getSource() == pauseButton){
       if(keyPress == 0){
