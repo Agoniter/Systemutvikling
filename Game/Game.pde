@@ -1,4 +1,4 @@
-import processing.sound.*;  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+import processing.sound.*;  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 import interfascia.*;
 import ddf.minim.*;
 import java.util.Iterator;
@@ -47,7 +47,7 @@ void setup() {
     }
 
   noSmooth();
-  size(1280, 960);
+  size(1280, 960, P2D);
   ah = new AudioHandler(this);
   menu = new Menu(this);
   projectiles = new Projectiles();
