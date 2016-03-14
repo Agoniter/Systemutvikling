@@ -53,6 +53,7 @@ class Weapon {
     rotation = atan2(oldPosY - location.y, oldPosX - location.x) / PI * 180;
     if (secondaryAmmo > 0) {
       pList.add(new Grenade(player, rotation));
+      addSecondaryAmmo(-1);
     }
   }
   /**
