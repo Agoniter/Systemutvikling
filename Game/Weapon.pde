@@ -26,11 +26,19 @@ class Weapon {
       if (weaponID == 2) {
         for (int i=0; i<5; i++) {
           tmpRot = rotation + getSpread();
-          pList.add(new Projectile(player, tmpRot, size));
+          Projectile pTmp = new Projectile(player, tmpRot, size);
+          if(damageMod > 1.0){
+            pTmp.setPowered();
+          }
+        pList.add(pTmp);
         }
       } else {
         tmpRot = rotation + getSpread();
-        pList.add(new Projectile(player, tmpRot, size));
+        Projectile pTmp = new Projectile(player, tmpRot, size);
+        if(damageMod > 1.0){
+          pTmp.setPowered();
+        }
+        pList.add(pTmp);
       }
       if(weaponID != 0){
         addAmmo(-1);

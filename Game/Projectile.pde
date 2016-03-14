@@ -2,14 +2,15 @@ class Projectile {
   //standard PVector used for the location of the bullet
   private PVector location;
   private PVector rgb;
-  boolean isDead;
+  boolean isDead, isPowered;
   //vars used to check the angle between location and the mouse
   float speed, rotation, size, oldPosX, oldPosY, spriteRot;
   PVector[] colors;
-  PImage sprite;
+  PImage sprite, poweredSprite;
 
   public Projectile(Player player, float rotation, float size) {
     this.isDead = false;
+    isPowered = false;
     colors = new PVector[25];
     oldPosX = mouseX;
     oldPosY = mouseY;
@@ -20,6 +21,7 @@ class Projectile {
     this.size = size;
     spriteRot = atan2(oldPosY - location.y, oldPosX - location.x);
     sprite = loadImage("Sprites/Bullet.png");
+    poweredSprite = loadImage("Sprites/PowerupBullet.png");
     for (int i = 0; i < 25; i++) {
       colors[i] = new PVector();
     }
@@ -68,7 +70,9 @@ class Projectile {
     pushMatrix();
     translate(location.x, location.y);
     rotate(spriteRot);
-    tint(rgb.x, rgb.y, rgb.z, 200);
+    if(!isPowered){
+      tint(rgb.x, rgb.y, rgb.z, 200);
+    }
     image(sprite, 0, 0);
     noTint();
     popMatrix();
@@ -89,5 +93,10 @@ class Projectile {
   }
   boolean isDead() {
     return isDead;
+  }
+  
+  void setPowered(){
+    isPowered = true;
+    sprite = poweredSprite;
   }
 }

@@ -41,7 +41,12 @@ class Level{
  }
  
  void spawner(){
+  
+  if(isDone){
+   intensity = 0.00001; 
+  }
    
+  
   if(!survivalMode){
     Iterator<MobGroup> it;
     for(it = packList.iterator(); it.hasNext(); ){
