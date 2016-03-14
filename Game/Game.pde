@@ -18,7 +18,7 @@ int keyPress, mutePress;
 boolean keys[] = new boolean[5]; //array used by keyPressed(), keyReleased() and player.move()
 ArrayList<ParticleSystem> ps;
 ArrayList<Decal> decals;
-PImage[] bEnemySprites, mEnemySprites, sEnemySprites, decalSprites;
+PImage[] bEnemySprites, mEnemySprites, sEnemySprites, decalSprites, bossEnemySprites;
 
 AudioHandler ah;
 void setup() {
@@ -34,6 +34,11 @@ void setup() {
   sEnemySprites = new PImage[2];
   sEnemySprites[0] = loadImage("Sprites/Grey_Matters_Small_Enemy_Part1.png");
   sEnemySprites[1] = loadImage("Sprites/Grey_Matters_Small_Enemy_Part2.png");
+
+  bossEnemySprites = new PImage[2];
+  bossEnemySprites[0] = loadImage("Sprites/Grey_Matters_Boss_Enemy1.png");
+  bossEnemySprites[1] = loadImage("Sprites/Grey_Matters_Boss_Enemy2.png");
+
   
   dCount = 5;
   decalSprites = new PImage[int(dCount)];

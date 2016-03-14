@@ -268,11 +268,20 @@ class LevelHandler {
       level5.addPack(mgTmp16);
       level5.addPack(mgTmp17);
       //End of Level 5
+      
+      //Start of boss level
+      ArrayList<Enemy> tmp18 = new ArrayList<Enemy>();
+      Level level6 = new Level(enemyHandler, 3.5);
+      tmp17.add(new BossEnemy(base, enemyHandler, player));
+      MobGroup mgTmp18 = new MobGroup(tmp18, 600);
+      level6.addPack(mgTmp18);
+      
       levels.add(level1);
       levels.add(level2);
       levels.add(level3);
       levels.add(level4);
       levels.add(level5);
+      levels.add(level6);
       it = levels.iterator();
       currentLevel = it.next();
     }
