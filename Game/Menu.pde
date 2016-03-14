@@ -1,7 +1,8 @@
 import java.util.Stack;
 class Menu {
   GUIController control;
-  IFButton unPauseButton, startButton, quitButton, helpButton, optionsButton, backButton, survivalButton, normalButton, mainVolUp, mainVolDown, controlButton, powerupButton, enemyButton, helpBackButton, muteButton, sfxUp, sfxDown, nextLevel, mainMenuButton;
+  IFButton unPauseButton, startButton, quitButton, helpButton, optionsButton, backButton, survivalButton, normalButton, mainVolUp, mainVolDown, 
+    controlButton, powerupButton, enemyButton, helpBackButton, muteButton, sfxUp, sfxDown, nextLevel, mainMenuButton, pauseButton;
   IFLookAndFeel transLook;
   int helpMenuState, volCount, sfxCount, newState;
   ArrayList<IFButton> buttonList;
@@ -38,6 +39,7 @@ class Menu {
     sfxUp =  new IFButton("", 1400, height/2 - 40, 50, 50);
     sfxDown = new IFButton("", 1400, height/2 - 40, 50, 50);
     mainMenuButton = new IFButton("", 1400, height/2 - 90, 470, 65);
+    pauseButton = new IFButton("", width - 150, 5, 50, 50);
     buttonList.add(unPauseButton);
     buttonList.add(startButton);
     buttonList.add(quitButton);
@@ -56,6 +58,7 @@ class Menu {
     buttonList.add(nextLevel);
     buttonList.add(sfxUp);
     buttonList.add(sfxDown);
+    buttonList.add(pauseButton);
     buttonList.add(mainMenuButton);
     for (IFButton b : buttonList) {
       b.addActionListener(g);
@@ -149,12 +152,20 @@ class Menu {
       if (sfxCount > 0) {
         sfxCount--;
       }
-    } else if ( e.getSource() == mainMenuButton) {
+    } else if (e.getSource() == mainMenuButton) {
       gameState = 3;
+    } else if (e.getSource() == pauseButton){
+      if(keyPress == 0){
+        keyPress = 1;
+        gameState = 1;
+      }else if (keyPress == 1){
+        keyPress = 0;
+        gameState = 0;
+      } 
     }
   }
 
-  void drawButtons() {
+    void drawButtons() {
     switch(gameState) {
     case 0:
       unDrawButtons();
@@ -263,7 +274,7 @@ class Menu {
   }
   void unDrawButtons() {
     for (IFButton b : buttonList) {
-      if (b == muteButton) {
+      if (b == muteButton || b == pauseButton) {
       } else {
         b.setX(1400);
       }

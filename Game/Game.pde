@@ -244,11 +244,9 @@ void keyReleased() {
     if ( keyPress == 0) {
       gameState = 1;
       keyPress = 1;
-      ah.mute();
     } else if (keyPress == 1) {
       gameState = 0;
       keyPress = 0;
-      ah.unmute();
     }
   }
   if (key == 'r' || key == 'R') {
