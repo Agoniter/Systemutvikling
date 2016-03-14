@@ -140,8 +140,8 @@ class Menu {
       lh = new LevelHandler(enemyHandler, true);
       gameState = 0;
     } else if (e.getSource() == nextLevel) {
-      gameState = 0;
       reset();
+      gameState = 0;
       lh.goNextLevel();
     } else if (e.getSource() == sfxUp) {
       ah.sfxVolUp();
@@ -154,8 +154,8 @@ class Menu {
         sfxCount--;
       }
     } else if (e.getSource() == mainMenuButton) {
-      gameState = 3;
       reset();
+      gameState = 3;
     } else if (e.getSource() == pauseButton){
       if(keyPress == 0){
         keyPress = 1;
