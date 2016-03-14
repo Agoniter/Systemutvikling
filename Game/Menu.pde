@@ -15,7 +15,7 @@ class Menu {
     sfxCount = 8;
     transLook = new IFLookAndFeel(g, IFLookAndFeel.DEFAULT);
     transLook.baseColor = color(255, 255, 255, 0);
-    //transLook.borderColor = color(255, 255, 255, 0);
+    transLook.borderColor = color(255, 255, 255, 0);
     transLook.activeColor = color(255, 255, 255, 0);
     transLook.highlightColor = color(255, 255, 255, 0);
     buttonList = new ArrayList<IFButton>();
@@ -66,18 +66,19 @@ class Menu {
       b.setLookAndFeel(transLook);
     }
 
-    menuSprites = new PImage[11];
-    menuSprites[0] = loadImage("Sprites/MainMenu.png");
-    menuSprites[1] = loadImage("Sprites/HelpMenu.png");
-    menuSprites[2] = loadImage("Sprites/StartMenu.png");
-    menuSprites[3] = loadImage("Sprites/OptionMenu.png");
-    menuSprites[4] = loadImage("Sprites/ControlsMenu.png");
-    menuSprites[5] = loadImage("Sprites/EnemiesMenu.png");
-    menuSprites[6] = loadImage("Sprites/PowerupsMenu.png");
-    menuSprites[7] = loadImage("Sprites/PauseMenu.png");
-    menuSprites[8] = loadImage("Sprites/LevelCompleteMenu.png");
-    menuSprites[9] = loadImage("Sprites/GameOverMenu.png");
+    menuSprites = new PImage[12];
+    menuSprites[0]  = loadImage("Sprites/MainMenu.png");
+    menuSprites[1]  = loadImage("Sprites/HelpMenu.png");
+    menuSprites[2]  = loadImage("Sprites/StartMenu.png");
+    menuSprites[3]  = loadImage("Sprites/OptionMenu.png");
+    menuSprites[4]  = loadImage("Sprites/ControlsMenu.png");
+    menuSprites[5]  = loadImage("Sprites/EnemiesMenu.png");
+    menuSprites[6]  = loadImage("Sprites/PowerupsMenu.png");
+    menuSprites[7]  = loadImage("Sprites/PauseMenu.png");
+    menuSprites[8]  = loadImage("Sprites/LevelCompleteMenu.png");
+    menuSprites[9]  = loadImage("Sprites/GameOverMenu.png");
     menuSprites[10] = loadImage("Sprites/GameCompleteMenu.png");
+    menuSprites[11] = loadImage("Sprites/Pause.png");
 
 
     numSprites = new PImage[11];
@@ -173,6 +174,7 @@ class Menu {
       unDrawButtons();
       drawMute();
       pauseButton.setX(width - 150);
+      image(menuSprites[11], width - 125, 30 );
       break;
     case 1:
       backStack.push(gameState);
