@@ -20,7 +20,6 @@ class Base {
    draws the base in different states, depending on the health of the base.
    **/
   public void drawBase() {
-    text("Base health: " + health, 20, 100);
     
     if(health > 0){
       image(sprites[health-1], pos.x, pos.y);
@@ -50,14 +49,14 @@ class Base {
   /**
    Method used for damaging the base.
    This method is called when the enemy //<>// //<>// //<>//
-   crashes into the base.
+   crashes into the base. //<>//
    **/ //<>// //<>//
-  public void takeDamage(int dmg) {
+  public void takeDamage(int dmg) { //<>//
     health = health - dmg; //<>// //<>//
-    ah.sfxPlay(3);
+    ah.sfxPlay(3); //<>//
   } //<>//
-  //Setter for Base health field //<>//
-  void setHealth(int newHealth) {
+  //Setter for Base health field //<>// //<>//
+  void setHealth(int newHealth) { //<>//
     health = newHealth;
   }
   void heal(int newHealth) {

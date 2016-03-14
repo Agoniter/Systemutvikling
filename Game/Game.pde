@@ -56,9 +56,6 @@ void draw() {
   background(bg);
   fill(255, 255, 255);
   drawDecals();
-  text(frameRate, 20, 140);
-  text("Ammo: " + player.getWeapon().getAmmo(), 20, 160);
-  text("Damage: " + player.getWeapon().getDamage(), 20, 180);
   base.drawBase();
   pHandler.drawPowerups();
   enemyHandler.drawEnemies();
@@ -93,8 +90,7 @@ void draw() {
   case 1:
     break;
   case 2:
-    text("Game over!", width/2, height/2); 
-    //noLoop();
+    //game over
     break;
   case 3:
 

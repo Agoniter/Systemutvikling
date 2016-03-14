@@ -42,12 +42,7 @@ class Player {
     imageMode(CENTER);
     rectMode(CENTER);
     // rect(playPos.x, playPos.y, 20.0, 20.0);
-    text("Player X: " + playPos.x + "  Player y: "  + playPos.y, 20, 60);
-    text("Mouse x: " + mouseX + "  Mouse y: " + mouseY, 20, 20);
-    text("Player health: " + health, 20, 150);
     float rot = getAngle(playPos, new PVector(mouseX, mouseY));
-
-    text("Angle: " + degrees(rot), 20, 40);
 
     pushMatrix();
 
