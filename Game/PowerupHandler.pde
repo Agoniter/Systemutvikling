@@ -27,7 +27,6 @@ class PowerupHandler {
   }
   void trigger(Enemy enemy) {
     if (diceRoll(6)) {
-      System.out.println(getWeightedRandom());
       PowerUp tmp = getWeightedRandom();
       if (tmp instanceof SpeedUp) {
         addPowerup(new SpeedUp(enemy.getLocation(), player));
