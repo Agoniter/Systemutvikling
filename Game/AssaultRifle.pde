@@ -14,7 +14,7 @@ class AssaultRifle extends Weapon {
     setSize(7);
     setFireRate(15);
     setID(1);
-    setAmmo(50);
+    setAmmo(70);
     setSpreadAngles(3);
   }
 }

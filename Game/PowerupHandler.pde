@@ -10,13 +10,13 @@ class PowerupHandler {
   public PowerupHandler() {
     powerUps = new ArrayList<PowerUp>();
     probabilityList = new ArrayList<PowerUp>();
-    probabilityList.add(new SpeedUp(0.3));
-    probabilityList.add(new FireRateUp(1));
+    probabilityList.add(new SpeedUp(0.5));
+    probabilityList.add(new FireRateUp(0.5));
     probabilityList.add(new PlayerHealthUp(0.5));
-    probabilityList.add(new BaseHealthUp(0.4));
-    probabilityList.add(new DamageUp(1));
-    probabilityList.add(new AmmoUp(3));
-    probabilityList.add(new GrenadeUp(20));
+    probabilityList.add(new BaseHealthUp(0.5));
+    probabilityList.add(new DamageUp(0.5));
+    probabilityList.add(new AmmoUp(1));
+    probabilityList.add(new GrenadeUp(2));
     tMap = new TreeMap();
     rand = new Random();
     count = 0;
