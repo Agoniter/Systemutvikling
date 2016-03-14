@@ -120,7 +120,7 @@ class Weapon {
     damageMod = newMod;
   }
   void addSecondaryAmmo(float newAmmo) {
-    secondaryAmmo += newAmmo;
+    secondaryAmmo = constrain( secondaryAmmo+ newAmmo, 0, 10);
   }
   float getSecondaryAmmo() {
     return secondaryAmmo;
