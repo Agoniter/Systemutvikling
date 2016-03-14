@@ -77,4 +77,8 @@ class PowerupHandler {
     PowerUp p = tMap.get(num);
     return p;
   }
+  
+  void clearPowerups(){
+   powerUps.clear(); 
+  }
 }

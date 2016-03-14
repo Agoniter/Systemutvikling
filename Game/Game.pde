@@ -290,6 +290,10 @@ void reset() {
   //audio.loop();
   player.setWeapon(0);
   player.setHealth(5);
+  pHandler.clearPowerups();
+  decals.clear();
+  player.setPlayerX(500);
+  player.setPlayerY(500);
 }
 
 void actionPerformed (GUIEvent e) {

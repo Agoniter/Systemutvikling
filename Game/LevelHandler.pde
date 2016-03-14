@@ -120,4 +120,8 @@ class LevelHandler {
   void goNextLevel(){
    currentLevel = it.next(); 
   }
+  
+  boolean isSurvival(){
+   return survivalMode;
+  }
 }
