@@ -1,4 +1,4 @@
-import processing.sound.*;  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+import processing.sound.*;  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 import interfascia.*;
 import ddf.minim.*;
 import java.util.Iterator;
@@ -8,6 +8,7 @@ Menu menu;
 Projectiles projectiles;
 LevelHandler lh;
 PowerupHandler pHandler;
+HUD hud;
 /* I'm all about that*/Base /* 'bout that */  base; //no treble
 EnemyHandler enemyHandler;
 float timer, lastFire;
@@ -30,6 +31,7 @@ void setup() {
   enemyHandler = new EnemyHandler();
   base = new Base(new PVector(60, height/2));
   pHandler = new PowerupHandler();
+  hud = new HUD(player);
   bg = new PImage();
   bg = loadImage("Sprites/Grey_Matters_Map.png");
   keys[0] = false;
@@ -72,6 +74,7 @@ void draw() {
   //}
   switch(gameState) {
   case 0:
+    hud.drawHUD();
     projectiles.update();
     pHandler.updatePowerups();
     enemyHandler.spawnEnemies(1);
