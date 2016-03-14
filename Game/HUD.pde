@@ -7,6 +7,7 @@ class HUD {
     heart = loadImage("Sprites/Health.png");
     x = loadImage("Sprites/x.png");
     grenade = loadImage("Sprites/Grenade.png");
+    ammo = loadImage("Sprites/Ammo.png");
     grenade.resize(32, 27);
     numSprites = new PImage[11];
     for (int i = 0; i <11; i++) {
@@ -17,6 +18,7 @@ class HUD {
   void drawHUD() {
     drawPlayerHealth();
     drawGrenade();
+    drawAmmo();
   }
   void drawPlayerHealth() {
     image(heart, 20, 30);
@@ -27,5 +29,10 @@ class HUD {
     image(grenade, 20, 60);
     image(x, 50, 65);
     image(numSprites[(int)player.getWeapon().getSecondaryAmmo()], 70, 60);
+  }
+  void drawAmmo(){
+    image(ammo, 20, 90);
+    image(x, 50, 95);
+    //image(numSprites[], 70, 90);
   }
 }
