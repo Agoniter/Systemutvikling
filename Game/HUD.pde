@@ -33,6 +33,32 @@ class HUD {
   void drawAmmo(){
     image(ammo, 20, 90);
     image(x, 50, 95);
+    //1st digit from the right
+    int ammoCount = (int)player.getWeapon().getAmmo();
+    if(ammoCount % 10 > 0){
+      image(numSprites[ammoCount % 10], 100, 90);
+    }
+    else{
+     image(numSprites[0], 100, 90); 
+    }
+    
+    //2nd digit from the right
+    ammoCount = (int)Math.floor(ammoCount / 10.0);
+    if(ammoCount % 10 > 0){
+      image(numSprites[ammoCount % 10], 85, 90);
+    }
+    else{
+     image(numSprites[0], 85, 90); 
+    }
+    
+    //3rd digit from the right
+    ammoCount = (int)Math.floor(ammoCount / 10.0);
+    if(ammoCount % 10 > 0){
+      image(numSprites[ammoCount % 10], 70, 90);
+    }
+    else{
+     image(numSprites[0], 70, 90); 
+    }
     //image(numSprites[], 70, 90);
   }
 }
