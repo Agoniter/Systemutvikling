@@ -39,7 +39,7 @@ class Menu {
     sfxUp =  new IFButton("", 1400, height/2 - 40, 50, 50);
     sfxDown = new IFButton("", 1400, height/2 - 40, 50, 50);
     mainMenuButton = new IFButton("", 1400, height/2 - 90, 470, 65);
-    pauseButton = new IFButton("", width - 150, 5, 50, 50);
+    pauseButton = new IFButton("", 1400, 5, 50, 50);
     buttonList.add(unPauseButton);
     buttonList.add(startButton);
     buttonList.add(quitButton);
@@ -156,22 +156,23 @@ class Menu {
     } else if (e.getSource() == mainMenuButton) {
       reset();
       gameState = 3;
-    } else if (e.getSource() == pauseButton){
-      if(keyPress == 0){
+    } else if (e.getSource() == pauseButton) {
+      if (keyPress == 0) {
         keyPress = 1;
         gameState = 1;
-      }else if (keyPress == 1){
+      } else if (keyPress == 1) {
         keyPress = 0;
         gameState = 0;
-      } 
+      }
     }
   }
 
-    void drawButtons() {
+  void drawButtons() {
     switch(gameState) {
     case 0:
       unDrawButtons();
       drawMute();
+      pauseButton.setX(width - 150);
       break;
     case 1:
       backStack.push(gameState);
@@ -184,7 +185,6 @@ class Menu {
       quitButton.setX(width/2-110);
       break;
     case 2:
-      unDrawButtons();
       drawMute();
       image(menuSprites[9], width/2, height/2);
       mainMenuButton.setX(width/2 - 235);
@@ -276,7 +276,7 @@ class Menu {
   }
   void unDrawButtons() {
     for (IFButton b : buttonList) {
-      if (b == muteButton || b == pauseButton) {
+      if (b == muteButton) {
       } else {
         b.setX(1400);
       }
