@@ -6,7 +6,7 @@
 class BigEnemy extends Enemy {
   public BigEnemy(Base base, EnemyHandler eh, Player player) {
     super(base, eh, player);
-    setSprite(loadImage("Sprites/Grey_Matters_Big_Enemy_Part1.png"), loadImage("Sprites/Grey_Matters_Big_Enemy_Part2.png"));
+    setSprite(bEnemySprites[0], bEnemySprites[1]);
     setSpeed(-1); // speed is negative since the enemies move "backwards" on the X-axis
     setSize(125.0);
     setHealth(5);

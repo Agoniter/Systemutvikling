@@ -1,4 +1,4 @@
-import processing.sound.*;  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+import processing.sound.*;  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 import interfascia.*;
 import ddf.minim.*;
 import java.util.Iterator;
@@ -18,10 +18,24 @@ int keyPress, mutePress;
 boolean keys[] = new boolean[5]; //array used by keyPressed(), keyReleased() and player.move()
 ArrayList<ParticleSystem> ps;
 ArrayList<Decal> decals;
+PImage[] bEnemySprites, mEnemySprites, sEnemySprites;
 
 AudioHandler ah;
 void setup() {
   int startTime = millis();
+  bEnemySprites = new PImage[2];
+  bEnemySprites[0] = loadImage("Sprites/Grey_Matters_Big_Enemy_Part1.png");
+  bEnemySprites[1] = loadImage("Sprites/Grey_Matters_Big_Enemy_Part2.png");
+  
+  mEnemySprites = new PImage[2];
+  mEnemySprites[0] = loadImage("Sprites/Grey_Matters_Medium_enemy_Part1.png");
+  mEnemySprites[1] = loadImage("Sprites/Grey_Matters_Medium_enemy_Part2.png");
+  
+  sEnemySprites = new PImage[2];
+  sEnemySprites[0] = loadImage("Sprites/Grey_Matters_Small_Enemy_Part1.png");
+  sEnemySprites[1] = loadImage("Sprites/Grey_Matters_Small_Enemy_Part2.png");
+  
+
   noSmooth();
   size(1280, 960);
   ah = new AudioHandler(this);
