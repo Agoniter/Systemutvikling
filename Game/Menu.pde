@@ -66,7 +66,7 @@ class Menu {
       b.setLookAndFeel(transLook);
     }
 
-    menuSprites = new PImage[13];
+    menuSprites = new PImage[14];
     menuSprites[0]  = loadImage("Sprites/MainMenu.png");
     menuSprites[1]  = loadImage("Sprites/HelpMenu.png");
     menuSprites[2]  = loadImage("Sprites/StartMenu.png");
@@ -80,6 +80,7 @@ class Menu {
     menuSprites[10] = loadImage("Sprites/GameCompleteMenu.png");
     menuSprites[11] = loadImage("Sprites/Pause.png");
     menuSprites[12] = loadImage("Sprites/MenuBackground.png");
+    menuSprites[13] = loadImage("Sprites/ScoreMenu.png");
 
 
     numSprites = new PImage[11];
