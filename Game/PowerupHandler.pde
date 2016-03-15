@@ -15,8 +15,8 @@ class PowerupHandler {
     probabilityList.add(new PlayerHealthUp(0.5));
     probabilityList.add(new BaseHealthUp(0.5));
     probabilityList.add(new DamageUp(0.5));
-    probabilityList.add(new AmmoUp(1));
-    probabilityList.add(new GrenadeUp(2));
+    probabilityList.add(new AmmoUp(2));
+    probabilityList.add(new GrenadeUp(1));
     tMap = new TreeMap();
     rand = new Random();
     count = 0;
