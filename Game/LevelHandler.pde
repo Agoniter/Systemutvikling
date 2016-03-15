@@ -175,10 +175,6 @@ class LevelHandler {
       tmp12.add(new BigEnemy(base, enemyHandler, player));
       tmp12.add(new BigEnemy(base, enemyHandler, player));
       tmp12.add(new BigEnemy(base, enemyHandler, player));
-      tmp12.add(new MediumEnemy(base, enemyHandler, player));
-      tmp12.add(new MediumEnemy(base, enemyHandler, player));
-      tmp12.add(new MediumEnemy(base, enemyHandler, player));
-      tmp12.add(new BigEnemy(base, enemyHandler, player));
       tmp12.add(new BigEnemy(base, enemyHandler, player));
       tmp12.add(new BigEnemy(base, enemyHandler, player));
       tmp12.add(new MediumEnemy(base, enemyHandler, player));
@@ -201,7 +197,7 @@ class LevelHandler {
       ArrayList<Enemy> tmp15 = new ArrayList<Enemy>();
       ArrayList<Enemy> tmp16 = new ArrayList<Enemy>();
       ArrayList<Enemy> tmp17 = new ArrayList<Enemy>();
-      Level level5 = new Level(enemyHandler, 3.5);
+      Level level5 = new Level(enemyHandler, 3.0);
 
       //Pack 1
       tmp13.add(new BigEnemy(base, enemyHandler, player));

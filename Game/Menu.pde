@@ -66,7 +66,7 @@ class Menu {
       b.setLookAndFeel(transLook);
     }
 
-    menuSprites = new PImage[12];
+    menuSprites = new PImage[14];
     menuSprites[0]  = loadImage("Sprites/MainMenu.png");
     menuSprites[1]  = loadImage("Sprites/HelpMenu.png");
     menuSprites[2]  = loadImage("Sprites/StartMenu.png");
@@ -79,6 +79,8 @@ class Menu {
     menuSprites[9]  = loadImage("Sprites/GameOverMenu.png");
     menuSprites[10] = loadImage("Sprites/GameCompleteMenu.png");
     menuSprites[11] = loadImage("Sprites/Pause.png");
+    menuSprites[12] = loadImage("Sprites/MenuBackground.png");
+    menuSprites[13] = loadImage("Sprites/ScoreMenu.png");
 
 
     numSprites = new PImage[11];
@@ -177,6 +179,7 @@ class Menu {
       image(menuSprites[11], width - 125, 30 );
       break;
     case 1:
+      background(menuSprites[12]);
       backStack.push(gameState);
       image(menuSprites[7], width/2, height/2);
       unDrawButtons();
@@ -187,6 +190,7 @@ class Menu {
       quitButton.setX(width/2-110);
       break;
     case 2:
+      background(menuSprites[12]);
       drawMute();
       image(menuSprites[9], width/2, height/2);
       mainMenuButton.setX(width/2 - 235);
@@ -197,6 +201,7 @@ class Menu {
       quitButton.setY(height/2 + 120);
       break;
     case 3:
+      background(menuSprites[12]);
       backStack.push(gameState);
       unDrawButtons();
       drawMute();
@@ -208,6 +213,7 @@ class Menu {
       image(menuSprites[0], width/2, height/2);
       break;
     case 4:
+      background(menuSprites[12]);
       unDrawButtons();
       drawMute();
       survivalButton.setX(width/2-225);
@@ -216,6 +222,7 @@ class Menu {
       image(menuSprites[2], width/2, height/2);
       break;
     case 5:
+      background(menuSprites[12]);
       unDrawButtons();
       drawMute();
       image(menuSprites[3], width/2, height/2);
@@ -228,6 +235,7 @@ class Menu {
       backButton.setX(width/2 - 85);
       break;
     case 6:
+      background(menuSprites[12]);
       unDrawButtons();
       drawMute();
       switch(helpMenuState) {
@@ -256,6 +264,7 @@ class Menu {
       }
       break;
     case 7:
+      background(menuSprites[12]);
       unDrawButtons();
       drawMute();
       image(menuSprites[8], width/2, height/2);
@@ -266,6 +275,7 @@ class Menu {
       mainMenuButton.setHeight(100);
       break;
     case 8:
+      background(menuSprites[12]);
       unDrawButtons();
       drawMute();
       image(menuSprites[10], width/2, height/2);
