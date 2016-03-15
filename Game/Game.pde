@@ -280,11 +280,6 @@ void keyReleased() {
       }
     }
   }
-  if (key == 'r' || key == 'R') {
-    reset();
-    redraw();
-    loop();
-  }
   if (key == 'q' || key == 'Q') {
     player.cycleWeaponDown();
   }
