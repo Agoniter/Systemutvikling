@@ -270,12 +270,14 @@ void keyReleased() {
     keys[3] = false;
   }
   if (key == 'p' || key == 'P' || key == 321) {
-    if ( keyPress == 0) {
-      gameState = 1;
-      keyPress = 1;
-    } else if (keyPress == 1) {
-      gameState = 0;
-      keyPress = 0;
+    if(gameState == 0 || gameState == 1){
+      if ( keyPress == 0) {
+        gameState = 1;
+        keyPress = 1;
+      } else if (keyPress == 1) {
+        gameState = 0;
+        keyPress = 0;
+      }
     }
   }
   if (key == 'r' || key == 'R') {
