@@ -212,6 +212,7 @@ class Menu {
       image(menuSprites[0], width/2, height/2);
       break;
     case 4:
+      background(menuSprites[12]);
       unDrawButtons();
       drawMute();
       survivalButton.setX(width/2-225);
@@ -220,6 +221,7 @@ class Menu {
       image(menuSprites[2], width/2, height/2);
       break;
     case 5:
+      background(menuSprites[12]);
       unDrawButtons();
       drawMute();
       image(menuSprites[3], width/2, height/2);
@@ -232,6 +234,7 @@ class Menu {
       backButton.setX(width/2 - 85);
       break;
     case 6:
+      background(menuSprites[12]);
       unDrawButtons();
       drawMute();
       switch(helpMenuState) {
@@ -260,6 +263,7 @@ class Menu {
       }
       break;
     case 7:
+      background(menuSprites[12]);
       unDrawButtons();
       drawMute();
       image(menuSprites[8], width/2, height/2);
@@ -270,6 +274,7 @@ class Menu {
       mainMenuButton.setHeight(100);
       break;
     case 8:
+      background(menuSprites[12]);
       unDrawButtons();
       drawMute();
       image(menuSprites[10], width/2, height/2);
