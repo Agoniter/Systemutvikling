@@ -191,6 +191,8 @@ class Player {
     stepSize = 2;
     health = 5;
     setWeapon(0);
+    setPlayerX(500);
+    setPlayerY(500);
     
   }
 }
