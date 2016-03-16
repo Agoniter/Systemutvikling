@@ -1,4 +1,4 @@
- //<>//
+ //<>// //<>//
 import processing.sound.*;  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 import interfascia.*;
 import ddf.minim.*;
@@ -50,7 +50,7 @@ void setup() {
   noSmooth();
   size(1280, 960, P2D);
   ah = new AudioHandler(this);
-  menu = new Menu(this);
+
   projectiles = new Projectiles();
   player = new Player(projectiles);
   enemyHandler = new EnemyHandler();
@@ -58,6 +58,7 @@ void setup() {
   pHandler = new PowerupHandler();
   hud = new HUD(player);
   bg = new PImage();
+  menu = new Menu(this);
   bg = loadImage("Sprites/Grey_Matters_Map.png");
   keys[0] = false;
   keys[1] = false;
@@ -87,13 +88,6 @@ void draw() {
   player.drawPlayer();
   projectiles.drawProjectiles();
   menu.drawButtons();
-  //int grid = 50; // change this number to 20 or 50, etc., if you want fewer grid lines 
-  //for (int i = 0; i < width; i+=grid) {
-  // line (i, 0, i, height);
-  //}
-  //for (int i = 0; i < height; i+=grid) {
-  // line (0, i, width, i);
-  //}
   switch(gameState) {
   case 0:
     hud.drawHUD();
@@ -104,6 +98,7 @@ void draw() {
     bulletHitCheck();
     particleHandler();
     lh.handler();
+    menu.drawDanger();
     endGame();
     //checks to see if the player can shoot a new projectile. The firerate decides how often the player can shoot.
     if (timer - lastFire >= player.getWeapon().getFireRate()) {
@@ -121,7 +116,6 @@ void draw() {
 
     break;
   }
-
   timer++;
 }
 void drawDecals() {
