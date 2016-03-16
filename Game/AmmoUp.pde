@@ -15,7 +15,7 @@ class AmmoUp extends PowerUp {
       ammoCount = 30;
     } else if (ammoID == 2) {
       setSprite(loadImage("Sprites/AmmoUpShotgun.png"));
-      ammoCount = 10;
+      ammoCount = 15;
     }
     else{
      System.out.println("O shit ammo bug"); 
