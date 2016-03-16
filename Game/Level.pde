@@ -18,7 +18,7 @@ class Level {
     tMap.put(count, new MediumEnemy(base, eh, player));
     count += 1;
     tMap.put(count, new BigEnemy(base, eh, player));
-    count += 0.3;
+    count += 0.7;
     tMap.put(count, new SmallEnemy(base, eh, player));
   }
 
@@ -83,7 +83,7 @@ class Level {
     } else {
 
       if (timer % (10*60) == 0) {
-      intensity+= 0.5;
+      intensity+= 1.0;
       }
 
     if(timer % int((3*60)) == 0){
