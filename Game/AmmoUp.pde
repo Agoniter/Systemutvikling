@@ -8,12 +8,12 @@ class AmmoUp extends PowerUp {
   public AmmoUp(PVector pos, Weapon w) {
     super(loadImage("Sprites/AmmoUpAK.png"), pos, player);
     this.w = w;
-    ammoID = int (random(0, 3)); //sets AmmoID to either one or two
+    ammoID = int (random(0, 2)); //sets AmmoID to either one or two
     //Sets sprite and ammoCount to the correct value depending on the value of ammoID
-    if (ammoID == 1) {
+    if (ammoID == 0) {
       setSprite(loadImage("Sprites/AmmoUpAK.png"));
       ammoCount = 30;
-    } else if (ammoID == 2) {
+    } else if (ammoID == 1) {
       setSprite(loadImage("Sprites/AmmoUpShotgun.png"));
       ammoCount = 10;
     }
