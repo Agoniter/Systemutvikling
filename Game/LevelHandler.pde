@@ -128,10 +128,8 @@ class LevelHandler {
       tmp8.add(new MediumEnemy(base, enemyHandler, player));
       tmp8.add(new MediumEnemy(base, enemyHandler, player));
       tmp8.add(new MediumEnemy(base, enemyHandler, player));
-      tmp8.add(new MediumEnemy(base, enemyHandler, player));
-      tmp8.add(new MediumEnemy(base, enemyHandler, player));
-      tmp8.add(new MediumEnemy(base, enemyHandler, player));
-      tmp8.add(new MediumEnemy(base, enemyHandler, player));
+      tmp8.add(new SmallEnemy(base, enemyHandler, player));
+      tmp8.add(new SmallEnemy(base, enemyHandler, player));
 
       MobGroup mgTmp6 = new MobGroup(tmp6, 600);
       MobGroup mgTmp7 = new MobGroup(tmp7, 1200);
