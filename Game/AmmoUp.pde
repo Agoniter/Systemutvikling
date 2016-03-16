@@ -8,14 +8,17 @@ class AmmoUp extends PowerUp {
   public AmmoUp(PVector pos, Weapon w) {
     super(loadImage("Sprites/AmmoUpAK.png"), pos, player);
     this.w = w;
-    ammoID = int (random(0, 2)); //sets AmmoID to either one or two
+    ammoID = int (random(1, 3)); //sets AmmoID to either one or two
     //Sets sprite and ammoCount to the correct value depending on the value of ammoID
-    if (ammoID == 0) {
+    if (ammoID == 1) {
       setSprite(loadImage("Sprites/AmmoUpAK.png"));
       ammoCount = 30;
-    } else if (ammoID == 1) {
+    } else if (ammoID == 2) {
       setSprite(loadImage("Sprites/AmmoUpShotgun.png"));
       ammoCount = 10;
+    }
+    else{
+     System.out.println("O shit ammo bug"); 
     }
   }
   //Constructor used when adding powerups to probabilityList
