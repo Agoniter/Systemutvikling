@@ -1,5 +1,5 @@
- //<>// //<>// //<>//
-import processing.sound.*;  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+ //<>// //<>// //<>// //<>//
+import processing.sound.*;  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 import interfascia.*;
 import ddf.minim.*;
 import java.util.Iterator;
@@ -302,7 +302,6 @@ void keyReleased() {
 void endGame() {
   if (base.getHealth() <= 0 || player.getHealth() <= 0) {
     gameState = 2;
-    ah.mute();
   }
 }
 
