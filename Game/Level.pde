@@ -87,13 +87,13 @@ class Level{
   else{
     
     if(timer % (10*60) == 0){
-      intensity+= 1.0;
+      intensity+= 0.5;
     }
     
-    if(/*timer % int((10*60 / intensity)) == 0*/ timer > 7*60){
+    if(timer % int((3*60)) == 0){
       
-      for(int i = 0; i < (6); i++){
-        if(diceRoll(constrain(11-intensity, 0, 10))){
+      for(int i = 0; i < (intensity); i++){
+        if(diceRoll(constrain(9-intensity, 3, 11))){
         Enemy e = getWeightedRandom();
         if(e instanceof BigEnemy){
          enemyHandler.addEnemy(new BigEnemy(base, enemyHandler, player)); 
