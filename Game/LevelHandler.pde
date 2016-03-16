@@ -168,7 +168,7 @@ class LevelHandler {
       ArrayList<Enemy> tmp15 = new ArrayList<Enemy>();
       ArrayList<Enemy> tmp16 = new ArrayList<Enemy>();
       ArrayList<Enemy> tmp17 = new ArrayList<Enemy>();
-      Level level5 = new Level(enemyHandler, 2.0);
+      Level level5 = new Level(enemyHandler, 2.5);
 
       //Pack 1
       tmp13.add(new BigEnemy(base, enemyHandler, player));
