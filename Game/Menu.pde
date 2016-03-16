@@ -190,9 +190,14 @@ class Menu {
       quitButton.setX(width/2-110);
       break;
     case 2:
+
       background(menuSprites[12]);
       drawMute();
+      if (lh.isSurvival()) {
+        image(menuSprites[13], width/2, height/2);
+      }else{
       image(menuSprites[9], width/2, height/2);
+      }
       mainMenuButton.setX(width/2 - 235);
       mainMenuButton.setY(height/2 - 90);
       mainMenuButton.setWidth(470);
