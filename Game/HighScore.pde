@@ -1,7 +1,7 @@
 class HighScore{
   int highScore;
   int score;
-  PImage[] numSprites;
+  PImage[] numSprites, bigNumSprites;
   
  public HighScore(int highScore){
    this.highScore = highScore;
@@ -12,6 +12,11 @@ class HighScore{
       numSprites[i].resize(20, 20);
     }
 
+     bigNumSprites = new PImage[12];
+    for (int i = 0; i <11; i++) {
+      bigNumSprites[i] = loadImage("Sprites/" + i + ".png");
+     //numSprites[i].resize(20, 20);
+    }
   }
  
  
@@ -33,6 +38,47 @@ class HighScore{
  
  void resetScore(){
    score = 0;  
+ }
+ 
+ 
+ 
+ void drawScore(){
+   int tmpScore = score;
+   PVector numOffset = new PVector(width/2+ 40, height/2 + 70);
+   
+   while(tmpScore >= 1){
+      if(tmpScore % 10 > 0){
+        image(bigNumSprites[tmpScore % 10], numOffset.x, numOffset.y);
+      }
+      else{
+       image(bigNumSprites[0], numOffset.x, numOffset.y); 
+      }
+      
+      //2nd digit from the right
+      tmpScore = (int)Math.floor(tmpScore / 10.0);
+      numOffset.x -= 40;
+   }
+ }
+   
+
+ 
+ 
+ void drawHighScore(){
+   int tmpScore = highScore;
+   PVector numOffset = new PVector(width/2 + 40, height/2 - 100);
+   
+   while(tmpScore >= 1){
+      if(tmpScore % 10 > 0){
+        image(bigNumSprites[tmpScore % 10], numOffset.x, numOffset.y);
+      }
+      else{
+       image(bigNumSprites[0], numOffset.x, numOffset.y); 
+      }
+      
+      //2nd digit from the right
+      tmpScore = (int)Math.floor(tmpScore / 10.0);
+      numOffset.x -= 40;
+   }
  }
  
  

@@ -28,9 +28,10 @@ class Level {
     isDone = false;
     //Survival mode config
     survivalMode = survival;
-    intensity = 1;
+    intensity = 2;
     tMap = new TreeMap();
     count = 0;
+    
 
     tMap.put(count, new MediumEnemy(base, eh, player));
     count += 1;

@@ -199,7 +199,8 @@ class Menu {
       drawMute();
       if (lh.isSurvival()) {
         image(menuSprites[13], width/2, height/2);
-        hs.drawScoreHUD();
+        hs.drawHighScore();
+        hs.drawScore();
       } else {
         image(menuSprites[9], width/2, height/2);
       }
