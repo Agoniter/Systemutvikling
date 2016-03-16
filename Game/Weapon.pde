@@ -51,9 +51,9 @@ class Weapon {
     oldPosY = mouseY;
     PVector location= new PVector(player.playPos.x, player.playPos.y);
     rotation = atan2(oldPosY - location.y, oldPosX - location.x) / PI * 180;
-    if (secondaryAmmo > 0) {
+    if (player.getSecondaryAmmo() > 0) {
       pList.add(new Grenade(player, rotation));
-      addSecondaryAmmo(-1);
+      player.addSecondaryAmmo(-1);
     }
   }
   /**
@@ -119,8 +119,8 @@ class Weapon {
   void setDamageMod(float newMod) {
     damageMod = newMod;
   }
-  void addSecondaryAmmo(float newAmmo) {
-    secondaryAmmo = constrain( secondaryAmmo+ newAmmo, 0, 10);
+  void addSecondaryAmmo(float newAmmo){
+    
   }
   float getSecondaryAmmo() {
     return secondaryAmmo;

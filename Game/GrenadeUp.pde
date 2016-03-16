@@ -1,14 +1,14 @@
 class GrenadeUp extends PowerUp {
-  Weapon w;
-  public GrenadeUp(PVector pos, Weapon w) {
+  Player p;
+  public GrenadeUp(PVector pos, Player p) {
     super(loadImage("Sprites/GrenadeUp.png"), pos, player);
-    this.w = w;
+    this.p = p;
   }
   //Constructor used when adding powerups to probabilityList
   public GrenadeUp(float weight) {
     super(weight);
   }
   void onPickup() {
-    w.addSecondaryAmmo(1);
+    p.addSecondaryAmmo(1);
   }
 }

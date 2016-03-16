@@ -3,7 +3,7 @@ class Player {
   PImage sprite;
   PVector playPos, velocity;
   int weaponState;
-  float timer, fireRate, fireMod, aniTimer, size, health, damageMod;
+  float timer, fireRate, fireMod, aniTimer, size, health, damageMod, secondaryAmmo;
   ArrayList<Weapon> weapons;
   PImage tempSprite[];
   Weapon weapon;
@@ -15,6 +15,7 @@ class Player {
     stepSize = 2;
     size = 40;
     fireMod = 1.0;
+    secondaryAmmo = 1;
     damageMod = 1.0;
     weaponState = 1;
     aniTimer = 0;
@@ -178,21 +179,26 @@ class Player {
   ArrayList<Weapon> getWeapons() {
     return weapons;
   }
+  float getSecondaryAmmo(){
+    return secondaryAmmo;
+  }
+  void addSecondaryAmmo(float newAmmo){
+     secondaryAmmo = constrain( secondaryAmmo+ newAmmo, 0, 10); 
+  }
   
   void resetPlayer(){
     weapons = new ArrayList<Weapon>();
     weapons.add(new Pistol(projectiles.getProjectiles(), this));
     weapons.add(new AssaultRifle(projectiles.getProjectiles(), this));
-    weapons.add(new Shotgun(projectiles.getProjectiles(), this)); 
-    
+    weapons.add(new Shotgun(projectiles.getProjectiles(), this));  
     damageMod = 1.0;
     fireMod = 1.0;
     weaponState = 1;
     stepSize = 2;
     health = 5;
+    secondaryAmmo = 1;
     setWeapon(0);
     setPlayerX(500);
     setPlayerY(500);
-    
   }
 }

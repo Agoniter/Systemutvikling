@@ -47,7 +47,7 @@ class PowerupHandler {
         addPowerup(new AmmoUp(enemy.getLocation(), player.getWeapon()));
       }
       if(tmp instanceof GrenadeUp){
-        addPowerup(new GrenadeUp(enemy.getLocation(), player.getWeapon()));
+        addPowerup(new GrenadeUp(enemy.getLocation(), player));
       }
     }
   }

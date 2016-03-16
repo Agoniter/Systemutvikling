@@ -30,7 +30,7 @@ class HUD {
   void drawGrenade() {
     image(grenade, 20, 60);
     image(x, 50, 65);
-    image(numSprites[(int)player.getWeapon().getSecondaryAmmo()], 70, 60);
+    image(numSprites[(int)player.getSecondaryAmmo()], 70, 60);
   }
   void drawAmmo(){
     image(ammo, 20, 90);
