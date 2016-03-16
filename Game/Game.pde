@@ -1,5 +1,5 @@
- //<>// //<>//
-import processing.sound.*;  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+ //<>// //<>// //<>//
+import processing.sound.*;  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 import interfascia.*;
 import ddf.minim.*;
 import java.util.Iterator;
@@ -20,6 +20,7 @@ boolean keys[] = new boolean[5]; //array used by keyPressed(), keyReleased() and
 ArrayList<ParticleSystem> ps;
 ArrayList<Decal> decals;
 PImage[] bEnemySprites, mEnemySprites, sEnemySprites, decalSprites, bossEnemySprites;
+HighScore hs;
 
 AudioHandler ah;
 void setup() {
@@ -50,7 +51,7 @@ void setup() {
   noSmooth();
   size(1280, 960, P2D);
   ah = new AudioHandler(this);
-
+  hs = new HighScore();
   projectiles = new Projectiles();
   player = new Player(projectiles);
   enemyHandler = new EnemyHandler();
@@ -88,8 +89,14 @@ void draw() {
   player.drawPlayer();
   projectiles.drawProjectiles();
   menu.drawButtons();
+  //hs.drawScore();
   switch(gameState) {
   case 0:
+    if(timer % 60 == 0){
+      hs.addScore(1);
+    }
+  
+  
     hud.drawHUD();
     projectiles.update();
     pHandler.updatePowerups();

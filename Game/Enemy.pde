@@ -1,4 +1,4 @@
-/** //<>// //<>// //<>// //<>//
+/** //<>// //<>// //<>// //<>// //<>//
  Main class for the enemies of the game
  **/
 
@@ -110,6 +110,18 @@ class Enemy {
     Decal d = new Decal(decals[int(random(0, dCount-1))], pos, colors[int(random(0, 22))]);
     addDecal(d);
     pHandler.trigger(this);
+    
+    if(lh.isSurvival()){
+      if(this instanceof BigEnemy){
+       hs.addScore(20);
+      }
+      else if(this instanceof MediumEnemy){
+       hs.addScore(10); 
+      }
+      else if(this instanceof SmallEnemy){
+       hs.addScore(5); 
+      }
+    }
   }
   //Getter for the isDead boolean flag 
   boolean isDead() {
