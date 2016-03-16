@@ -18,7 +18,7 @@ class Menu {
     aniTimer = 0;
     transLook = new IFLookAndFeel(g, IFLookAndFeel.DEFAULT);
     transLook.baseColor = color(255, 255, 255, 0);
-   // transLook.borderColor = color(255, 255, 255, 0);
+    transLook.borderColor = color(255, 255, 255, 0);
     transLook.activeColor = color(255, 255, 255, 0);
     transLook.highlightColor = color(255, 255, 255, 0);
     buttonList = new ArrayList<IFButton>();
@@ -41,7 +41,7 @@ class Menu {
     nextLevel = new IFButton("", 1400, height/2 + 30, 400, 65);
     sfxUp =  new IFButton("", 1400, height/2 - 40, 50, 50);
     sfxDown = new IFButton("", 1400, height/2 - 40, 50, 50);
-    mainMenuButton = new IFButton("", 1400, height/2 - 90, 470, 65);
+    mainMenuButton = new IFButton("", 1400, height/2 + 140, 450, 100);
     pauseButton = new IFButton("", 1400, 5, 50, 50);
     buttonList.add(unPauseButton);
     buttonList.add(startButton);
@@ -99,7 +99,6 @@ class Menu {
     if (e.getSource() == unPauseButton) {
       gameState = 0;
       keyPress = 0;
-      ah.unmute();
     } else if ( e.getSource() == startButton) {
       gameState = 4;
       keyPress = 0;
@@ -196,7 +195,6 @@ class Menu {
       quitButton.setX(width/2-110);
       break;
     case 2:
-
       background(menuSprites[12]);
       drawMute();
       if (lh.isSurvival()) {
@@ -205,12 +203,7 @@ class Menu {
       } else {
         image(menuSprites[9], width/2, height/2);
       }
-      mainMenuButton.setX(width/2 - 235);
-      mainMenuButton.setY(height/2 - 90);
-      mainMenuButton.setWidth(470);
-      mainMenuButton.setHeight(65); 
-      quitButton.setX(width/2-110);
-      quitButton.setY(height/2 + 120);
+      mainMenuButton.setX(width/2 - 225);
       break;
     case 3:
       background(menuSprites[12]);
@@ -292,9 +285,6 @@ class Menu {
       drawMute();
       image(menuSprites[10], width/2, height/2);
       mainMenuButton.setX(width/2 - 225);
-      mainMenuButton.setY(height/2 + 140);
-      mainMenuButton.setWidth(450);
-      mainMenuButton.setHeight(100);
       break;
     }
   }
@@ -319,9 +309,8 @@ class Menu {
       if (aniTimer < 60 && endTimer <= 300) {
         image(menuSprites[14], width/2, height/2);
       } else if ( aniTimer < 120) {
-       
-      }else{
-         aniTimer = 0;
+      } else {
+        aniTimer = 0;
       } 
       aniTimer++;
       endTimer++;
