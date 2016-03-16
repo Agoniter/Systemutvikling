@@ -51,7 +51,6 @@ void setup() {
   noSmooth();
   size(1280, 960, P2D);
   ah = new AudioHandler(this);
-  hs = new HighScore();
   projectiles = new Projectiles();
   player = new Player(projectiles);
   enemyHandler = new EnemyHandler();
@@ -74,6 +73,8 @@ void setup() {
   cursor(CROSS);
   ps = new ArrayList<ParticleSystem>();
   decals = new ArrayList<Decal>();
+  hs = new HighScore(Integer.parseInt(loadStrings("data/score.txt")[1]));
+  
   int endTime = millis();
   System.out.println("Game initialized in " + (endTime - startTime) + "ms"); 
 }

@@ -162,6 +162,8 @@ class Menu {
       }
     } else if (e.getSource() == mainMenuButton) {
       reset();
+      hs.pushScore();
+      hs.resetScore();
       gameState = 3;
     } else if (e.getSource() == pauseButton) {
       if (keyPress == 0) {
@@ -199,6 +201,7 @@ class Menu {
       drawMute();
       if (lh.isSurvival()) {
         image(menuSprites[13], width/2, height/2);
+        hs.drawScore();
       } else {
         image(menuSprites[9], width/2, height/2);
       }
