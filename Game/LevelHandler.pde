@@ -4,7 +4,6 @@ class LevelHandler {
   Iterator<Level> it;
   boolean survivalMode;
   EnemyHandler enemyHandler;
-
   public LevelHandler(EnemyHandler eh, boolean survival) {
     survivalMode = survival;
     enemyHandler = eh;
@@ -276,8 +275,10 @@ class LevelHandler {
       levels.add(level4);
       levels.add(level5);
       levels.add(level6);
+      
       it = levels.iterator();
       currentLevel = it.next();
+      level6.setBossLevel(true);
     }
   }
 
@@ -302,7 +303,9 @@ class LevelHandler {
     }
     return false;
   }
-
+  Level getLevel(){
+    return currentLevel;
+  }
   void goNextLevel() {
     currentLevel = it.next();
   }

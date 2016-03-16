@@ -8,14 +8,17 @@ class Menu {
   ArrayList<IFButton> buttonList;
   PImage[] menuSprites, numSprites, muteSprites;
   Stack backStack;
+  float endTimer, aniTimer;
   public Menu(Game g) {
     backStack = new Stack();
     helpMenuState = 0;
     volCount = 10;
     sfxCount = 8;
+    endTimer = 0;
+    aniTimer = 0;
     transLook = new IFLookAndFeel(g, IFLookAndFeel.DEFAULT);
     transLook.baseColor = color(255, 255, 255, 0);
-    transLook.borderColor = color(255, 255, 255, 0);
+   // transLook.borderColor = color(255, 255, 255, 0);
     transLook.activeColor = color(255, 255, 255, 0);
     transLook.highlightColor = color(255, 255, 255, 0);
     buttonList = new ArrayList<IFButton>();
@@ -35,7 +38,7 @@ class Menu {
     mainVolUp =  new IFButton("", 1400, height/2 + 125, 50, 50);
     mainVolDown = new IFButton("", 1400, height/2 + 125, 50, 50);
     muteButton = new IFButton("", width - 75, 5, 50, 50);
-    nextLevel = new IFButton("", 1400, height/2 - 110, 540, 130);
+    nextLevel = new IFButton("", 1400, height/2 + 30, 400, 65);
     sfxUp =  new IFButton("", 1400, height/2 - 40, 50, 50);
     sfxDown = new IFButton("", 1400, height/2 - 40, 50, 50);
     mainMenuButton = new IFButton("", 1400, height/2 - 90, 470, 65);
@@ -66,7 +69,7 @@ class Menu {
       b.setLookAndFeel(transLook);
     }
 
-    menuSprites = new PImage[14];
+    menuSprites = new PImage[15];
     menuSprites[0]  = loadImage("Sprites/MainMenu.png");
     menuSprites[1]  = loadImage("Sprites/HelpMenu.png");
     menuSprites[2]  = loadImage("Sprites/StartMenu.png");
@@ -81,6 +84,7 @@ class Menu {
     menuSprites[11] = loadImage("Sprites/Pause.png");
     menuSprites[12] = loadImage("Sprites/MenuBackground.png");
     menuSprites[13] = loadImage("Sprites/ScoreMenu.png");
+    menuSprites[14] = loadImage("Sprites/Danger.png");
 
 
     numSprites = new PImage[11];
@@ -195,8 +199,8 @@ class Menu {
       drawMute();
       if (lh.isSurvival()) {
         image(menuSprites[13], width/2, height/2);
-      }else{
-      image(menuSprites[9], width/2, height/2);
+      } else {
+        image(menuSprites[9], width/2, height/2);
       }
       mainMenuButton.setX(width/2 - 235);
       mainMenuButton.setY(height/2 - 90);
@@ -273,7 +277,7 @@ class Menu {
       unDrawButtons();
       drawMute();
       image(menuSprites[8], width/2, height/2);
-      nextLevel.setX(width/2 - 270);
+      nextLevel.setX(width/2 - 200);
       mainMenuButton.setX(width/2 - 230);
       mainMenuButton.setY(height/2 + 140);
       mainMenuButton.setWidth(460);
@@ -285,9 +289,9 @@ class Menu {
       drawMute();
       image(menuSprites[10], width/2, height/2);
       mainMenuButton.setX(width/2 - 225);
-      mainMenuButton.setY(height/2 + 190);
+      mainMenuButton.setY(height/2 + 140);
       mainMenuButton.setWidth(450);
-      mainMenuButton.setHeight(50);
+      mainMenuButton.setHeight(100);
       break;
     }
   }
@@ -304,6 +308,20 @@ class Menu {
       image(muteSprites[0], width -50, 30);
     } else if (mutePress == 1) {
       image(muteSprites[1], width -50, 30);
+    }
+  }
+  void drawDanger() {
+
+    if (lh.getLevel().getBossLevel()) {
+      if (aniTimer < 60 && endTimer <= 300) {
+        image(menuSprites[14], width/2, height/2);
+      } else if ( aniTimer < 120) {
+       
+      }else{
+         aniTimer = 0;
+      } 
+      aniTimer++;
+      endTimer++;
     }
   }
 }
