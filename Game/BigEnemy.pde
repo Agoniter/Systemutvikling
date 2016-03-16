@@ -9,7 +9,7 @@ class BigEnemy extends Enemy {
     setSprite(bEnemySprites[0], bEnemySprites[1]);
     setSpeed(-1); // speed is negative since the enemies move "backwards" on the X-axis
     setSize(125.0);
-    setHealth(5);
+    setHealth(4);
     setDamage(2); // Big enemies do more damage when they crash into stuff
     setPDetectRadius(300); // Bigger detectionradius on the bigger enemies
   }
