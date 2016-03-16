@@ -36,10 +36,10 @@ class HighScore{
  }
  
  
- void drawScore(){
+ void drawScoreHUD(){
    
    int tmpScore = score;
-   PVector numOffset = new PVector(width/2, height/2);
+   PVector numOffset = new PVector(width/2 + 100, 20);
    
    while(tmpScore >= 1){
       if(tmpScore % 10 > 0){

@@ -1,13 +1,15 @@
 class HUD {
   Player player;
   PImage[] numSprites;
-  PImage heart, x, grenade, ammo;
+  PImage heart, x, grenade, ammo, score;
   public HUD(Player player) {
     this.player = player;
     heart = loadImage("Sprites/Health.png");
     x = loadImage("Sprites/x.png");
     grenade = loadImage("Sprites/Grenade.png");
     ammo = loadImage("Sprites/Ammo.png");
+    score = loadImage("Sprites/Score.png");
+    score.resize(80, 20);
     grenade.resize(32, 26);
     numSprites = new PImage[12];
     for (int i = 0; i <11; i++) {
@@ -21,7 +23,17 @@ class HUD {
     drawPlayerHealth();
     drawGrenade();
     drawAmmo();
+    if(lh.isSurvival()){
+      drawScore();
+    }
   }
+  
+  void drawScore(){
+   image(score, width/2 - 30, 20);
+   hs.drawScoreHUD();
+    
+  }
+  
   void drawPlayerHealth() {
     image(heart, 20, 30);
     image(x, 50, 35);
